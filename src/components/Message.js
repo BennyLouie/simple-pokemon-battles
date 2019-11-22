@@ -5,7 +5,9 @@ export default class Message extends React.Component {
 
     render() {
         return (
-            <h1>Message</h1>
+            <Box>
+                <h1>Message</h1>
+            </Box>
         )
     }
 }
