@@ -12,7 +12,7 @@ class UserDisplay extends React.Component {
     render() {
         // console.log(this.props)
         return (
-            <BattleContainer {...this.props} />
+            <BattleContainer user_pokemon={this.props.selected_pokemon} />
         )
     }
 }

@@ -7,7 +7,7 @@ export default class UserField extends React.Component {
     render() {
         return (
           <Box>
-            <BattlePokemonCard />
+                <BattlePokemonCard pokemon={this.props.pokemon}/>
           </Box>
         )
     }

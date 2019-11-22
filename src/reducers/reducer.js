@@ -1,7 +1,8 @@
 const initialState = {
-    user: null,
+    user: {},
     user_id: '',
-    pokemons: []
+    pokemons: [],
+    selected_pokemon: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -13,7 +14,8 @@ const reducer = (state = initialState, action) => {
               ...state,
               user: action.payload,
               user_id: action.payload.id,
-              pokemons: action.payload.pokemons
+              pokemons: action.payload.pokemons,
+              selected_pokemon: action.payload.pokemons[0]
             }
         default: 
             return {

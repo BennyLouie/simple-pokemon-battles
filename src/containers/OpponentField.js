@@ -8,7 +8,7 @@ export default class OpponentField extends React.Component {
       console.log(this.props)
       return (
         <Box>
-          <BattlePokemonCard />
+          <BattlePokemonCard pokemon={this.props.pokemon} />
         </Box>
       )
   }
