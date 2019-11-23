@@ -11,8 +11,6 @@ export default class BattleContainer extends React.Component {
 
     state = {
         opponent_pokemon: null,
-        first: null,
-        second: null,
         opponent_action: opponent_decision,
         opponent_hp: null,
         user_hp: null
@@ -41,26 +39,105 @@ export default class BattleContainer extends React.Component {
                 // console.log(this.props.user_pokemon.spd)
                 // console.log(data.spd)
                 let userPokemon = this.props.user_pokemon
-                let first = this.decideFirst(data)
-                let second = first === userPokemon ? data : userPokemon
                 // console.log(this.decideFirst(data))
                 this.setState({
                     opponent_pokemon: data,
-                    first,
-                    second,
                     opponent_hp: data.hp,
                     user_hp: userPokemon.hp
-            })
+                })
         })
     }
   
-  battleAction = (num) => {
+  battleAction = (user_action) => {
     let opponent_action = Math.floor(Math.random() * 2) + 1
+    let userPokemon = this.props.user_pokemon
+    let first = this.decideFirst(this.state.opponent_pokemon)
+    let second = first === userPokemon ? this.state.opponent_pokemon : userPokemon
     this.setState({
       opponent_action
     })
-    console.log(this.state.opponent_action, "opponent")
-    console.log(num, "user")
+    console.log(this.state.opponent_action, "opponent action")
+    // console.log(user_action, "user")
+    console.log(first)
+    console.log(second)
+    let firstHealth = document.getElementById(`${first.name}-health`) ? document.getElementById(`${first.name}-health`).value : 1
+    let secondHealth = document.getElementById(`${second.name}-health`) ? document.getElementById(`${second.name}-health`).value : 1
+    console.log(document.getElementById(`${second.name}-health`))
+    if (user_action === 1 && opponent_action === 1) {
+      console.log('Yup')
+      const first_roll = Math.floor(Math.random() * 3) + 1
+      const second_roll = Math.floor(Math.random() * 3) + 1
+      if (first_roll > second_roll) {
+        if (first.atk > second.def) {
+          secondHealth -= 2
+          console.log(`${second.name} has ${secondHealth} health left`)
+          if (secondHealth > 0) {
+            console.log('Attack Misses! Turn Ends!')
+          } else {
+            console.log(`${first.name} wins!`)
+          }
+        }
+        else if (first.atk <= second.def) {
+          secondHealth -= 1
+          console.log(`${second.name} has ${secondHealth} health left`)
+          if (secondHealth > 0) {
+            console.log('Attack Misses! Turn Ends!')
+          } else {
+            console.log(`${first.name} wins!`)
+          }
+        }
+      }
+      else if (first_roll < second_roll) {
+        console.log(`${first.name} attack misses!`)
+        if (second.atk > first.def) {
+          firstHealth -= 2
+          console.log(`${first.name} has ${firstHealth} health left`)
+          if (firstHealth > 0) {
+            console.log('Turn Ends!')
+          } else {
+            console.log(`${first.name} loses!`)
+          }
+        }
+        else if (second.atk <= first.def) {
+          firstHealth -= 1
+          console.log(`${first.name} has ${firstHealth} health left`)
+          if (firstHealth > 0) {
+            console.log('Turn ends!')
+          } else {
+            console.log(`${first.name} loses!`)
+          }
+        }
+      }
+      else {
+        if (first.atk > second.def) {
+          secondHealth -= 2
+          console.log(`${second.name} has ${secondHealth} health left`)
+          if (secondHealth > 0) {
+            if (second.atk > first.def) {
+              firstHealth -= 2
+              console.log(`${first.name} has ${firstHealth} health left`)
+              if (firstHealth > 0) {
+                console.log('Turn ends!')
+              } else {
+                console.log(`${first.name} loses!`)
+              }
+            }
+            else if (second.atk <= first.def) {
+              firstHealth -= 1
+              console.log(`${first.name} has ${firstHealth} health left`)
+              if (firstHealth > 0) {
+                console.log('Turn Ends!')
+              } else {
+                console.log(`${first.name} loses!`)
+              }
+            }
+          } else {
+            console.log(`${second.name} has ${secondHealth} health left`)
+            console.log(`${first.name} wins!`)
+          }
+        }
+      }
+    }
     }
 
     render() {
