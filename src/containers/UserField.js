@@ -7,12 +7,11 @@ import Button from "@material-ui/core/Button"
 export default class UserField extends React.Component {
 
     render() {
-        // console.log(this.props.pokemon)
+        console.log(this.props.pokemon.hp)
         return (
           <React.Fragment>
             <Box>
               <BattlePokemonCard
-                hp={this.props.hp}
                 user={this.props.user}
                 pokemon={this.props.pokemon}
               />

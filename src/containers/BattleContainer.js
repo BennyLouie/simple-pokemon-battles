@@ -11,9 +11,7 @@ export default class BattleContainer extends React.Component {
 
     state = {
         opponent_pokemon: null,
-        opponent_action: opponent_decision,
-        opponent_hp: null,
-        user_hp: null
+        opponent_action: opponent_decision
     }
 
     decideFirst = (data) => {
@@ -38,12 +36,10 @@ export default class BattleContainer extends React.Component {
             .then(data => {
                 // console.log(this.props.user_pokemon.spd)
                 // console.log(data.spd)
-                let userPokemon = this.props.user_pokemon
+                // let userPokemon = this.props.user_pokemon
                 // console.log(this.decideFirst(data))
                 this.setState({
-                    opponent_pokemon: data,
-                    opponent_hp: data.hp,
-                    user_hp: userPokemon.hp
+                    opponent_pokemon: data
                 })
         })
     }
@@ -141,7 +137,7 @@ export default class BattleContainer extends React.Component {
     }
 
     render() {
-        // console.log(this.props)
+        console.log(this.props)
       // console.log(document.getElementById("Golem-health") ? document.getElementById("Golem-health").value : 'no value')
       // console.log(
       //   document.getElementById("Golem-health")
@@ -151,8 +147,8 @@ export default class BattleContainer extends React.Component {
         // debugger
         return (
           <Box>
-            <UserField battleAction={this.battleAction} user={true} hp={this.state.user_hp} pokemon={this.props.selected_pokemon ? this.props.selected_pokemon : { atk: 4, back_img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/76.png", def: 5, exp: 0, front_img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png", hp: 2, id: 76, lv: 1, name: "Golem", spd: 5, stat_pts: 0 }}/>
-            <OpponentField hp={this.state.opponent_hp} pokemon={this.state.opponent_pokemon ? this.state.opponent_pokemon : {atk: 4, back_img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/76.png", def: 5, exp: 0, front_img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png", hp: 2, id: 76, lv: 1, name: "Golem", spd: 5, stat_pts: 0}}/>
+            <UserField battleAction={this.battleAction} user={true} pokemon={this.props.user_pokemon}/>
+            <OpponentField pokemon={this.state.opponent_pokemon ? this.state.opponent_pokemon : {atk: 4, back_img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/76.png", def: 5, exp: 0, front_img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png", hp: 2, id: 76, lv: 1, name: "Golem", spd: 5, stat_pts: 0}}/>
           </Box>
         )
     }

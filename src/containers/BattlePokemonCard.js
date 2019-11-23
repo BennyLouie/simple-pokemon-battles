@@ -5,7 +5,8 @@ import Pokemon from '../components/Pokemon'
 export default class BattlePokemonCard extends React.Component {
 
     render() {
-        // console.log(this.props.pokemon)
+        console.log(this.props.pokemon.name)
+      // console.log(document.getElementById(`${this.props.pokemon.name}-health`))
         return (
           <Box>
             <Pokemon
@@ -14,8 +15,8 @@ export default class BattlePokemonCard extends React.Component {
             />
             <progress
               id={`${this.props.pokemon.name}-health`}
-              value={this.props.hp}
-              max={this.props.hp}
+              value={this.props.pokemon.hp}
+              max={this.props.pokemon.hp}
             />
             <h3>
               {document.getElementById(`${this.props.pokemon.name}-health`)
