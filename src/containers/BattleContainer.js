@@ -59,6 +59,7 @@ export default class BattleContainer extends React.Component {
     let firstHealth = document.getElementById(`${first.name}-health`) ? document.getElementById(`${first.name}-health`).value : 1
     let secondHealth = document.getElementById(`${second.name}-health`) ? document.getElementById(`${second.name}-health`).value : 1
     console.log(document.getElementById(`${second.name}-health`))
+    //Need a conditional to set first to userPokemon and vice-versa
     if (user_action === 1 && opponent_action === 1) {
       console.log('Yup')
       const first_roll = Math.floor(Math.random() * 3) + 1
