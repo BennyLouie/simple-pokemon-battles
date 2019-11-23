@@ -133,11 +133,98 @@ export default class BattleContainer extends React.Component {
           }
         }
       }
+    } else if (user_action === 1 && opponent_action === 2) {
+      const first_roll = Math.floor(Math.random() * 3) + 1
+      const second_roll = Math.floor(Math.random() * 3) + 1
+      if (first_roll > second_roll) {
+        if (first.atk > second.def) {
+          console.log(`${second.name} defends!`)
+          secondHealth -= 1
+          if (secondHealth > 0) {
+            console.log('Turn Ends!')
+          } else {
+            console.log(`${first.name} wins!`)
+          }
+        } else if (first.atk <= second.def) {
+          console.log(`${second.name} defends! Nothing happens!`)
+          console.log('Turn ends!')
+        }
+      } else if (first_roll < second_roll) {
+        if (first.atk > second.def) {
+          console.log(`${second.name} defends!`)
+          secondHealth -= 1
+          if (secondHealth > 0) {
+            console.log('Turn ends!')
+          } else {
+            console.log(`${first.name} wins!`)
+          }
+        } else if (first.atk < second.def){
+          console.log(`${first.name} accidentally hurts itself!`)
+          firstHealth -= 2
+          if (firstHealth > 0) {
+            console.log('Turn ends!')
+          } else {
+            console.log(`${first.name} loses!`)
+          }
+        } else {
+          console.log(`${first.name} accidentally hurts itself!`)
+          firstHealth -= 1
+          if (firstHealth > 0) {
+            console.log('Turn Ends!')
+          } else {
+            console.log(`${first.name} loses!`)
+          }
+        }
+      } else {
+        console.log(`${first.name} misses! Turn Ends!`)
+      }
+    } else if (user_action === 2 && opponent_action === 1) {
+      const first_roll = Math.floor(Math.random() * 3) + 1
+      const second_roll = Math.floor(Math.random() * 3) + 1
+      if (first_roll > second_roll) {
+        if (first.def > second.atk) {
+          console.log(`${first.name} defends! ${second.name} accidentally hurts itself!`)
+          secondHealth -= 2
+          if (secondHealth > 0) {
+            console.log("Turn Ends!")
+          } else {
+            console.log(`${first.name} wins!`)
+          }
+        } else if (first.def <= second.atk) {
+          console.log(`${first.name} defends! Nothing happens!`)
+          console.log("Turn ends!")
+        }
+      } else if (first_roll < second_roll) {
+        if (first.def > second.atk) {
+          console.log(`${first.name} defends! Turn Ends! ${second.name} accidentally hurts itself!`)
+          secondHealth -= 1
+          if (secondHealth > 0) {
+            console.log('Turn ends!')
+          } else {
+            console.log(`${first.name} wins!`)
+          }
+        } else if (first.def < second.atk) {
+          console.log(`${first.name} defends!`)
+          firstHealth -= 1
+          if (firstHealth > 0) {
+            console.log("Turn ends!")
+          } else {
+            console.log(`${first.name} loses!`)
+          }
+        } else {
+          console.log(`${first.name} defends! Nothing happens. Turn ends!`)
+        }
+      } else {
+        console.log(`${second.name} misses! Turn Ends!`)
+      }
+    } else {
+      console.log('The two Pokemon have a staring contest... No one makes a move...')
     }
     }
 
     render() {
-        console.log(this.props)
+      console.log(this.props)
+      console.log(this.state)
       // console.log(document.getElementById("Golem-health") ? document.getElementById("Golem-health").value : 'no value')
       // console.log(
       //   document.getElementById("Golem-health")

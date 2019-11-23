@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button"
 export default class UserField extends React.Component {
 
     render() {
-        console.log(this.props.pokemon.hp)
+        // console.log(this.props.pokemon.hp)
         return (
           <React.Fragment>
             <Box>
