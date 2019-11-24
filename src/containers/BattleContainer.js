@@ -42,14 +42,15 @@ export default class BattleContainer extends React.Component {
                 this.setState({
                     opponent_pokemon: data
                 })
+              console.log(this.props.user_pokemon)
         })
     }
   
   battleAction = (user_action) => {
     let opponent_action = Math.floor(Math.random() * 2) + 1
     let userPokemon = this.props.user_pokemon
-    let first = this.decideFirst(this.state.opponent_pokemon)
-    let second = first === userPokemon ? this.state.opponent_pokemon : userPokemon
+    const first = this.decideFirst(this.state.opponent_pokemon)
+    const second = first === userPokemon ? this.state.opponent_pokemon : userPokemon
     this.setState({
       opponent_action
     })
@@ -59,7 +60,7 @@ export default class BattleContainer extends React.Component {
 
     render() {
       // console.log(this.props.user_pokemon)
-      // console.log(this.state.opponent_pokemon)
+      console.log(this.state.opponent_pokemon)
       // console.log(document.getElementById("Golem-health") ? document.getElementById("Golem-health").value : 'no value')
       // console.log(
       //   document.getElementById("Golem-health")
