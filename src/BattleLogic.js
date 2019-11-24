@@ -1,12 +1,8 @@
 const battleLogic = (user_action, opponent_action, userPokemon, first, second) => {
     const user_roll = Math.floor(Math.random() * 3) + 1
     const opponent_roll = Math.floor(Math.random() * 3) + 1
-    let firstHealth = document.getElementById(`${first.name}-health`)
-      ? document.getElementById(`${first.name}-health`)
-      : 1
-    let secondHealth = document.getElementById(`${second.name}-health`)
-      ? document.getElementById(`${second.name}-health`)
-        : 1
+    let firstHealth = document.getElementById(`${first.name}-health`) ? document.getElementById(`${first.name}-health`) : 1
+    let secondHealth = document.getElementById(`${second.name}-health`) ? document.getElementById(`${second.name}-health`) : 1
     //User goes first
     if (first === userPokemon) {
         //If both user and opponent attack
@@ -235,82 +231,89 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             console.log("The two Pokemon have a staring contest... No one makes a move...")
         }
     } else {
+        //User goes second
         if (user_action === 1 && opponent_action === 1) {
+            //User and opponent both attack
             if (user_roll > opponent_roll) {
+                //User advantage! Opponent attacks will miss!
+                if (second.atk > first.def) {
+                    firstHealth.value -= 2
+                    console.log(`${second.name} attacks ${first.name}`)
+                    console.log(`${first.name} has ${firstHealth.value} health left`)
+                    if (firstHealth.value > 0) {
+                        console.log('Turn Ends')
+                    } else {
+                        console.log(`${second.name} wins!`)
+                    }
+                } else if (second.atk <= first.def) {
+                    firstHealth.value -= 1
+                    console.log(`${first.name} has ${firstHealth.value} health left`)
+                    if (firstHealth.value > 0) {
+                        console.log('Turn ends')
+                    } else {
+                        console.log(`${second.name} wins!`)
+                    }
+                }
+            } else if (user_roll < opponent_roll) {
+                //Opponent advantage! User's counterattacks will miss!
                 if (first.atk > second.def) {
-                    console.log(`${first.name} attacks ${second.name}`)
+                    console.log(`${first.name} attacks ${second.name}!`)
                     secondHealth.value -= 2
                     console.log(`${second.name} has ${secondHealth.value} health left`)
-              if (secondHealth.value > 0) {
-                console.log(`${second.name}'s attack misses! Turn ends!`)
-              } else {
-                console.log(`${first.name} wins!`)
-              }
+                    if (secondHealth.value > 0) {
+                        console.log(`${second.name} strikes back but misses!`)
+                        console.log("Turn Ends!")
+                    } else {
+                        console.log(`${second.name} loses!`)
+                    }
                 } else if (first.atk <= second.def) {
                     console.log(`${first.name} attacks ${second.name}`)
                     secondHealth.value -= 1
                     console.log(`${second.name} has ${secondHealth.value} health left`)
-              if (secondHealth.value > 0) {
-                console.log(`${second.name}'s attack misses! Turn Ends!`)
-              } else {
-                console.log(`${first.name} wins!`)
-              }
-            }
-          } else if (user_roll < opponent_roll) {
-            console.log(`${first.name}'s attack misses!`)
-            if (second.atk > first.def) {
-                console.log(`${second.name} attacks ${first.name}`)
-                firstHealth.value -= 2
-                console.log(`${first.name} has ${firstHealth.value} health left`)
-              if (firstHealth.value > 0) {
-                console.log("Turn Ends!")
-              } else {
-                console.log(`${second.name} wins!`)
-              }
-            } else if (second.atk <= first.def) {
-                console.log(`${second.name} attacks ${first.name}`)
-              firstHealth.value -= 1
-              console.log(`${first.name} has ${firstHealth.value} health left`)
-              if (firstHealth.value > 0) {
-                console.log("Turn ends!")
-              } else {
-                console.log(`${second.name} wins!`)
-              }
-            }
-          } else {
-                if (first.atk > second.def) {
-                console.log(`${first.name} attacks ${second.name}`)
-              secondHealth.value -= 2
-            //   console.log(`${second.name} has ${secondHealth.value} health left`)
-              if (secondHealth.value > 0) {
-                  if (second.atk > first.def) {
-                    console.log(`${second.name} attacks ${first.name}`)
-                  firstHealth.value -= 2
-                  console.log(`${first.name} has ${firstHealth.value} health left`)
-                  if (firstHealth.value > 0) {
-                    console.log("Turn ends!")
-                  } else {
-                    console.log(`${second.name} wins!`)
-                  }
-                  } else if (second.atk <= first.def) {
-                      console.log(`${second.name} attacks ${first.name}`)
-                    firstHealth.value -= 1
-                    console.log(`${first.name} has ${firstHealth.value} health left`)
-                  if (firstHealth.value > 0) {
-                    console.log("Turn Ends!")
-                  } else {
-                    console.log(`${second.name} wins!`)
-                  }
+                    if (secondHealth.value > 0) {
+                        console.log("Turn ends!")
+                    } else {
+                        console.log(`${second.name} loses!`)
+                    }
                 }
-              } else {
-                console.log(`${second.name} has ${secondHealth.value} health left`)
-                console.log(`${first.name} wins!`)
+            } else {
+                //No advantages!
+                if (first.atk > second.def) {
+                    console.log(`${first.name} attacks ${second.name}`)
+                    secondHealth.value -= 2
+                    console.log(`${second.name} has ${secondHealth.value} health left`)
+                    if (secondHealth.value > 0) {
+                        //User counterattacks!
+                        if (second.atk > first.def) {
+                            console.log(`${second.name} attacks ${first.name}`)
+                            firstHealth.value -= 2
+                            console.log(`${first.name} has ${firstHealth.value} health left`)
+                            if (firstHealth.value > 0) {
+                                console.log("Turn ends!")
+                            } else {
+                                console.log(`${second.name} wins!`)
+                            }
+                        } else if (second.atk <= first.def) {
+                            console.log(`${second.name} attacks ${first.name}`)
+                            firstHealth.value -= 1
+                            console.log(`${first.name} has ${firstHealth.value} health left`)
+                            if (firstHealth.value > 0) {
+                                console.log("Turn Ends!")
+                            } else {
+                                console.log(`${second.name} wins!`)
+                            }
+                        }
+                    } else {
+                        //User cannot counter attack and loses
+                        console.log(`${second.name} has ${secondHealth.value} health left`)
+                        console.log(`${second.name} loses!`)
                     }
                 } else if (first.atk <= second.def) {
                     console.log(`${first.name} attacks ${second.name}`)
                     secondHealth.value -= 1
                     console.log(`${second.name} has ${secondHealth.value} health left!`)
                     if (secondHealth.value > 0) {
+                        //User counterattacks!
                         console.log(`${second.name} attacks ${first.name}`)
                         if (second.atk > first.def) {
                             firstHealth.value -= 2
@@ -324,86 +327,106 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                             console.log(`${second.name} wins!`)
                         }
                     } else {
+                        //User cannot counterattack
                         console.log(`${second.name} loses!`)
                     }
                 }
             }
         } else if (user_action === 1 && opponent_action === 2) {
+            //User attacks while opponent defends
             if (user_roll > opponent_roll) {
+                //User advantage! User can still cause some damage!
                 if (first.def > second.atk) {
-                    console.log(`${first.name} defends! ${second.name} accidentally hurts itself!`)
+                    console.log(`${first.name} defends! No damage taken!`)
+                    console.log('Turn ends!')
+                } else if (first.def <= second.atk) {
+                    console.log(`${second.name} attacks ${first.name}`)
+                    console.log(`${first.name} defends! Some damage is taken`)
+                    firstHealth.value -= 1
+                    console.log(`${first.name} has ${firstHealth.value} health left`)
+                    if (firstHealth.value > 0) {
+                        console.log('Turn ends!')
+                    } else {
+                        console.log(`${second.name} wins!`)
+                    }
+                }
+            } else if (user_roll < opponent_roll) {
+                //Opponent advantage! User may hurt itself
+                if (first.def > second.atk) {
+                    console.log(`${first.name} defends! ${second.name} accidentally hurts itself`)
                     secondHealth.value -= 2
+                    console.log(`${second.name} has ${secondHealth.value} health left`)
+                    if (secondHealth.value > 0) {
+                        console.log('Turn Ends!')
+                    } else {
+                        console.log(`${second.name} loses!`)
+                    }
+                } else if (first.def < second.atk) {
+                    console.log(`${second.name} attacks ${first.name}`)
+                    console.log(`${first.name} defends! No damage taken`)
+                    console.log('Turn ends!')
+                } else if (second.atk === first.def) {
+                    console.log(`${second.name} attacks ${first.name}`)
+                    console.log(`${first.name} defends!`)
+                    console.log(`${second.name} accidentally hurts itself!`)
+                    secondHealth.value -= 1
                     if (secondHealth.value > 0) {
                         console.log("Turn ends!")
                     } else {
                         console.log(`${second.name} loses!`)
                     }
-                } else if (first.def <= second.atk) {
-                    console.log(`${second.name} attacks ${first.name}`)
-                    console.log(`${first.name} defends! Nothing happens!`)
-                    console.log('Turn ends!')
                 }
-            } else if (user_roll < opponent_roll) {
-                if (first.def > second.atk) {
-                    console.log(`${first.name} defends!`)
-                    secondHealth.value -= 1
-                    if (secondHealth.value > 0) {
+            } else {
+                //No advantages
+                console.log(`${second.name} attacks but misses! Turn ends!`)
+            }
+        } else if (user_action === 2 && opponent_action === 1) {
+            //User defends while opponent attacks
+            if (user_roll > opponent_roll) {
+                    //User advantage! Opponent may accidentally hurt itself
+                if (second.def > first.atk) {
+                    console.log(`${second.name} defends! ${first.name} accidenally hurts itself!`)
+                    firstHealth.value -= 2
+                    console.log(`${first.name} has ${firstHealth.value} health left!`)
+                    if (firstHealth.value > 0) {
                         console.log('Turn Ends!')
                     } else {
                         console.log(`${second.name} wins!`)
                     }
-                } else if (second.atk < first.def) {
-                    console.log(`${second.name} accidentally hurts itself!`)
-                    secondHealth.value -= 2
-                    if (secondHealth.value > 0) {
-                        console.log('Turn Ends!')
+                } else if (second.def < first.atk) {
+                    console.log(`${second.name} defends! No damage taken!`)
+                    console.log('Turn Ends!')
+                } else if (second.def === first.atk) {
+                    console.log(`${first.name} attacks ${second.name}`)
+                    console.log(`${second.name} defends! ${first.name} accidentally hurts itself`)
+                    firstHealth.value -= 1
+                    if (firstHealth.value > 0) {
+                        console.log('Turn ends!')
                     } else {
-                        console.log(`${first.name} loses!`)
+                        console.log(`${second.name} wins!`)
                     }
-                } else if (second.atk === first.def) {
-                    console.log(`${second.name} accidentally hurts itself!`)
+                }
+            } else if (user_roll < opponent_roll) {
+                //Opponent advantage! Damage might still be dealt
+                if (second.def > first.atk) {
+                    console.log(`${second.name} defends! Nothing happens`)
+                } else if (second.def <= first.atk) {
+                    console.log(`${second.name} defends! Some damage is stil taken`)
                     secondHealth.value -= 1
                     if (secondHealth.value > 0) {
-                        console.log("Turn ends!")
+                        console.log('Turn ends')
                     } else {
-                        console.log(`${second.name} loses!`)
+                        console.log(`${second.name} loses`)
                     }
-                } 
-            } else if (user_action === 2 && opponent_action === 1) {
-                if (user_roll > opponent_roll) {
-                    if (second.def > first.atk) {
-                        console.log(`${second.name} defends! ${first.name} accidenally hurts itself!`)
-                        firstHealth.value -= 1
-                        console.log(`${first.name} has ${firstHealth.value} health left!`)
-                        if (firstHealth.value > 0) {
-                            console.log('Turn Ends!')
-                        } else {
-                            console.log(`${second.name} wins!`)
-                        }
-                    } else if (second.def <= first.atk) {
-                        console.log(`${second.name} defends!`)
-                        console.log('Turn Ends!')
-                    }
-                } else if (user_roll < opponent_roll) {
-                    if (second.def > first.atk) {
-                        console.log(`${second.name} defends! ${first.name} accidentally hurts itself!`)
-                        firstHealth.value -= 1
-                        if (firstHealth.value > 0) {
-                            console.log('Turn Ends!')
-                        } else {
-                            console.log(`${second.name} wins!`)
-                        }
-                    } else if (second.def <= first.atk) {
-                        console.log(`${second.name} defends! Turn ends!`)
-                    }
-                } else {
-                    console.log(`${first.name} misses! Turn Ends!`)
                 }
-            } else if (user_action === 2 && opponent_action === 2) {
-                console.log(
-                  "The two Pokemon have a staring contest... No one makes a move..."
-                )
+            } else {
+                //No advantages
+                console.log(`${first.name} misses! Turn Ends!`)
             }
+        }
+        else if (user_action === 2 && opponent_action === 2) {
+            //Guess both players are intimidated by the other... lol
+            console.log("The two Pokemon have a staring contest... No one makes a move...")
         }
     }
 }

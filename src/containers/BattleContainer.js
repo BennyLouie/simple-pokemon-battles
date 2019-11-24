@@ -42,7 +42,7 @@ export default class BattleContainer extends React.Component {
                 this.setState({
                     opponent_pokemon: data
                 })
-              console.log(this.props.user_pokemon)
+              // console.log(this.props.user_pokemon)
         })
     }
   
@@ -54,13 +54,13 @@ export default class BattleContainer extends React.Component {
     this.setState({
       opponent_action
     })
-    
+    console.log('Battle Round!')
     battleLogic(user_action, opponent_action, userPokemon, first, second)
     }
 
     render() {
       // console.log(this.props.user_pokemon)
-      console.log(this.state.opponent_pokemon)
+      // console.log(this.state.opponent_pokemon)
       // console.log(document.getElementById("Golem-health") ? document.getElementById("Golem-health").value : 'no value')
       // console.log(
       //   document.getElementById("Golem-health")
