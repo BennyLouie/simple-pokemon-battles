@@ -13,7 +13,8 @@ export default class BattleContainer extends React.Component {
 
     state = {
         opponent_pokemon: null,
-        opponent_action: opponent_decision
+        opponent_action: opponent_decision,
+        messages: []
     }
 
     decideFirst = (data) => {
@@ -56,7 +57,8 @@ export default class BattleContainer extends React.Component {
         opponent_action
       })
       console.log('Battle Round!')
-      console.log(battleLogic(user_action, opponent_action, userPokemon, first, second))
+      // console.log(battleLogic(user_action, opponent_action, userPokemon, first, second))
+      
       battleLogic(user_action, opponent_action, userPokemon, first, second)
     }
 
