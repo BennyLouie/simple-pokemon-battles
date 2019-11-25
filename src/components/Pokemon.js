@@ -7,6 +7,7 @@ export default class Pokemon extends React.Component {
         // console.log(this.props)
         return (
             <Box className='card'>
+                <h2>{this.props.pokemon.name}</h2>
                 <img className='pokemon-img' src={this.props.user ? this.props.pokemon.back_img : this.props.pokemon.front_img} alt={this.props.pokemon.name} />
             </Box>
         )
