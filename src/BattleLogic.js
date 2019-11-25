@@ -3,6 +3,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
     const opponent_roll = Math.floor(Math.random() * 3) + 1
     let firstHealth = document.getElementById(`${first.name}-health`) ? document.getElementById(`${first.name}-health`) : 1
     let secondHealth = document.getElementById(`${second.name}-health`) ? document.getElementById(`${second.name}-health`) : 1
+    console.log(first)
     //User goes first
     if (first === userPokemon) {
         //If both user and opponent attack

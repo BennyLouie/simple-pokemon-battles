@@ -2,6 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { loadUser } from '../thunks'
 import BattleContainer from './BattleContainer'
+// import Box from "@material-ui/core/Box"
 
 class UserDisplay extends React.Component {
 

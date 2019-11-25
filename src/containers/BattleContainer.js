@@ -1,8 +1,9 @@
 import React from "react"
 import UserField from './UserField'
 import OpponentField from './OpponentField'
-import Box from "@material-ui/core/Box"
+// import Box from "@material-ui/core/Box"
 import battleLogic from '../BattleLogic'
+import MessagesContainer from "./MessagesContainer"
 
 
 const opponent_decision = Math.floor(Math.random() * 2) + 1
@@ -69,10 +70,13 @@ export default class BattleContainer extends React.Component {
       // )
         // debugger
         return (
-          <Box>
-            <UserField battleAction={this.battleAction} user={true} pokemon={this.props.user_pokemon}/>
-            <OpponentField pokemon={this.state.opponent_pokemon ? this.state.opponent_pokemon : {atk: 4, back_img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/76.png", def: 5, exp: 0, front_img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png", hp: 2, id: 76, lv: 1, name: "Golem", spd: 5, stat_pts: 0}}/>
-          </Box>
+          <div className='battle-display'>
+            <UserField battleAction={this.battleAction} user={true} pokemon={this.props.user_pokemon} />
+            <div className='simple-ai-rendering'>
+              <OpponentField pokemon={this.state.opponent_pokemon ? this.state.opponent_pokemon : { atk: 4, back_img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/76.png", def: 5, exp: 0, front_img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png", hp: 2, id: 76, lv: 1, name: "Golem", spd: 5, stat_pts: 0 }} />
+              <MessagesContainer />
+            </div>
+          </div>
         )
     }
 }

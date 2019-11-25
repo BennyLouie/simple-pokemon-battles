@@ -1,5 +1,5 @@
 import React from "react"
-import Box from "@material-ui/core/Box"
+// import Box from "@material-ui/core/Box"
 import BattlePokemonCard from './BattlePokemonCard'
 
 export default class OpponentField extends React.Component {
@@ -7,9 +7,11 @@ export default class OpponentField extends React.Component {
     render() {
     //   console.log(this.props)
       return (
-        <Box>
-          <BattlePokemonCard hp={this.props.pokemon.hp} pokemon={this.props.pokemon} />
-        </Box>
+        <div className='opponent-battle-screen'>
+          <div className='opponent-battle-display'>
+            <BattlePokemonCard hp={this.props.pokemon.hp} pokemon={this.props.pokemon} />
+          </div>
+        </div>
       )
   }
 }
