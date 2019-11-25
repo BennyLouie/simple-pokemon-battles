@@ -7,7 +7,7 @@ export default class MessagesContainer extends React.Component {
     render() {
         return (
             <div className='messages-container'>
-                <h1>Messages</h1>
+                <h1>All My Messages</h1>
             </div>
         )
     }
