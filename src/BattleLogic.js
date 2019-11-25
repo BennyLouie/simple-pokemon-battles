@@ -4,6 +4,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
     let firstHealth = document.getElementById(`${first.name}-health`) ? document.getElementById(`${first.name}-health`) : 1
     let secondHealth = document.getElementById(`${second.name}-health`) ? document.getElementById(`${second.name}-health`) : 1
     console.log(first)
+    let messages = []
     //User goes first
     if (first === userPokemon) {
         //If both user and opponent attack
