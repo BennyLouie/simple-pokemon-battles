@@ -58,7 +58,7 @@ code {
 }
 
 .simple-ai-rendering {
-  margin-top: 250px;
+  margin-top: 150px;
   margin-right: 100px;
   display: flex;
   flex-direction: column;
@@ -66,7 +66,7 @@ code {
 }
 
 .messages-container {
-  margin-top: 50px;
+  margin-top: 30px;
   border-style: ridge;
   height: 350px;
   width: 400px;
