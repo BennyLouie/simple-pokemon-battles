@@ -67,7 +67,11 @@ code {
 
 .messages-container {
   margin-top: 100px;
-  /* margin-left: 0px; */
+  border-style: ridge;
+  height: 350px;
+  width: 400px;
+  overflow: auto;
+  
 }
 
 /* .opponent-battle-screen {
