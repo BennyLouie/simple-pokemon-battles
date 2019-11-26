@@ -20,14 +20,13 @@ export default class BattleContainer extends React.Component {
     decideFirst = (data) => {
         let userPokemon = this.props.user_pokemon
         if (userPokemon.spd > data.spd) {
-            // console.log(userPokemon.spd, "user")
           return userPokemon
-        } else if (userPokemon.spd < data.spd) {
-            // console.log(data.spd, "opponent")
+        }
+        else if (userPokemon.spd < data.spd) {
           return data
-        } else {
+        }
+        else {
             const roll = Math.floor(Math.random() * 2) + 1
-            // console.log(roll, "roll")
           return roll === 1 ? userPokemon : data
         }
     }
@@ -37,14 +36,9 @@ export default class BattleContainer extends React.Component {
         fetch(`http://localhost:3000/pokemons/${opponent_pokemon_roll}`)
             .then(res => res.json())
             .then(data => {
-                // console.log(this.props.user_pokemon.spd)
-                // console.log(data.spd)
-                // let userPokemon = this.props.user_pokemon
-                // console.log(this.decideFirst(data))
                 this.setState({
                     opponent_pokemon: data
                 })
-              // console.log(this.props.user_pokemon)
         })
     }
   
@@ -61,6 +55,7 @@ export default class BattleContainer extends React.Component {
     }
 
     render() {
+      // console.log(random_pokemon())
       // console.log(this.state.messages)
       // console.log(this.state.opponent_pokemon)
         return (
