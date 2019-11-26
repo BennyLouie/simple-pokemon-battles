@@ -1,6 +1,4 @@
 import React from 'react'
-// import Box from "@material-ui/core/Box"
-import Message from '../components/Message'
 
 const sleep = ms => {
     return new Promise(resolve => setTimeout(resolve, ms))

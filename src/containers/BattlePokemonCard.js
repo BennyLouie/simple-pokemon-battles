@@ -18,13 +18,13 @@ export default class BattlePokemonCard extends React.Component {
               value={this.props.pokemon.hp}
               max={this.props.pokemon.hp}
             />
-            {/* <h3>
+            <h3>
               {document.getElementById(`${this.props.pokemon.name}-health`)
                 ? document.getElementById(`${this.props.pokemon.name}-health`)
                     .value
                 : 0}
               /{document.getElementById(`${this.props.pokemon.name}-health`) ? document.getElementById(`${this.props.pokemon.name}-health`).max : 0}
-            </h3> */}
+            </h3>
           </Box>
         )
     }
