@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Box from "@material-ui/core/Box"
-// import UserDisplay from './containers/UserDisplay'
 import {Route, Switch, Redirect, withRouter} from 'react-router-dom'
 import { connect } from "react-redux"
 import { loadUser } from './thunks'
