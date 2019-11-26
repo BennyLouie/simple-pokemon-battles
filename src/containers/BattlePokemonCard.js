@@ -1,14 +1,14 @@
 import React from "react"
-import Box from "@material-ui/core/Box"
+// import Box from "@material-ui/core/Box"
 import Pokemon from '../components/Pokemon'
 
 export default class BattlePokemonCard extends React.Component {
 
     render() {
-        // console.log(this.props.pokemon.name)
+        console.log(this.props.pokemon.name)
       console.log(document.getElementById(`${this.props.pokemon.name}-health`))
         return (
-          <Box>
+          <div>
             <Pokemon
               user={this.props.user ? this.props.user : false}
               pokemon={this.props.pokemon}
@@ -25,7 +25,7 @@ export default class BattlePokemonCard extends React.Component {
                 : 0}
               /{document.getElementById(`${this.props.pokemon.name}-health`) ? document.getElementById(`${this.props.pokemon.name}-health`).max : 0}
             </h3>
-          </Box>
+          </div>
         )
     }
 }
