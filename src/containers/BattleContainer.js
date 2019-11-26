@@ -53,17 +53,15 @@ export default class BattleContainer extends React.Component {
       let userPokemon = this.props.user_pokemon
       const first = this.decideFirst(this.state.opponent_pokemon)
       const second = first === userPokemon ? this.state.opponent_pokemon : userPokemon
-      this.setState({
-        opponent_action
-      })
       console.log('Battle Round!')
-      // console.log(battleLogic(user_action, opponent_action, userPokemon, first, second))
-      
-      battleLogic(user_action, opponent_action, userPokemon, first, second)
+      this.setState({
+        opponent_action,
+        messages: [...this.state.messages, ...battleLogic(user_action, opponent_action, userPokemon, first, second)]
+      })
     }
 
     render() {
-      // console.log(this.props.user_pokemon)
+      console.log(this.state.messages)
       // console.log(this.state.opponent_pokemon)
       // console.log(document.getElementById("Golem-health") ? document.getElementById("Golem-health").value : 'no value')
       // console.log(

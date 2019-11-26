@@ -104,7 +104,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             else {
                 //Rolls tie! No advantages!
                 console.log('No Advantages!')
-                console.log(messages)
+                // console.log(messages)
                 if (first.atk > second.def) {
                     //User attacks opponent
                     secondHealth.value -= 2
@@ -208,7 +208,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             if (user_roll > opponent_roll) {
                 //User advantage! Opponent can still receive damage despite defending
                 console.log('User Advantage!')
-                console.log(messages)
+                // console.log(messages)
                 if (first.atk > second.def) {
                     messages.push(`${second.name} defends, but still takes some damage...`)
                     secondHealth.value -= 1
@@ -236,7 +236,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             else if (user_roll < opponent_roll) {
                 //Opponent advantage! User might accidentally hurt itself
                 console.log('Opponent Advantage!')
-                console.log(messages)
+                // console.log(messages)
                 if (first.atk > second.def) {
                     messages.push(`${second.name} defends! No damage taken.`)
                     messages.push("Turn Ends!")
@@ -284,7 +284,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             else {
                 //No advantages but user misses
                 console.log('No Advantages!')
-                console.log(messages)
+                // console.log(messages)
                 messages.push(`${first.name} misses!`)
                 messages.push("Turn Ends!")
                 console.log(messages)
@@ -341,7 +341,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             else if (user_roll < opponent_roll) {
                 //Opponent advantage! User will still receive some damage despite defending
                 console.log('Opponent Advantage!')
-                console.log(messages)
+                // console.log(messages)
                 if (first.def <= second.atk) {
                     messages.push(`${first.name} defends but takes some damage`)
                     firstHealth.value -= 1
@@ -369,7 +369,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             else {
                     //No advantage! Opponent misses!
                     console.log('No Advantages!')
-                    console.log(messages)
+                    // console.log(messages)
                     messages.push(`${second.name} misses!`)
                     messages.push("Turn Ends!")
                     console.log(messages)
@@ -392,7 +392,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             if (user_roll > opponent_roll) {
                 //User advantage! Opponent attacks will miss!
                 console.log('User Advantage!')
-                console.log(messages)
+                // console.log(messages)
                 messages.push(`${first.name} misses!`)
                 messages.push(`${second.name} attacks ${first.name}.`)
                 if (second.atk > first.def) {
@@ -431,7 +431,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             else if (user_roll < opponent_roll) {
                 //Opponent advantage! User's counterattacks will miss!
                 console.log('Opponent Advantage!')
-                console.log(messages)
+                // console.log(messages)
                 if (first.atk > second.def) {
                     secondHealth.value -= 2
                     messages.push(`${second.name} takes 2 damage!`)
@@ -471,7 +471,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             else {
                 //No advantages!
                 console.log('No Advantages!')
-                console.log(messages)
+                // console.log(messages)
                 if (first.atk > second.def) {
                     secondHealth.value -= 2
                     messages.push(`${second.name} takes 2 damage!`)
@@ -564,7 +564,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             if (user_roll > opponent_roll) {
                 //User advantage! User can still cause some damage!
                 console.log('User Advantage!')
-                console.log(messages)
+                // console.log(messages)
                 if (first.def > second.atk) {
                     messages.push(`${first.name} defends! No damage taken.`)
                     messages.push("Turn Ends!")
@@ -592,7 +592,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             else if (user_roll < opponent_roll) {
                 //Opponent advantage! User may hurt itself
                 console.log('Opponent Advantage!')
-                console.log(messages)
+                // console.log(messages)
                 if (first.def > second.atk) {
                     messages.push(`${first.name} defends! ${second.name} badly hurts itself.`)
                     secondHealth.value -= 2
@@ -638,7 +638,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             else {
                 //No advantages
                 console.log('No Advantages.')
-                console.log(messages)
+                // console.log(messages)
                 messages.push(`${second.name} attacks ${first.name}.`)
                 messages.push(`${second.name} misses!`)
                 messages.push("Turn Ends!")
@@ -652,7 +652,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             if (user_roll > opponent_roll) {
                 //User advantage! Opponent may accidentally hurt itself
                 console.log('User Advantage!')
-                console.log(messages)
+                // console.log(messages)
                 if (second.def > first.atk) {
                     messages.push(`${second.name} defends! ${first.name} badly hurts itself!`)
                     firstHealth.value -= 2
@@ -697,7 +697,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             else if (user_roll < opponent_roll) {
                 //Opponent advantage! Damage might still be dealt
                 console.log('Opponent Advantage!')
-                console.log(messages)
+                // console.log(messages)
                 if (second.def > first.atk) {
                     messages.push(`${second.name} defends! No damage taken.`)
                     messages.push("Turn Ends!")
@@ -725,7 +725,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             else {
                 //No advantages
                 console.log("No advantages")
-                console.log(messages)
+                // console.log(messages)
                 messages.push(`${first.name} attacks ${second.name}.`)
                 messages.push(`${first.name} misses!`)
                 messages.push("Turn Ends!")
