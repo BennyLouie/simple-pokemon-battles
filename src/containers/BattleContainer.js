@@ -56,7 +56,7 @@ export default class BattleContainer extends React.Component {
       console.log('Battle Round!')
       this.setState({
         opponent_action,
-        messages: [...this.state.messages, ...battleLogic(user_action, opponent_action, userPokemon, first, second)]
+        messages: [...battleLogic(user_action, opponent_action, userPokemon, first, second)]
       })
     }
 

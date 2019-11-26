@@ -13,7 +13,9 @@ export default class MessagesContainer extends React.Component {
     constructor(props) {
         super(props)
         this.scrollRefContainer = React.createRef()
-        
+        // this.state = {
+        //     messages: this.props.messages
+        // }
     }
 
     getMessage = message => {
@@ -24,23 +26,17 @@ export default class MessagesContainer extends React.Component {
         for (let i = 0; i < this.props.messages.length; i++) {
             const message = this.props.messages[i]
             const renderMessage = await this.getMessage(message)
-            console.log(renderMessage)
-            console.log(document.querySelector(".messages-container"))
             const htmlMessage = document.createElement("h4")
                 htmlMessage.className = 'message'
                 htmlMessage.innerText = renderMessage
             document.querySelector('.messages-container').append(htmlMessage)
-            // messagesContainer.push(renderMessage)
-            // debugger
-            // return renderMessage
         }
-        // console.log(messagesContainer)
     }
 
 
 
     componentDidUpdate() {
-    this.scrollRefContainer.current.scrollTop = 99999999999999999999
+        this.scrollRefContainer.current.scrollTop = 99999999999999999999
     }
 
     render() {
