@@ -521,7 +521,6 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     }
                 }
                 else {
-                    messages.push(`${first.name} attacks ${second.name}.`)
                     secondHealth.value -= 1
                     messages.push(`${second.name} takes 1 damage!`)
                     if (secondHealth.value > 0) {
