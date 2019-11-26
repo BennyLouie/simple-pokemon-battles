@@ -5,9 +5,10 @@ import Message from '../components/Message'
 export default class MessagesContainer extends React.Component {
 
     render() {
+        // console.log(this.props.messages)
         return (
             <div className='messages-container'>
-                <h1>All My Messages</h1>
+                {this.props.messages.map((message, idx) => <Message key={idx} message={message} />)}
             </div>
         )
     }

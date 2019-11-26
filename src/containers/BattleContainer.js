@@ -61,21 +61,14 @@ export default class BattleContainer extends React.Component {
     }
 
     render() {
-      console.log(this.state.messages)
+      // console.log(this.state.messages)
       // console.log(this.state.opponent_pokemon)
-      // console.log(document.getElementById("Golem-health") ? document.getElementById("Golem-health").value : 'no value')
-      // console.log(
-      //   document.getElementById("Golem-health")
-      //     ? document.getElementById("Golem-health").max
-      //     : "no max"
-      // )
-        // debugger
         return (
           <div className='battle-display'>
             <UserField battleAction={this.battleAction} user={true} pokemon={this.props.user_pokemon} />
             <div className='simple-ai-rendering'>
               <OpponentField pokemon={this.state.opponent_pokemon ? this.state.opponent_pokemon : { atk: 4, back_img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/76.png", def: 5, exp: 0, front_img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png", hp: 2, id: 76, lv: 1, name: "Golem", spd: 5, stat_pts: 0 }} />
-              <MessagesContainer />
+              <MessagesContainer messages={this.state.messages} />
             </div>
           </div>
         )
