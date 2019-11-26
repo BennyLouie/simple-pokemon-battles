@@ -639,7 +639,6 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                 //No advantages
                 console.log('No Advantages.')
                 // console.log(messages)
-                messages.push(`${second.name} attacks ${first.name}.`)
                 messages.push(`${second.name} misses!`)
                 messages.push("Turn Ends!")
                 console.log(messages)
