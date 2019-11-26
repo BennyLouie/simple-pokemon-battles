@@ -4,16 +4,12 @@ const sleep = ms => {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-// let messagesContainer = []
 
 export default class MessagesContainer extends React.Component {
 
     constructor(props) {
         super(props)
         this.scrollRefContainer = React.createRef()
-        // this.state = {
-        //     messages: this.props.messages
-        // }
     }
 
     getMessage = message => {
