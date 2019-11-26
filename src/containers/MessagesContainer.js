@@ -27,25 +27,21 @@ export default class MessagesContainer extends React.Component {
             const message = this.props.messages[i]
             const renderMessage = await this.getMessage(message)
             const htmlMessage = document.createElement("h4")
-                htmlMessage.className = 'message'
-                htmlMessage.innerText = renderMessage
+                  htmlMessage.className = 'message'
+                  htmlMessage.innerText = renderMessage
             document.querySelector('.messages-container').append(htmlMessage)
+            this.scrollRefContainer.current.scrollTop = 99999999999999999999
         }
     }
 
-
-
-    componentDidUpdate() {
-        this.scrollRefContainer.current.scrollTop = 99999999999999999999
-    }
+    // componentDidUpdate() {
+    //     this.scrollRefContainer.current.scrollTop = 99999999999999999999
+    // }
 
     render() {
-        // this.messageLoop().then(messages => console.log(messages))
-        this.messageLoop()//.then(message => console.log(message))
+        this.messageLoop()
         return (
           <div className="messages-container" ref={this.scrollRefContainer}>
-                {/* {this.props.messages.map((message, idx) => <Message key={idx} message={message} />)} */}
-                {/* {this.messageLoop()} */}
           </div>
         )
     }
