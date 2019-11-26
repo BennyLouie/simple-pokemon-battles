@@ -74,6 +74,10 @@ code {
   
 }
 
+.message {
+  margin-left: 25px;
+}
+
 /* .opponent-battle-screen {
   margin-top: 200px;
 } */
