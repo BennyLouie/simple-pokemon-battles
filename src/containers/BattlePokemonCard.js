@@ -6,7 +6,7 @@ export default class BattlePokemonCard extends React.Component {
 
     render() {
         // console.log(this.props.pokemon.name)
-      // console.log(document.getElementById(`${this.props.pokemon.name}-health`))
+      console.log(document.getElementById(`${this.props.pokemon.name}-health`))
         return (
           <Box>
             <Pokemon
