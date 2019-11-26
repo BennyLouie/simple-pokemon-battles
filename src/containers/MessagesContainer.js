@@ -6,6 +6,8 @@ const sleep = ms => {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
+// let messagesContainer = []
+
 export default class MessagesContainer extends React.Component {
 
     constructor(props) {
@@ -19,16 +21,20 @@ export default class MessagesContainer extends React.Component {
     }
 
     messageLoop = async _ => {
-        // console.log('Start!')
-        const promises = this.props.messages.map(async message => {
-            const singleMessage = await this.getMessage(message)
-            console.log(singleMessage)
-            return singleMessage
-        })
-        // console.log(promises)
-        const messageList = await Promise.all(promises)
-        // console.log(messageList)
-        return messageList
+        for (let i = 0; i < this.props.messages.length; i++) {
+            const message = this.props.messages[i]
+            const renderMessage = await this.getMessage(message)
+            console.log(renderMessage)
+            console.log(document.querySelector(".messages-container"))
+            const htmlMessage = document.createElement("h4")
+                htmlMessage.className = 'message'
+                htmlMessage.innerText = renderMessage
+            document.querySelector('.messages-container').append(htmlMessage)
+            // messagesContainer.push(renderMessage)
+            // debugger
+            // return renderMessage
+        }
+        // console.log(messagesContainer)
     }
 
 
@@ -39,11 +45,11 @@ export default class MessagesContainer extends React.Component {
 
     render() {
         // this.messageLoop().then(messages => console.log(messages))
-        this.messageLoop()
+        this.messageLoop()//.then(message => console.log(message))
         return (
           <div className="messages-container" ref={this.scrollRefContainer}>
                 {/* {this.props.messages.map((message, idx) => <Message key={idx} message={message} />)} */}
-                {this.messageLoop}
+                {/* {this.messageLoop()} */}
           </div>
         )
     }
