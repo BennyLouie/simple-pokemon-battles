@@ -8,11 +8,26 @@ import { NavLink } from 'react-router-dom'
 
 const opponent_decision = Math.floor(Math.random() * 2) + 1
 
+// const checkMessages = (array) => {
+//   let splitWords = []
+//   array.forEach(element => {
+//     const newArr = element.split(" ")
+//     // debugger
+//     splitWords.push(...newArr)
+//   })
+//   // console.log(splitWords)
+//   if (splitWords.includes("wins!") || splitWords.includes("lost!")) {
+//     return true
+//   }
+//   return false
+// }
+
 export default class BattleContainer extends React.Component {
   state = {
     opponent_action: opponent_decision,
     messages: []
   }
+  
 
   decideFirst = data => {
     let userPokemon = this.props.user_pokemon
@@ -25,14 +40,14 @@ export default class BattleContainer extends React.Component {
       return roll === 1 ? userPokemon : data
     }
   }
-
+  
   battleAction = user_action => {
     let opponent_action = Math.floor(Math.random() * 2) + 1
     let userPokemon = this.props.user_pokemon
     const first = this.decideFirst(this.props.opponent_pokemon)
     const second =
       first === userPokemon ? this.props.opponent_pokemon : userPokemon
-    console.log("Battle Round!")
+    // console.log("Battle Round!")
     this.setState({
       opponent_action,
       messages: [
@@ -43,7 +58,9 @@ export default class BattleContainer extends React.Component {
 
   render() {
     // debugger
-    console.log(this.state)
+    // console.log(this.state.messages)
+    // console.log(checkMessages(this.state.messages))
+    // checkMessages(this.state.messages)
     return (
       <>
         <NavLink to='/'>Quit Battle</NavLink>
@@ -58,6 +75,7 @@ export default class BattleContainer extends React.Component {
             <MessagesContainer messages={this.state.messages} />
           </div>
         </div>
+        
       </>
     )
   }
