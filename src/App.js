@@ -1,19 +1,23 @@
-import React from 'react';
-import './App.css';
+import React from "react"
+import "./App.css"
 import Box from "@material-ui/core/Box"
-import {Route, Switch, Redirect, withRouter} from 'react-router-dom'
+import { Route, Switch, Redirect, withRouter } from "react-router-dom"
 import { connect } from "react-redux"
-import { loadUser } from './thunks'
-import BattleContainer from './containers/BattleContainer'
+import { loadUser, getUser } from "./thunks"
+import BattleContainer from "./containers/BattleContainer"
+import Login from "./components/Login"
+import Signup from "./components/Signup"
+import HomePage from "./containers/HomePage"
 
 const mapStateToProps = state => {
   return {
-      ...state
+    ...state
   }
 }
 
 const mapDispatchToProps = {
-  loadUser: loadUser
+  loadUser: loadUser,
+  getUser: getUser
 }
 
 class App extends React.Component {
@@ -22,19 +26,30 @@ class App extends React.Component {
     this.props.loadUser()
   }
 
+  getUser = (evt) => {
+    this.props.getUser(evt)
+  }
 
-  render(){
+  fetchUser = (evt) => {
+    evt.preventDefault()
+    this.getUser(evt)
+  }
+
+  render() {
+    console.log(this.props)
+    // console.log(this.state)
     return (
-      <Box className='app-browser'>
+      <Box className="app-browser">
         <Switch>
-          <Route path='/battle' render={(props) => <BattleContainer user_pokemon={this.props.selected_pokemon} />} />
+          <Route exact path="/" render={props => <HomePage />} />
+          <Route path="/login" render={props => <Login fetchUser={this.fetchUser}/>} />
+          <Route path="/signup" render={props => <Signup />} />
+          <Route path="/battle" render={props => <BattleContainer user_pokemon={this.props.user ? this.props.selected_pokemon : {}} />} />
         </Switch>
-
-
-        <Redirect to='battle' />
+        {this.props.user ? <Redirect to="" /> : <Redirect to="login" />}
       </Box>
     )
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

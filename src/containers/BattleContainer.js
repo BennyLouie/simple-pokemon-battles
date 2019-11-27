@@ -9,8 +9,6 @@ import MessagesContainer from "./MessagesContainer"
 const opponent_decision = Math.floor(Math.random() * 2) + 1
 
 export default class BattleContainer extends React.Component {
-
-
     state = {
         opponent_pokemon: null,
         opponent_action: opponent_decision,
@@ -54,10 +52,9 @@ export default class BattleContainer extends React.Component {
       })
     }
 
-    render() {
-      // console.log(random_pokemon())
-      // console.log(this.state.messages)
-      // console.log(this.state.opponent_pokemon)
+  render() {
+      // debugger
+      console.log(this.props)
         return (
           <div className='battle-display'>
             <UserField battleAction={this.battleAction} user={true} pokemon={this.props.user_pokemon} />
