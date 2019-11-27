@@ -6,6 +6,7 @@ const initialState = {
   user: null,
   pokemons: [],
   selected_pokemon: {},
+  opponent_pokemon: {},
   errors: false
 }
 
@@ -40,6 +41,16 @@ const reducer = (state = initialState, action) => {
     case "LOGOUT":
       return {
         initialState
+      }
+    case "SELECT_POKEMON":
+      return {
+        ...state,
+        selected_pokemon: action.payload.pokemon
+      }
+    case "FETCH_OPPONENT":
+      return {
+        ...state,
+        opponent_pokemon: action.payload.opponent_pokemon
       }
     default:
       return {

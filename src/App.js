@@ -3,7 +3,7 @@ import "./App.css"
 import Box from "@material-ui/core/Box"
 import { Route, Switch, Redirect, NavLink, withRouter } from "react-router-dom"
 import { connect } from "react-redux"
-import { loadUser, getUser, createUser, logout } from "./thunks"
+import { loadUser, getUser, createUser, logout, selectPokemon, fetchOpponent } from "./thunks"
 import BattleContainer from "./containers/BattleContainer"
 import Login from "./components/Login"
 import Signup from "./components/Signup"
@@ -19,13 +19,16 @@ const mapDispatchToProps = {
   loadUser: loadUser,
   getUser: getUser,
   createUser: createUser,
-  logout: logout
+  logout: logout,
+  selectPokemon: selectPokemon,
+  fetchOpponent: fetchOpponent
 }
 
 class App extends React.Component {
 
   componentDidMount() {
     this.props.loadUser()
+    this.props.fetchOpponent()
   }
 
   getUser = (evt) => {
@@ -47,17 +50,21 @@ class App extends React.Component {
     this.props.logout()
   }
 
+  selectPokemon = (pokemon) => {
+    this.props.selectPokemon(pokemon)
+  }
+
   render() {
-    // console.log(this.props)
+    console.log(this.props)
     // console.log(this.state)
     return (
       <Box className="app-browser">
         {this.props.user ? <NavLink to='/login' onClick={this.logout}>Logout</NavLink> : null}
         <Switch>
-          <Route exact path="/" render={props => <HomePage user={this.props.user} pokemons={this.props.pokemons} />} />
+          <Route exact path="/" render={props => <HomePage user={this.props.user} pokemons={this.props.pokemons} selectPokemon={this.selectPokemon} />} />
           <Route path="/login" render={props => <Login fetchUser={this.fetchUser}/>} />
           <Route path="/signup" render={props => <Signup createUser={this.createUser}/>} />
-          <Route path="/battle" render={props => <BattleContainer user_pokemon={this.props.user ? this.props.selected_pokemon : {}} />} />
+          <Route path="/battle" render={props => <BattleContainer opponent_pokemon={this.props.opponent_pokemon} user_pokemon={this.props.user ? this.props.selected_pokemon : {}} />} />
         </Switch>
         {this.props.user ? <Redirect to="" /> : <Redirect to="login" />}
       </Box>

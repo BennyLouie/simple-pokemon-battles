@@ -100,3 +100,26 @@ export const logout = () => dispatch => {
     type: "LOGOUT"
   })
 }
+
+export const selectPokemon = (pokemon) => dispatch => {
+    dispatch({
+        type: "SELECT_POKEMON",
+        payload: {
+            pokemon: pokemon
+        }
+    })
+}
+
+export const fetchOpponent = () => dispatch => {
+    const opponent_pokemon_roll = Math.floor(Math.random() * 151) + 1
+    fetch(`http://localhost:3000/pokemons/${opponent_pokemon_roll}`)
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: "FETCH_OPPONENT",
+                    payload: {
+                        opponent_pokemon: data
+                    }
+                })
+        })
+}

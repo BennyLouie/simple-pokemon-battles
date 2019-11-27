@@ -10,7 +10,6 @@ const opponent_decision = Math.floor(Math.random() * 2) + 1
 
 export default class BattleContainer extends React.Component {
     state = {
-        opponent_pokemon: null,
         opponent_action: opponent_decision,
         messages: []
     }
@@ -28,23 +27,12 @@ export default class BattleContainer extends React.Component {
           return roll === 1 ? userPokemon : data
         }
     }
-
-    componentDidMount() {
-        const opponent_pokemon_roll = Math.floor(Math.random() * 151) + 1
-        fetch(`http://localhost:3000/pokemons/${opponent_pokemon_roll}`)
-            .then(res => res.json())
-            .then(data => {
-                this.setState({
-                    opponent_pokemon: data
-                })
-        })
-    }
   
     battleAction = (user_action) => {
       let opponent_action = Math.floor(Math.random() * 2) + 1
       let userPokemon = this.props.user_pokemon
-      const first = this.decideFirst(this.state.opponent_pokemon)
-      const second = first === userPokemon ? this.state.opponent_pokemon : userPokemon
+      const first = this.decideFirst(this.props.opponent_pokemon)
+      const second = first === userPokemon ? this.props.opponent_pokemon : userPokemon
       console.log('Battle Round!')
       this.setState({
         opponent_action,
@@ -54,12 +42,12 @@ export default class BattleContainer extends React.Component {
 
   render() {
       // debugger
-      console.log(this.props)
+      console.log(this.state)
         return (
           <div className='battle-display'>
             <UserField battleAction={this.battleAction} user={true} pokemon={this.props.user_pokemon} />
             <div className='simple-ai-rendering'>
-              <OpponentField pokemon={this.state.opponent_pokemon ? this.state.opponent_pokemon : { atk: 4, back_img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/76.png", def: 5, exp: 0, front_img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png", hp: 2, id: 76, lv: 1, name: "Golem", spd: 5, stat_pts: 0 }} />
+              <OpponentField pokemon={ this.props.opponent_pokemon } />
               <MessagesContainer messages={this.state.messages} />
             </div>
           </div>
