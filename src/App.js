@@ -3,7 +3,7 @@ import "./App.css"
 import Box from "@material-ui/core/Box"
 import { Route, Switch, Redirect, withRouter } from "react-router-dom"
 import { connect } from "react-redux"
-import { loadUser, getUser } from "./thunks"
+import { loadUser, getUser, createUser } from "./thunks"
 import BattleContainer from "./containers/BattleContainer"
 import Login from "./components/Login"
 import Signup from "./components/Signup"
@@ -17,7 +17,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   loadUser: loadUser,
-  getUser: getUser
+  getUser: getUser,
+  createUser: createUser
 }
 
 class App extends React.Component {
@@ -35,6 +36,12 @@ class App extends React.Component {
     this.getUser(evt)
   }
 
+  createUser = (evt) => {
+    evt.preventDefault()
+    this.props.createUser(evt)
+    .then(this.fetchUser(evt))
+  }
+
   render() {
     console.log(this.props)
     // console.log(this.state)
@@ -43,7 +50,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" render={props => <HomePage />} />
           <Route path="/login" render={props => <Login fetchUser={this.fetchUser}/>} />
-          <Route path="/signup" render={props => <Signup />} />
+          <Route path="/signup" render={props => <Signup createUser={this.createUser}/>} />
           <Route path="/battle" render={props => <BattleContainer user_pokemon={this.props.user ? this.props.selected_pokemon : {}} />} />
         </Switch>
         {this.props.user ? <Redirect to="" /> : <Redirect to="login" />}
