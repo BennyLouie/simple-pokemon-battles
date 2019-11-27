@@ -5,7 +5,9 @@ export const loadUser = () => dispatch => {
       type: "LOAD_USER",
       payload: {
         token: localStorage.token,
-        user_id: localStorage.user_id
+        user_id: localStorage.user_id,
+        user,
+        pokemons: user ? user.pokemons: []
         // user,
         // pokemons: user.pokemons
       }
@@ -37,8 +39,8 @@ export const getUser = evt => dispatch => {
           }
         })
       } else {
-        // localStorage.token = data.token
-        // localStorage.user_id = data.user_id
+        localStorage.token = data.token
+        localStorage.user_id = data.user_id
         dispatch({
           type: "GET_TOKEN",
           payload: {
@@ -50,7 +52,8 @@ export const getUser = evt => dispatch => {
         return fetch(`http://localhost:3000/users/${data.user_id}`)
           .then(res => res.json())
           .then(user => {
-            console.log(user)
+            // console.log(user)
+            localStorage.setItem("user", JSON.stringify(user))
             dispatch({
               type: "GET_USER",
               payload: {
@@ -64,26 +67,36 @@ export const getUser = evt => dispatch => {
 }
 
 export const createUser = evt => dispatch => {
-    let username = evt.target.username.value
-    let password = evt.target.password.value
-    let first_name = evt.target.first_name.value
-    let last_name = evt.target.last_name.value
+  let username = evt.target.username.value
+  let password = evt.target.password.value
+  let first_name = evt.target.first_name.value
+  let last_name = evt.target.last_name.value
 
-    return fetch("http://localhost:3000/users", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-            first_name,
-            last_name,
-            username,
-            password
-        })
+  return fetch("http://localhost:3000/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({
+      first_name,
+      last_name,
+      username,
+      password
     })
-        .then(res => res.json())
-        .then(data => {
-        return data
+  })
+    .then(res => res.json())
+    .then(data => {
+      return data
     })
+}
+
+export const logout = () => dispatch => {
+  localStorage.token = null
+  localStorage.user_id = null
+  localStorage.user = null
+
+  dispatch({
+    type: "LOGOUT"
+  })
 }

@@ -37,6 +37,10 @@ const reducer = (state = initialState, action) => {
         user: action.payload.user,
         pokemons: action.payload.pokemons
       }
+    case "LOGOUT":
+      return {
+        initialState
+      }
     default:
       return {
         ...state

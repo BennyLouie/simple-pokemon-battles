@@ -1,9 +1,11 @@
 import React from 'react'
+import TeamContainer from './TeamContainer'
 
 export default class HomePage extends React.Component {
     render() {
+        console.log(this.props)
         return (
-            <h1>HomePage</h1>
+            <TeamContainer pokemons={this.props.pokemons} />
         )
     }
 }
