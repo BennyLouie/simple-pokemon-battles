@@ -1,13 +1,17 @@
 import React from "react"
 import TeamContainer from "./TeamContainer"
+import { NavLink } from "react-router-dom"
 
 export default class HomePage extends React.Component {
   render() {
     // console.log(this.props)
     return (
       <>
-            <TeamContainer pokemons={this.props.pokemons} selectPokemon={this.props.selectPokemon} />
-            
+        <TeamContainer
+          pokemons={this.props.pokemons}
+          selectPokemon={this.props.selectPokemon}
+        />
+        <NavLink to="/catch">Catch New Pokemon!</NavLink>
       </>
     )
   }

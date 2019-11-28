@@ -96,3 +96,17 @@ export const fetchOpponent = () => dispatch => {
                 })
         })
 }
+
+export const wildPokemonFetch = () => dispatch => {
+  fetch("http://localhost:3000/pokemons")
+    .then(res => res.json())
+    .then(pokemon => {
+      const wildPokemon = pokemon.filter(pokemon => pokemon.id <= 151)
+      dispatch({
+        type: "WILD_POKEMON",
+        payload: {
+          wildPokemon
+        }
+      })
+    })
+}

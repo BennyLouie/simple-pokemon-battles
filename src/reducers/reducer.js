@@ -1,10 +1,9 @@
-///Currently I've hard coded the initial selected pokemon but I expect this page to not render unless there is a selected pokemon...
-
 const initialState = {
   token: null,
   user_id: null,
   user: null,
   pokemons: [],
+  wildPokemon: [],
   selected_pokemon: {},
   opponent_pokemon: {},
   errors: false
@@ -51,6 +50,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         opponent_pokemon: action.payload.opponent_pokemon
+      }
+    case "WILD_POKEMON":
+      return {
+        ...state,
+        wildPokemon: action.payload.wildPokemon
       }
     default:
       return {
