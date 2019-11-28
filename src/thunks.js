@@ -161,10 +161,7 @@ export const catchPokemon = (user, pokemon) => dispatch => {
             user.pokemons.push(pokemon)
             localStorage.setItem("user", JSON.stringify(user))
             dispatch({
-              type: "CATCH_POKEMON",
-              payload: {
-                newPokemon
-              }
+              type: "CATCH_POKEMON"
             })
         }
       })
