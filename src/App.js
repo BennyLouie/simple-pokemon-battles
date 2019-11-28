@@ -71,7 +71,7 @@ class App extends React.Component {
           <Route path="/login" render={props => <Login fetchUser={this.fetchUser}/>} />
           <Route path="/signup" render={props => <Signup createUser={this.createUser}/>} />
           <Route path="/battle" render={props => <BattleContainer addLoss={addLoss} addWin={addWin} user={this.props.user} opponent_pokemon={this.props.opponent_pokemon} user_pokemon={this.props.user ? this.props.selected_pokemon : {}} />} />
-          <Route path="/catch" render={props => <WildPokemonContainer />} />
+          <Route path="/catch" render={props => <WildPokemonContainer wildPokemon={this.props.wildPokemon}/>} />
         </Switch>
         {this.props.user ? <Redirect to="" /> : <Redirect to="login" />}
       </Box>
