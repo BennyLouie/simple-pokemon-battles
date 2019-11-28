@@ -110,3 +110,64 @@ export const wildPokemonFetch = () => dispatch => {
       })
     })
 }
+
+export const catchPokemon = (user, pokemon) => dispatch => {
+  const user_id = user.id
+  return fetch("http://localhost:3000/pokemons", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      name: pokemon.name,
+      front_img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`,
+      back_img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokemon.id}.png`,
+      lv: 1,
+      exp: 0,
+      hp: Math.floor(Math.random() * 5) + 11,
+      atk: Math.floor(Math.random() * 5) + 6,
+      def: Math.floor(Math.random() * 5) + 6,
+      spd: Math.floor(Math.random() * 5) + 6,
+      stat_pts: 0
+    })
+  })
+    .then(res => res.json())
+    .then(data => {
+      // console.log(data)
+      const pokemon_id = data.id
+      const newPokemon = data
+      return fetch("http://localhost:3000/captures", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          user_id,
+          pokemon_id
+        })
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.errors) {
+            dispatch({
+              type: "ERRORS",
+              payload: {
+                errors: true
+              }
+          })
+          } else {
+            user.pokemons.push(pokemon)
+            localStorage.setItem("user", JSON.stringify(user))
+            dispatch({
+              type: "CATCH_POKEMON",
+              payload: {
+                newPokemon
+              }
+            })
+        }
+      })
+  })
+
+}

@@ -56,6 +56,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         wildPokemon: action.payload.wildPokemon
       }
+    case "CATCH_POKEMON":
+        // state.user.pokemons.push(action.payload.pokemon)
+        // localStorage.setItem("user", JSON.stringify(state.user))
+      return {
+        ...state,
+        pokemons: [...state.pokemons, action.payload.newPokemon]
+      }
     default:
       return {
         ...state
