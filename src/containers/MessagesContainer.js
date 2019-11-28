@@ -10,18 +10,8 @@ export default class MessagesContainer extends React.Component {
     super(props)
     this.scrollRefContainer = React.createRef()
     this.state = {
-      winnerDecided: false
-    }
-  }
-
-  checkMessage = message => {
-    let splitMessage = message.split(" ")
-    console.log(splitMessage)
-    if (splitMessage.includes("wins!") || splitMessage.includes("lost!")) {
-      this.setState({
-        winnerDecided: true
-      })
-      return true
+      battleWon: false,
+      battleLost: false
     }
   }
 
@@ -30,16 +20,31 @@ export default class MessagesContainer extends React.Component {
   }
 
   messageLoop = async _ => {
-    for (let i = 0; i < this.props.messages.length; i++) {
-      const message = this.props.messages[i]
-      const renderMessage = await this.getMessage(message)
-      const messageContainer = document.querySelector(".messages-container")
-      const htmlMessage = document.createElement("h4")
-      htmlMessage.className = "message"
-      htmlMessage.innerText = renderMessage
-      this.checkMessage(message) 
-      messageContainer.append(htmlMessage)
-      this.scrollRefContainer.current.scrollTop = 99999999999999999999
+    if (!this.state.battleWon && !this.state.battleLost) {
+      for (let i = 0; i < this.props.messages.length; i++) {
+        const message = this.props.messages[i]
+        const renderMessage = await this.getMessage(message)
+        const messageContainer = document.querySelector(".messages-container")
+        const htmlMessage = document.createElement("h4")
+        htmlMessage.className = "message"
+        htmlMessage.innerText = renderMessage
+        messageContainer.append(htmlMessage)
+        this.scrollRefContainer.current.scrollTop = 99999999999999999999
+        console.log(this.props.messages.length) 
+        // console.log(message.match(/wins/g))
+        if (message.match(/wins/g)) {
+          this.setState({
+            battleWon: true
+          })
+          this.props.addWin(this.props.user)
+        }
+        else if (message.match(/lost/g)) {
+          this.setState({
+            battleLost: true
+          })
+          this.props.addLoss(this.props.user)
+        }
+      }
     }
   }
 
@@ -49,11 +54,10 @@ export default class MessagesContainer extends React.Component {
 
   render() {
     this.messageLoop()
-    //   console.log(this.props.winnerDecided)
     return (
       <>
         <div className="messages-container" ref={this.scrollRefContainer}></div>
-        {this.state.winnerDecided ? <Redirect to="/" /> : null}
+        {this.state.battleWon || this.state.battleLost ? <Redirect to="/" /> : null}
       </>
     )
   }

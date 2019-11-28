@@ -45,7 +45,8 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                         //Opponent still has health so they attempt to attack but miss!
                         messages.push(`${second.name} has ${secondHealth.value} health left`)
                         messages.push(`${second.name} attacks ${first.name}.`)
-                        messages.push(`${second.name}'s attack misses! Turn ends!`)
+                        messages.push(`${second.name}'s attack misses!`)
+                        messages.push("Turn Ends!")
                         console.log(messages)
                         return messages
                     }
@@ -724,7 +725,6 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                 //No advantages
                 console.log("No advantages")
                 // console.log(messages)
-                messages.push(`${first.name} attacks ${second.name}.`)
                 messages.push(`${first.name} misses!`)
                 messages.push("Turn Ends!")
                 console.log(messages)

@@ -57,7 +57,7 @@ export default class BattleContainer extends React.Component {
   }
 
   render() {
-    // debugger
+    console.log(this.props)
     // console.log(this.state.messages)
     // console.log(checkMessages(this.state.messages))
     // checkMessages(this.state.messages)
@@ -72,7 +72,7 @@ export default class BattleContainer extends React.Component {
           />
           <div className="simple-ai-rendering">
             <OpponentField pokemon={this.props.opponent_pokemon} />
-            <MessagesContainer messages={this.state.messages} />
+            <MessagesContainer user={this.props.user} addLoss={this.props.addLoss} addWin={this.props.addWin} messages={this.state.messages} />
           </div>
         </div>
         
