@@ -10,7 +10,7 @@ export default class WildPokemonContainer extends React.Component {
         <NavLink to="/">Back</NavLink>
         <div className="wild-pokemon-container">
           {this.props.wildPokemon.map((pokemon, idx) => (
-            <WildPokemon key={idx} pokemon={pokemon} />
+            <WildPokemon key={idx} user={this.props.user} pokemon={pokemon} catchPokemon={this.props.catchPokemon} />
           ))}
         </div>
       </>
