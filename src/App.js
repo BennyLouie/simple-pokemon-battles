@@ -3,12 +3,13 @@ import "./App.css"
 import Box from "@material-ui/core/Box"
 import { Route, Switch, Redirect, NavLink, withRouter } from "react-router-dom"
 import { connect } from "react-redux"
-import { loadUser, getUser, createUser, logout, selectPokemon, fetchOpponent } from "./thunks"
+import { loadUser, getUser, logout, selectPokemon, fetchOpponent } from "./thunks"
 import BattleContainer from "./containers/BattleContainer"
 import Login from "./components/Login"
 import Signup from "./components/Signup"
 import HomePage from "./containers/HomePage"
 import { addWin, addLoss } from './fetches/patches'
+import { createUser } from './fetches/posts'
 
 const mapStateToProps = state => {
   return {
@@ -19,7 +20,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   loadUser: loadUser,
   getUser: getUser,
-  createUser: createUser,
   logout: logout,
   selectPokemon: selectPokemon,
   fetchOpponent: fetchOpponent
@@ -44,8 +44,8 @@ class App extends React.Component {
 
   createUser = (evt) => {
     evt.preventDefault()
-    this.props.createUser(evt)
-    .then(this.fetchUser(evt))
+    createUser(evt)
+    .then(this.getUser(evt))
   }
 
   logout = () => {

@@ -19,7 +19,7 @@ export const getUser = evt => dispatch => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json"
+      "Accept": "application/json"
     },
     body: JSON.stringify({
       username: evt.target.username.value,
@@ -28,7 +28,7 @@ export const getUser = evt => dispatch => {
   })
     .then(res => res.json())
     .then(data => {
-      // debugger
+      console.log(data)
       if (data.errors) {
         dispatch({
           type: "ERRORS",
@@ -50,7 +50,7 @@ export const getUser = evt => dispatch => {
         return fetch(`http://localhost:3000/users/${data.user_id}`)
           .then(res => res.json())
           .then(user => {
-            // console.log(user)
+            console.log(user)
             localStorage.setItem("user", JSON.stringify(user))
             dispatch({
               type: "GET_USER",
@@ -61,31 +61,6 @@ export const getUser = evt => dispatch => {
             })
           })
       }
-    })
-}
-
-export const createUser = evt => dispatch => {
-  let username = evt.target.username.value
-  let password = evt.target.password.value
-  let first_name = evt.target.first_name.value
-  let last_name = evt.target.last_name.value
-
-  return fetch("http://localhost:3000/users", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    },
-    body: JSON.stringify({
-      first_name,
-      last_name,
-      username,
-      password
-    })
-  })
-    .then(res => res.json())
-    .then(data => {
-      return data
     })
 }
 
