@@ -10,6 +10,7 @@ export default class HomePage extends React.Component {
         <TeamContainer
           pokemons={this.props.pokemons}
           selectPokemon={this.props.selectPokemon}
+          releasePokemon={this.props.releasePokemon}
         />
         <NavLink to="/catch">Catch New Pokemon!</NavLink>
       </>
