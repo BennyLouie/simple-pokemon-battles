@@ -8,8 +8,6 @@ export const loadUser = () => dispatch => {
         user_id: localStorage.user_id,
         user,
         pokemons: user ? user.pokemons: []
-        // user,
-        // pokemons: user.pokemons
       }
     })
   }

@@ -33,6 +33,7 @@ class App extends React.Component {
 
   getUser = (evt) => {
     this.props.getUser(evt)
+    this.props.fetchOpponent()
   }
 
   fetchUser = (evt) => {
