@@ -64,7 +64,8 @@ const reducer = (state = initialState, action) => {
       }
     case "RELEASE_POKEMON":
       return {
-        ...state
+        ...state,
+        pokemons: [...state.pokemons]
       }
     default:
       return {
