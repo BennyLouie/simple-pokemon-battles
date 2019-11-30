@@ -4,7 +4,7 @@ import WildPokemon from "./WildPokemon"
 
 export default class WildPokemonContainer extends React.Component {
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <>
         <NavLink to="/">Back</NavLink>

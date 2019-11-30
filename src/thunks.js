@@ -134,7 +134,7 @@ export const catchPokemon = (user, pokemon) => dispatch => {
   })
     .then(res => res.json())
     .then(data => {
-      console.log(data)
+      // console.log(data)
       const pokemon_id = data.id
       const newPokemon = data
       return fetch("http://localhost:3000/captures", {
@@ -161,7 +161,10 @@ export const catchPokemon = (user, pokemon) => dispatch => {
             user.pokemons.push(newPokemon)
             localStorage.setItem("user", JSON.stringify(user))
             dispatch({
-              type: "CATCH_POKEMON"
+              type: "CATCH_POKEMON",
+              payload: {
+                pokemons: user.pokemons
+              }
             })
         }
       })
@@ -192,7 +195,10 @@ export const releasePokemon = (user, pokemon) => dispatch => {
               localStorage.setItem("user", JSON.stringify(user))
               // console.log(user)
               dispatch({
-                type: 'RELEASE_POKEMON'
+                type: 'RELEASE_POKEMON',
+                payload: {
+                  pokemons: user.pokemons
+                }
               })
         })
     })

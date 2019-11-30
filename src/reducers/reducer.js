@@ -57,15 +57,20 @@ const reducer = (state = initialState, action) => {
         wildPokemon: action.payload.wildPokemon
       }
     case "CATCH_POKEMON":
-      // console.log(state)
+      console.log(state.pokemons)
+      console.log(action.payload.pokemons)
+      console.log(state)
       return {
         ...state,
-        pokemons: [...state.pokemons]
+        pokemons: action.payload.pokemons
       }
     case "RELEASE_POKEMON":
+      console.log(state.pokemons)
+      console.log(action.payload.pokemons)
+      console.log(state)
       return {
         ...state,
-        pokemons: [...state.pokemons]
+        pokemons: action.payload.pokemons
       }
     default:
       return {
