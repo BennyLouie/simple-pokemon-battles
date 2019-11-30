@@ -11,6 +11,7 @@ export default class HomePage extends React.Component {
           pokemons={this.props.pokemons}
           selectPokemon={this.props.selectPokemon}
           releasePokemon={this.props.releasePokemon}
+          user={this.props.user}
         />
         <NavLink to="/catch">Catch New Pokemon!</NavLink>
       </>

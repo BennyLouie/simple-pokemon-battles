@@ -3,7 +3,7 @@ import "./App.css"
 import Box from "@material-ui/core/Box"
 import { Route, Switch, Redirect, NavLink, withRouter } from "react-router-dom"
 import { connect } from "react-redux"
-import { loadUser, getUser, logout, selectPokemon, fetchOpponent, wildPokemonFetch, catchPokemon } from "./thunks"
+import { loadUser, getUser, logout, selectPokemon, fetchOpponent, wildPokemonFetch, catchPokemon, releasePokemon } from "./thunks"
 import BattleContainer from "./containers/BattleContainer"
 import Login from "./components/Login"
 import Signup from "./components/Signup"
@@ -11,7 +11,7 @@ import HomePage from "./containers/HomePage"
 import WildPokemonContainer from './containers/WildPokemonContainer'
 import { addWin, addLoss } from './fetches/patches'
 import { createUser } from './fetches/posts'
-import { releasePokemon } from './fetches/deletes'
+// import { releasePokemon } from './fetches/deletes'
 
 const mapStateToProps = state => {
   return {
@@ -26,7 +26,8 @@ const mapDispatchToProps = {
   selectPokemon: selectPokemon,
   fetchOpponent: fetchOpponent,
   wildPokemonFetch: wildPokemonFetch,
-  catchPokemon: catchPokemon
+  catchPokemon: catchPokemon,
+  releasePokemon: releasePokemon
 }
 
 class App extends React.Component {
@@ -66,13 +67,13 @@ class App extends React.Component {
     this.props.catchPokemon(user, pokemon)
   }
 
-  releasePokemon = (pokemon) => {
-    releasePokemon(pokemon)
+  releasePokemon = (user, pokemon) => {
+    this.props.releasePokemon(user, pokemon)
   }
 
   render() {
     // console.log(this.wildPokemon())
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <Box className="app-browser">
         {this.props.user ? <NavLink to='/login' onClick={this.logout}>Logout</NavLink> : null}

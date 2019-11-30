@@ -134,7 +134,7 @@ export const catchPokemon = (user, pokemon) => dispatch => {
   })
     .then(res => res.json())
     .then(data => {
-      // console.log(data)
+      console.log(data)
       const pokemon_id = data.id
       const newPokemon = data
       return fetch("http://localhost:3000/captures", {
@@ -158,7 +158,7 @@ export const catchPokemon = (user, pokemon) => dispatch => {
               }
           })
           } else {
-            user.pokemons.push(pokemon)
+            user.pokemons.push(newPokemon)
             localStorage.setItem("user", JSON.stringify(user))
             dispatch({
               type: "CATCH_POKEMON"
@@ -167,4 +167,33 @@ export const catchPokemon = (user, pokemon) => dispatch => {
       })
   })
 
+}
+
+export const releasePokemon = (user, pokemon) => dispatch => {
+  return fetch(`http://localhost:3000/captures`)
+    .then(res => res.json())
+    .then(captures => {
+    //   console.log(pokemon)
+        console.log(captures)
+        // debugger
+      const captured = captures.find(capture => capture.pokemon.id === pokemon.id)
+        return fetch(`http://localhost:3000/captures/${captured.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+            .then(resp => resp.json())
+            .then(data => {
+                // console.log(data)
+                // debugger
+              user.pokemons.splice(user.pokemons.findIndex(pokemon => pokemon.id === data.id), 1)
+              localStorage.setItem("user", JSON.stringify(user))
+              // console.log(user)
+              dispatch({
+                type: 'RELEASE_POKEMON'
+              })
+        })
+    })
 }
