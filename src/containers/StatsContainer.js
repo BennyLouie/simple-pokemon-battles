@@ -10,7 +10,7 @@ export default class StatsContainer extends React.Component {
                 <p>ATK: {this.props.pokemon.atk}</p>
                 <p>DEF: {this.props.pokemon.def}</p>
                 <p>SPD: {this.props.pokemon.spd}</p>
-                <p>EXP: {this.props.pokemon.exp}</p>
+                <p>EXP: {this.props.pokemon.exp} / {this.props.pokemon.exp_max}</p>
             </div>
         )
     }
