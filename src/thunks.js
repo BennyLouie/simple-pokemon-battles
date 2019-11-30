@@ -125,6 +125,7 @@ export const catchPokemon = (user, pokemon) => dispatch => {
       back_img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokemon.id}.png`,
       lv: 1,
       exp: 0,
+      exp_max: 10,
       hp: Math.floor(Math.random() * 5) + 11,
       atk: Math.floor(Math.random() * 5) + 6,
       def: Math.floor(Math.random() * 5) + 6,

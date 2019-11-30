@@ -11,6 +11,7 @@ import HomePage from "./containers/HomePage"
 import WildPokemonContainer from './containers/WildPokemonContainer'
 import { addWin, addLoss } from './fetches/patches'
 import { createUser } from './fetches/posts'
+import SelectedPokemonContainer from './containers/SelectedPokemonContainer'
 // import { releasePokemon } from './fetches/deletes'
 
 const mapStateToProps = state => {
@@ -69,13 +70,13 @@ class App extends React.Component {
 
   releasePokemon = (user, pokemon) => {
     this.props.releasePokemon(user, pokemon)
-    console.log(this.props.pokemons)
+    // console.log(this.props.pokemons)
     // debugger
   }
 
   render() {
     // console.log(this.wildPokemon())
-    console.log(this.props.pokemons)
+    // console.log(this.props.selected_pokemon)
     return (
       <Box className="app-browser">
         {this.props.user ? <NavLink to='/login' onClick={this.logout}>Logout</NavLink> : null}
@@ -84,7 +85,8 @@ class App extends React.Component {
           <Route path="/login" render={props => <Login fetchUser={this.fetchUser}/>} />
           <Route path="/signup" render={props => <Signup createUser={this.createUser}/>} />
           <Route path="/battle" render={props => <BattleContainer addLoss={addLoss} addWin={addWin} user={this.props.user} opponent_pokemon={this.props.opponent_pokemon} user_pokemon={this.props.user ? this.props.selected_pokemon : {}} />} />
-          <Route path="/catch" render={props => <WildPokemonContainer user={this.props.user} catchPokemon={this.catch} wildPokemon={this.props.wildPokemon}/>} />
+          <Route path="/catch" render={props => <WildPokemonContainer user={this.props.user} catchPokemon={this.catch} wildPokemon={this.props.wildPokemon} />} />
+          <Route path="/update-pokemon" render={props => <SelectedPokemonContainer pokemon={this.props.user ? this.props.selected_pokemon : {}} /> } />
         </Switch>
         {this.props.user ? <Redirect to="" /> : <Redirect to="login" />}
       </Box>
