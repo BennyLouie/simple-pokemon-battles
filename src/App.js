@@ -77,7 +77,7 @@ class App extends React.Component {
 
   render() {
     // console.log(this.wildPokemon())
-    console.log(this.props.user)
+    console.log(this.props.pokemons)
     return (
       <Box className="app-browser">
         {this.props.user ? <NavLink to='/login' onClick={this.logout}>Logout</NavLink> : null}

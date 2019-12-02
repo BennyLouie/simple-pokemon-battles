@@ -209,9 +209,67 @@ export const releasePokemon = (user, pokemon) => dispatch => {
     })
 }
 
-export const addWin = user => dispatch => {
-  const defaultWins = user.wins
-  const wins = defaultWins + 1
+export const addWin = (user, pokemon) => dispatch => {
+  const wins = user.wins + 1
+  const exp = pokemon.exp + 5
+  const exp_max = pokemon.exp_max + pokemon.exp_max
+  const stat_pts = pokemon.stat_pts + 3
+  const lv = pokemon.lv + 1
+  // debugger
+  if (exp === pokemon.exp_max) {
+    fetch(`http://localhost:3000/pokemons/${pokemon.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        lv,
+        exp: 0,
+        exp_max,
+        stat_pts
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('1: ', data)
+        console.log('2: ', user.pokemons[user.pokemons.findIndex(pokemon => pokemon.id === data.id)])
+        user.pokemons[user.pokemons.findIndex(pokemon => pokemon.id === data.id)] = data
+        console.log(user)
+        localStorage.setItem("user", JSON.stringify(user))
+        dispatch({
+          type: 'UPDATE_POKEMON',
+          payload: {
+            pokemons: user.pokemons
+          }
+        })
+      })
+  } else {
+    fetch(`http://localhost:3000/pokemons/${pokemon.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        exp
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('1: ', data)
+        console.log('2: ', user.pokemons[user.pokemons.findIndex(pokemon => pokemon.id === data.id)])
+        user.pokemons[user.pokemons.findIndex(pokemon => pokemon.id === data.id)] = data
+        console.log(user)
+        localStorage.setItem("user", JSON.stringify(user))
+        dispatch({
+          type: 'UPDATE_POKEMON',
+          payload: {
+            pokemons: user.pokemons
+          }
+        })
+      })
+  }
   fetch(`http://localhost:3000/users/${user.id}`, {
     method: "PATCH",
     headers: {

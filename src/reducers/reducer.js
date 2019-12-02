@@ -82,6 +82,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         user: action.payload.user
       }
+    case "UPDATE_POKEMON":
+      return {
+        ...state,
+        pokemons: action.payload.pokemons
+      }
     default:
       return {
         ...state

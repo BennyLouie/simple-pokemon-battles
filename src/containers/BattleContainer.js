@@ -88,7 +88,7 @@ export default class BattleContainer extends React.Component {
           {this.state.battleWon ? (
             <div>
               <p>You Won!</p>
-              <NavLink to='/' onClick={() => this.props.addWin(this.props.user)}>Return to HomePage</NavLink>
+              <NavLink to='/' onClick={() => this.props.addWin(this.props.user, this.props.user_pokemon)}>Return to HomePage</NavLink>
             </div>
           ) : null}
           {this.state.battleLost ? (
