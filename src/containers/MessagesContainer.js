@@ -26,23 +26,15 @@ export default class MessagesContainer extends React.Component {
         htmlMessage.innerText = renderMessage
         messageContainer.append(htmlMessage)
         this.scrollRefContainer.current.scrollTop = 99999999999999999999
-        // console.log(this.props.messages.length) 
-        // console.log(message.match(/wins/g))
         if (message.match(/wins/g)) {
-          // this.props.addWin(this.props.user)
           this.props.wonBattle()
         }
         else if (message.match(/lost/g)) {
-          // this.props.addLoss(this.props.user)
           this.props.lostBattle()
         }
       }
     }
   }
-
-  // componentDidUpdate() {
-  //     this.scrollRefContainer.current.scrollTop = 99999999999999999999
-  // }
 
   render() {
     console.log('Won: ', this.props.battleWon)
