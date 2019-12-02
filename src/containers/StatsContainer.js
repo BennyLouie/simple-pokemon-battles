@@ -40,6 +40,7 @@ export default class StatsContainer extends React.Component {
                 <p>SPD: {this.state.spd} <button onClick={() => this.addToStat('spd')}>+</button><button onClick={() => this.subtractFromStat('spd')}>-</button></p>
                 <p>EXP: {this.props.pokemon.exp} / {this.props.pokemon.exp_max}</p>
                 <p>Available Stat Points: {this.state.stat_pts}</p>
+                <button onClick={() => this.props.updateStats(this.props.pokemon, this.state, this.props.user)}>Update Stats</button>
             </div>
         )
     }

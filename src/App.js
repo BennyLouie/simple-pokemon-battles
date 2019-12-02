@@ -3,7 +3,7 @@ import "./App.css"
 import Box from "@material-ui/core/Box"
 import { Route, Switch, Redirect, NavLink, withRouter } from "react-router-dom"
 import { connect } from "react-redux"
-import { loadUser, getUser, logout, selectPokemon, fetchOpponent, wildPokemonFetch, catchPokemon, releasePokemon, addWin, addLoss } from "./thunks"
+import { loadUser, getUser, logout, selectPokemon, fetchOpponent, wildPokemonFetch, catchPokemon, releasePokemon, addWin, addLoss, updateStats } from "./thunks"
 import BattleContainer from "./containers/BattleContainer"
 import Login from "./components/Login"
 import Signup from "./components/Signup"
@@ -29,7 +29,8 @@ const mapDispatchToProps = {
   catchPokemon: catchPokemon,
   releasePokemon: releasePokemon,
   addWin: addWin,
-  addLoss: addLoss
+  addLoss: addLoss,
+  updateStats: updateStats
 }
 
 class App extends React.Component {
@@ -87,7 +88,7 @@ class App extends React.Component {
           <Route path="/signup" render={props => <Signup createUser={this.createUser}/>} />
           <Route path="/battle" render={props => <BattleContainer addLoss={this.props.addLoss} addWin={this.props.addWin} user={this.props.user} opponent_pokemon={this.props.opponent_pokemon} user_pokemon={this.props.user ? this.props.selected_pokemon : {}} />} />
           <Route path="/catch" render={props => <WildPokemonContainer user={this.props.user} catchPokemon={this.catch} wildPokemon={this.props.wildPokemon} />} />
-          <Route path="/update-pokemon" render={props => <SelectedPokemonContainer pokemon={this.props.user ? this.props.selected_pokemon : {}} /> } />
+          <Route path="/update-pokemon" render={props => <SelectedPokemonContainer user={this.props.user} updateStats={this.props.updateStats} pokemon={this.props.user ? this.props.selected_pokemon : {}} /> } />
         </Switch>
         {this.props.user ? <Redirect to="" /> : <Redirect to="login" />}
       </Box>

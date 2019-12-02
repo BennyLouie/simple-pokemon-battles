@@ -10,7 +10,7 @@ export default class SelectedPokemonContainer extends React.Component {
       <>
         <NavLink to="/">Back</NavLink>
         <Pokemon pokemon={this.props.pokemon} />
-        <StatsContainer pokemon={this.props.pokemon} />
+        <StatsContainer user={this.props.user} pokemon={this.props.pokemon} updateStats={this.props.updateStats} />
       </>
     )
   }

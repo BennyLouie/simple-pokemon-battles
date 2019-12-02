@@ -232,10 +232,12 @@ export const addWin = (user, pokemon) => dispatch => {
     })
       .then(res => res.json())
       .then(data => {
-        user.pokemons[user.pokemons.findIndex(pokemon => pokemon.id === data.id)] = data
+        user.pokemons[
+          user.pokemons.findIndex(pokemon => pokemon.id === data.id)
+        ] = data
         localStorage.setItem("user", JSON.stringify(user))
         dispatch({
-          type: 'UPDATE_POKEMON',
+          type: "UPDATE_POKEMON",
           payload: {
             pokemons: user.pokemons
           }
@@ -254,10 +256,12 @@ export const addWin = (user, pokemon) => dispatch => {
     })
       .then(res => res.json())
       .then(data => {
-        user.pokemons[user.pokemons.findIndex(pokemon => pokemon.id === data.id)] = data
+        user.pokemons[
+          user.pokemons.findIndex(pokemon => pokemon.id === data.id)
+        ] = data
         localStorage.setItem("user", JSON.stringify(user))
         dispatch({
-          type: 'UPDATE_POKEMON',
+          type: "UPDATE_POKEMON",
           payload: {
             pokemons: user.pokemons
           }
@@ -306,6 +310,43 @@ export const addLoss = user => dispatch => {
         type: "ADD_LOSS",
         payload: {
           user: data
+        }
+      })
+    })
+}
+
+export const updateStats = (pokemon, state, user) => dispatch => {
+  console.log(pokemon)
+  console.log(state)
+  const hp = state.hp
+  const atk = state.atk
+  const def = state.def
+  const spd = state.spd
+  const stat_pts = state.stat_pts
+  fetch(`http://localhost:3000/pokemons/${pokemon.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({
+      hp,
+      atk,
+      def,
+      spd,
+      stat_pts
+    })
+  })
+    .then(res => res.json())
+    .then(data => {
+      user.pokemons[
+        user.pokemons.findIndex(pokemon => pokemon.id === data.id)
+      ] = data
+      localStorage.setItem("user", JSON.stringify(user))
+      dispatch({
+        type: "UPDATE_POKEMON",
+        payload: {
+          pokemons: user.pokemons
         }
       })
     })
