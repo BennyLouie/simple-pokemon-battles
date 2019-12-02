@@ -232,10 +232,7 @@ export const addWin = (user, pokemon) => dispatch => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('1: ', data)
-        console.log('2: ', user.pokemons[user.pokemons.findIndex(pokemon => pokemon.id === data.id)])
         user.pokemons[user.pokemons.findIndex(pokemon => pokemon.id === data.id)] = data
-        console.log(user)
         localStorage.setItem("user", JSON.stringify(user))
         dispatch({
           type: 'UPDATE_POKEMON',
@@ -257,10 +254,7 @@ export const addWin = (user, pokemon) => dispatch => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('1: ', data)
-        console.log('2: ', user.pokemons[user.pokemons.findIndex(pokemon => pokemon.id === data.id)])
         user.pokemons[user.pokemons.findIndex(pokemon => pokemon.id === data.id)] = data
-        console.log(user)
         localStorage.setItem("user", JSON.stringify(user))
         dispatch({
           type: 'UPDATE_POKEMON',
