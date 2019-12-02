@@ -351,3 +351,28 @@ export const updateStats = (pokemon, state, user) => dispatch => {
       })
     })
 }
+
+export const updateUser = evt => dispatch => {
+  const username = evt.target.password.value
+  const id = evt.target.user_id.value
+  fetch(`http://localhost:3000/users/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      username
+    })
+  })
+    .then(res => res.json())
+    .then(data => {
+      localStorage.setItem("user", JSON.stringify(data))
+      dispatch({
+        type: "UPDATE_USER",
+        payload: {
+          user: data
+        }
+      })
+  })
+}

@@ -3,7 +3,7 @@ import "./App.css"
 import Box from "@material-ui/core/Box"
 import { Route, Switch, Redirect, NavLink, withRouter } from "react-router-dom"
 import { connect } from "react-redux"
-import { loadUser, getUser, logout, selectPokemon, fetchOpponent, wildPokemonFetch, catchPokemon, releasePokemon, addWin, addLoss, updateStats } from "./thunks"
+import { loadUser, getUser, logout, selectPokemon, fetchOpponent, wildPokemonFetch, catchPokemon, releasePokemon, addWin, addLoss, updateStats, updateUser } from "./thunks"
 import BattleContainer from "./containers/BattleContainer"
 import Login from "./components/Login"
 import Signup from "./components/Signup"
@@ -31,7 +31,8 @@ const mapDispatchToProps = {
   releasePokemon: releasePokemon,
   addWin: addWin,
   addLoss: addLoss,
-  updateStats: updateStats
+  updateStats: updateStats,
+  updateUser: updateUser
 }
 
 class App extends React.Component {
@@ -77,9 +78,14 @@ class App extends React.Component {
     // debugger
   }
 
+  updateUser = (evt) => {
+    // evt.preventDefault()
+    this.props.updateUser(evt)
+  }
+
   render() {
     // console.log(this.wildPokemon())
-    // console.log(this.props.pokemons)
+    // console.log(this.props)
     return (
       <Box className="app-browser">
         {this.props.user ? <NavLink to='/login' onClick={this.logout}>Logout</NavLink> : null}
@@ -90,7 +96,7 @@ class App extends React.Component {
           <Route path="/battle" render={props => <BattleContainer addLoss={this.props.addLoss} addWin={this.props.addWin} user={this.props.user} opponent_pokemon={this.props.opponent_pokemon} user_pokemon={this.props.user ? this.props.selected_pokemon : {}} />} />
           <Route path="/catch" render={props => <WildPokemonContainer user={this.props.user} catchPokemon={this.catch} wildPokemon={this.props.wildPokemon} />} />
           <Route path="/update-pokemon" render={props => <SelectedPokemonContainer user={this.props.user} updateStats={this.props.updateStats} pokemon={this.props.user ? this.props.selected_pokemon : {}} />} />
-          <Route path="/user-information" render={props => <UserInfo user={this.props.user} /> } />
+          <Route path="/user-information" render={props => <UserInfo user={this.props.user} updateUser={this.updateUser} /> } />
         </Switch>
         {this.props.user ? <Redirect to="" /> : <Redirect to="login" />}
       </Box>
