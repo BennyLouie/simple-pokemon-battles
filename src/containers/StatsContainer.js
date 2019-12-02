@@ -20,7 +20,7 @@ export default class StatsContainer extends React.Component {
     }
 
     subtractFromStat = (stat) => {
-        if ((this.state.stat_pts < this.props.pokemon.stat_pts) && (this.state[stat] > this.props.pokemon[stat])) {
+        if (this.state[stat] > this.props.pokemon[stat]) {
             this.setState({
                 [stat]: this.state[stat] - 1,
                 stat_pts: this.state.stat_pts + 1
