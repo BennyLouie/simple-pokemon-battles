@@ -3,6 +3,7 @@ import React from 'react'
 export default class StatsContainer extends React.Component {
 
     render() {
+        debugger
         console.log(this.props.pokemon)
         return (
             <div className='stats-container'>
