@@ -9,10 +9,6 @@ export default class MessagesContainer extends React.Component {
   constructor(props) {
     super(props)
     this.scrollRefContainer = React.createRef()
-    this.state = {
-      battleWon: false,
-      battleLost: false
-    }
   }
 
   getMessage = message => {
@@ -20,7 +16,7 @@ export default class MessagesContainer extends React.Component {
   }
 
   messageLoop = async _ => {
-    if (!this.state.battleWon && !this.state.battleLost) {
+    if (!this.props.battleWon && !this.props.battleLost) {
       for (let i = 0; i < this.props.messages.length; i++) {
         const message = this.props.messages[i]
         const renderMessage = await this.getMessage(message)
@@ -30,18 +26,14 @@ export default class MessagesContainer extends React.Component {
         htmlMessage.innerText = renderMessage
         messageContainer.append(htmlMessage)
         this.scrollRefContainer.current.scrollTop = 99999999999999999999
-        console.log(this.props.messages.length) 
+        // console.log(this.props.messages.length) 
         // console.log(message.match(/wins/g))
         if (message.match(/wins/g)) {
-          this.setState({
-            battleWon: true
-          })
+          this.props.wonBattle()
           this.props.addWin(this.props.user)
         }
         else if (message.match(/lost/g)) {
-          this.setState({
-            battleLost: true
-          })
+          this.props.lostBattle()
           this.props.addLoss(this.props.user)
         }
       }
@@ -53,12 +45,11 @@ export default class MessagesContainer extends React.Component {
   // }
 
   render() {
+    console.log('Won: ', this.props.battleWon)
+    console.log('Lost: ', this.props.battleLost)
     this.messageLoop()
     return (
-      <>
-        <div className="messages-container" ref={this.scrollRefContainer}></div>
-        {this.state.battleWon || this.state.battleLost ? <Redirect to="/" /> : null}
-      </>
+      <div className="messages-container" ref={this.scrollRefContainer}></div>
     )
   }
 }

@@ -8,27 +8,14 @@ import { NavLink } from 'react-router-dom'
 
 const opponent_decision = Math.floor(Math.random() * 2) + 1
 
-// const checkMessages = (array) => {
-//   let splitWords = []
-//   array.forEach(element => {
-//     const newArr = element.split(" ")
-//     // debugger
-//     splitWords.push(...newArr)
-//   })
-//   // console.log(splitWords)
-//   if (splitWords.includes("wins!") || splitWords.includes("lost!")) {
-//     return true
-//   }
-//   return false
-// }
-
 export default class BattleContainer extends React.Component {
   state = {
     opponent_action: opponent_decision,
-    messages: []
+    messages: [],
+    battleWon: false,
+    battleLost: false
   }
   
-
   decideFirst = data => {
     let userPokemon = this.props.user_pokemon
     if (userPokemon.spd > data.spd) {
@@ -56,6 +43,18 @@ export default class BattleContainer extends React.Component {
     })
   }
 
+  wonBattle = () => {
+    this.setState({
+      battleWon: true
+    })
+  }
+
+  lostBattle = () => {
+    this.setState({
+      battleLost: true
+    })
+  }
+
   render() {
     console.log(this.props)
     // console.log(this.state.messages)
@@ -72,8 +71,9 @@ export default class BattleContainer extends React.Component {
           />
           <div className="simple-ai-rendering">
             <OpponentField pokemon={this.props.opponent_pokemon} />
-            <MessagesContainer user={this.props.user} addLoss={this.props.addLoss} addWin={this.props.addWin} messages={this.state.messages} />
+            <MessagesContainer user={this.props.user} battleWon={this.state.battleWon} battleLost={this.state.battleLost} lostBattle={this.lostBattle} wonBattle={this.wonBattle} addLoss={this.props.addLoss} addWin={this.props.addWin} messages={this.state.messages} />
           </div>
+          
         </div>
         
       </>
