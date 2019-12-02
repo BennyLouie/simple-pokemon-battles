@@ -4,7 +4,7 @@ import OpponentField from "./OpponentField"
 // import Box from "@material-ui/core/Box"
 import battleLogic from "../BattleLogic"
 import MessagesContainer from "./MessagesContainer"
-import { NavLink } from 'react-router-dom'
+import { NavLink } from "react-router-dom"
 
 const opponent_decision = Math.floor(Math.random() * 2) + 1
 
@@ -15,7 +15,7 @@ export default class BattleContainer extends React.Component {
     battleWon: false,
     battleLost: false
   }
-  
+
   decideFirst = data => {
     let userPokemon = this.props.user_pokemon
     if (userPokemon.spd > data.spd) {
@@ -27,7 +27,7 @@ export default class BattleContainer extends React.Component {
       return roll === 1 ? userPokemon : data
     }
   }
-  
+
   battleAction = user_action => {
     let opponent_action = Math.floor(Math.random() * 2) + 1
     let userPokemon = this.props.user_pokemon
@@ -62,7 +62,7 @@ export default class BattleContainer extends React.Component {
     // checkMessages(this.state.messages)
     return (
       <>
-        <NavLink to='/'>Quit Battle</NavLink>
+        <NavLink to="/">Quit Battle</NavLink>
         <div className="battle-display">
           <UserField
             battleAction={this.battleAction}
@@ -71,11 +71,30 @@ export default class BattleContainer extends React.Component {
           />
           <div className="simple-ai-rendering">
             <OpponentField pokemon={this.props.opponent_pokemon} />
-            <MessagesContainer user={this.props.user} battleWon={this.state.battleWon} battleLost={this.state.battleLost} lostBattle={this.lostBattle} wonBattle={this.wonBattle} addLoss={this.props.addLoss} addWin={this.props.addWin} messages={this.state.messages} />
+            <MessagesContainer
+              user={this.props.user}
+              battleWon={this.state.battleWon}
+              battleLost={this.state.battleLost}
+              lostBattle={this.lostBattle}
+              wonBattle={this.wonBattle}
+              addLoss={this.props.addLoss}
+              addWin={this.props.addWin}
+              messages={this.state.messages}
+            />
           </div>
-          
+          {this.state.battleWon ? (
+            <div>
+              <p>You Won!</p>
+              <NavLink to='/'>Return to HomePage</NavLink>
+            </div>
+          ) : null}
+          {this.state.battleLost ? (
+            <div>
+              <p>You Lost!</p>
+              <NavLink to='/'>Return to HomePage</NavLink>
+            </div>
+          ) : null}
         </div>
-        
       </>
     )
   }
