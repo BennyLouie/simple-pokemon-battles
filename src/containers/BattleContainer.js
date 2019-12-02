@@ -58,8 +58,8 @@ export default class BattleContainer extends React.Component {
   render() {
     console.log(this.props)
     // console.log(this.state)
-    this.state.battleWon ? this.props.addWin(this.props.user) : console.log(this.state)
-    this.state.battleLost ? this.props.addLoss(this.props.user) : console.log(this.state)
+    // this.state.battleWon ? this.props.addWin(this.props.user) : console.log(this.state)
+    // this.state.battleLost ? this.props.addLoss(this.props.user) : console.log(this.state)
     // console.log(this.state.messages)
     // console.log(checkMessages(this.state.messages))
     // checkMessages(this.state.messages)
@@ -88,13 +88,13 @@ export default class BattleContainer extends React.Component {
           {this.state.battleWon ? (
             <div>
               <p>You Won!</p>
-              <NavLink to='/'>Return to HomePage</NavLink>
+              <NavLink to='/' onClick={() => this.props.addWin(this.props.user)}>Return to HomePage</NavLink>
             </div>
           ) : null}
           {this.state.battleLost ? (
             <div>
               <p>You Lost!</p>
-              <NavLink to='/'>Return to HomePage</NavLink>
+              <NavLink to='/' onClick={() => this.props.addLoss(this.props.user)}>Return to HomePage</NavLink>
             </div>
           ) : null}
         </div>
