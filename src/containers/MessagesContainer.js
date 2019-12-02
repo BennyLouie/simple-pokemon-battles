@@ -29,12 +29,12 @@ export default class MessagesContainer extends React.Component {
         // console.log(this.props.messages.length) 
         // console.log(message.match(/wins/g))
         if (message.match(/wins/g)) {
+          // this.props.addWin(this.props.user)
           this.props.wonBattle()
-          this.props.addWin(this.props.user)
         }
         else if (message.match(/lost/g)) {
+          // this.props.addLoss(this.props.user)
           this.props.lostBattle()
-          this.props.addLoss(this.props.user)
         }
       }
     }

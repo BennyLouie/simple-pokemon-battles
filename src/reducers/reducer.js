@@ -72,6 +72,16 @@ const reducer = (state = initialState, action) => {
         ...state,
         pokemons: action.payload.pokemons
       }
+    case "ADD_WIN":
+      return {
+        ...state,
+        user: action.payload.user
+      }
+    case "ADD_LOSS":
+      return {
+        ...state,
+        user: action.payload.user
+      }
     default:
       return {
         ...state

@@ -7,7 +7,7 @@ export const loadUser = () => dispatch => {
         token: localStorage.token,
         user_id: localStorage.user_id,
         user,
-        pokemons: user ? user.pokemons: []
+        pokemons: user ? user.pokemons : []
       }
     })
   }
@@ -19,7 +19,7 @@ export const getUser = evt => dispatch => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Accept": "application/json"
+      Accept: "application/json"
     },
     body: JSON.stringify({
       username: evt.target.username.value,
@@ -74,27 +74,27 @@ export const logout = () => dispatch => {
   })
 }
 
-export const selectPokemon = (pokemon) => dispatch => {
-    dispatch({
-        type: "SELECT_POKEMON",
-        payload: {
-            pokemon: pokemon
-        }
-    })
+export const selectPokemon = pokemon => dispatch => {
+  dispatch({
+    type: "SELECT_POKEMON",
+    payload: {
+      pokemon: pokemon
+    }
+  })
 }
 
 export const fetchOpponent = () => dispatch => {
-    const opponent_pokemon_roll = Math.floor(Math.random() * 151) + 1
-    fetch(`http://localhost:3000/pokemons/${opponent_pokemon_roll}`)
-            .then(res => res.json())
-            .then(data => {
-                dispatch({
-                    type: "FETCH_OPPONENT",
-                    payload: {
-                        opponent_pokemon: data
-                    }
-                })
-        })
+  const opponent_pokemon_roll = Math.floor(Math.random() * 151) + 1
+  fetch(`http://localhost:3000/pokemons/${opponent_pokemon_roll}`)
+    .then(res => res.json())
+    .then(data => {
+      dispatch({
+        type: "FETCH_OPPONENT",
+        payload: {
+          opponent_pokemon: data
+        }
+      })
+    })
 }
 
 export const wildPokemonFetch = () => dispatch => {
@@ -116,8 +116,8 @@ export const catchPokemon = (user, pokemon) => dispatch => {
   return fetch("http://localhost:3000/pokemons", {
     method: "POST",
     headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
+      "Content-Type": "application/json",
+      Accept: "application/json"
     },
     body: JSON.stringify({
       name: pokemon.name,
@@ -141,8 +141,8 @@ export const catchPokemon = (user, pokemon) => dispatch => {
       return fetch("http://localhost:3000/captures", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          "Content-Type": "application/json",
+          Accept: "application/json"
         },
         body: JSON.stringify({
           user_id,
@@ -157,7 +157,7 @@ export const catchPokemon = (user, pokemon) => dispatch => {
               payload: {
                 errors: true
               }
-          })
+            })
           } else {
             user.pokemons.push(newPokemon)
             localStorage.setItem("user", JSON.stringify(user))
@@ -167,40 +167,94 @@ export const catchPokemon = (user, pokemon) => dispatch => {
                 pokemons: user.pokemons
               }
             })
-        }
-      })
-  })
-
+          }
+        })
+    })
 }
 
 export const releasePokemon = (user, pokemon) => dispatch => {
   return fetch(`http://localhost:3000/captures`)
     .then(res => res.json())
     .then(captures => {
-    //   console.log(pokemon)
-        console.log(captures)
-        // debugger
-      const captured = captures.find(capture => capture.pokemon.id === pokemon.id)
-        return fetch(`http://localhost:3000/captures/${captured.id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+      //   console.log(pokemon)
+      console.log(captures)
+      // debugger
+      const captured = captures.find(
+        capture => capture.pokemon.id === pokemon.id
+      )
+      return fetch(`http://localhost:3000/captures/${captured.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        }
+      })
+        .then(resp => resp.json())
+        .then(data => {
+          // console.log(data)
+          // debugger
+          user.pokemons.splice(
+            user.pokemons.findIndex(pokemon => pokemon.id === data.id),
+            1
+          )
+          localStorage.setItem("user", JSON.stringify(user))
+          // console.log(user)
+          dispatch({
+            type: "RELEASE_POKEMON",
+            payload: {
+              pokemons: user.pokemons
             }
+          })
         })
-            .then(resp => resp.json())
-            .then(data => {
-                // console.log(data)
-                // debugger
-              user.pokemons.splice(user.pokemons.findIndex(pokemon => pokemon.id === data.id), 1)
-              localStorage.setItem("user", JSON.stringify(user))
-              // console.log(user)
-              dispatch({
-                type: 'RELEASE_POKEMON',
-                payload: {
-                  pokemons: user.pokemons
-                }
-              })
-        })
+    })
+}
+
+export const addWin = user => dispatch => {
+  const defaultWins = user.wins
+  const wins = defaultWins + 1
+  fetch(`http://localhost:3000/users/${user.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({
+      wins
+    })
+  })
+    .then(res => res.json())
+    .then(data => {
+      localStorage.setItem("user", JSON.stringify(data))
+      dispatch({
+        type: "ADD_WIN",
+        payload: {
+          user: data
+        }
+      })
+    })
+}
+
+export const addLoss = user => dispatch => {
+  const defaultLosses = user.losses
+  const losses = defaultLosses + 1
+  fetch(`http://localhost:3000/users/${user.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({
+      losses
+    })
+  })
+    .then(res => res.json())
+    .then(data => {
+      localStorage.setItem("user", JSON.stringify(data))
+      dispatch({
+        type: "ADD_LOSS",
+        payload: {
+          user: data
+        }
+      })
     })
 }
