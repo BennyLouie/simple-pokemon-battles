@@ -5,7 +5,7 @@ export default class Login extends React.Component {
   render() {
     return (
       <div className="div-form">
-        <form onSubmit={this.props.fetchUser}>
+        <form className='display-near-top form-render' onSubmit={this.props.fetchUser}>
           <h1>LOG IN</h1>
           {this.props.error ? (
             <>
@@ -29,9 +29,8 @@ export default class Login extends React.Component {
             />
           </label>
           <br />
-          <input type="submit" value="Log In" className="btn-item" />
-          <br />
-          <NavLink to="/signup" className="btn-item">
+          <input type="submit" value="Log In" className="post center btn" />
+          <NavLink to="/signup" className="patch btn">
             Sign Up
           </NavLink>
           <br />

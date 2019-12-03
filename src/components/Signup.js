@@ -5,7 +5,7 @@ export default class Signup extends React.Component {
   render() {
     return (
       <div className="div-form">
-        <form onSubmit={this.props.createUser}>
+        <form className='display-near-top form-render' onSubmit={this.props.createUser}>
           <h1>SIGN UP</h1>
           <label>
             First Name:
@@ -23,8 +23,8 @@ export default class Signup extends React.Component {
             Password:
             <input type="password" name="password" />
           </label>
-          <input type="submit" value="Sign Up" className="btn-item" />
-          <NavLink to="/login" className="btn-item">
+          <input type="submit" value="Sign Up" className="post center btn" />
+          <NavLink to="/login" className="patch btn">
             {" "}
             Log In{" "}
           </NavLink>

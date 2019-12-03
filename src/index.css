@@ -285,3 +285,19 @@ code {
   justify-content: center;
   align-content: space-between;
 }
+
+.post {
+  background-color: darkred;
+}
+
+.div-form {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.display-near-top {
+  margin-top: 100px;
+  background-color: honeydew;
+  width: 450px;
+}
