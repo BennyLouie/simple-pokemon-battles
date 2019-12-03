@@ -13,6 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #2f4fa5;
 }
 
 code {
@@ -20,41 +21,31 @@ code {
     monospace;
 }
 
-/* body > #root > div {
-  height: 100vh;
-} */
-
 #root {
   margin: 0;
   height: 100%;
   padding: 0;
-  /* display: flex; */
-  /* justify-content: center;
-  align-items: center; */
 }
 
-/* .app-browser {
+.app-container {
   margin: 0;
   height: 100%;
   padding: 0;
-} */
+  display: flex;
+  flex-direction: column;
+}
 
 .battle-display {
   display: flex;
-  /* flex-direction: column-reverse; */
   margin: 0;
   height: 100%;
   padding: 0;
-  /* align-items: center; */
   justify-content: space-around;
 }
 
 .user-battle-screen {
-  /* display: flex; */
-  /* justify-content: space-between; */
   margin-top: 500px;
   margin-left: 150px;
-  /* order: -1; */
 }
 
 .simple-ai-rendering {
@@ -62,7 +53,6 @@ code {
   margin-right: 100px;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
 }
 
 .messages-container {
@@ -71,13 +61,82 @@ code {
   height: 350px;
   width: 400px;
   overflow: auto;
-  
+}
+
+.logout-btn {
+  color: #fff;
+  background-color: #1976d2;
+  width: 90px;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 4px;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  outline: 0;
+  padding: 0;
+  position: relative;
+  align-items: center;
+  -webkit-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  justify-content: center;
+  text-decoration: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  /* -webkit-writing-mode: horizontal-tb !important; */
+  /* text-rendering: auto;
+  word-spacing: normal;
+  text-indent: 0px;
+  text-shadow: none;
+  text-align: center; */
+  /* font: 400 11px system-ui; */
+  margin: 8px;
+  align-self: flex-end;
 }
 
 .message {
   margin-left: 25px;
 }
 
-/* .opponent-battle-screen {
-  margin-top: 200px;
-} */
+.pokemon-team {
+  width: 1216px;
+  border-style: groove;
+  border-width: thick;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+}
+
+.pc-substitute {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+}
+
+.pc-pokemon {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.links {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

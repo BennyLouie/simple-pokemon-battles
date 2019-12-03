@@ -97,9 +97,9 @@ class App extends React.Component {
     // console.log(this.wildPokemon())
     // console.log(this.props)
     return (
-      <div>
+      <div className='app-container'>
         {this.props.user ? (
-          <NavLink to="/login" onClick={this.logout}>
+          <NavLink to="/login" className='logout-btn' onClick={this.logout}>
             Logout
           </NavLink>
         ) : null}

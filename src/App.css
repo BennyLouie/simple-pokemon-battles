@@ -20,22 +20,3 @@
 .App-link {
   color: #09d3ac;
 }
-
-.pokemon-team {
-  width: 1216px;
-  border-style: groove;
-  background: white;
-  display: flex;
-}
-
-.pc-substitute {
-  display: flex;
-  flex-direction: column;
-}
-
-.links {
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
