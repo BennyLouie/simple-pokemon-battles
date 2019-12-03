@@ -169,7 +169,7 @@ code {
   width: 1216px;
   border-style: groove;
   border-width: thick;
-  background: white;
+  background: rgb(130, 129, 138);
   display: flex;
   justify-content: space-evenly;
 }
