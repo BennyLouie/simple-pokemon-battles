@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom"
 
 export default class HomePage extends React.Component {
   render() {
-    // console.log(this.props)
+    console.log(this.props)
     return (
       <div className="pc-substitute">
         <TeamContainer

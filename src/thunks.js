@@ -160,11 +160,12 @@ export const catchPokemon = (user, pokemon) => dispatch => {
             })
           } else {
             user.pokemons.push(newPokemon)
+            const newTeam = [...user.pokemons]
             localStorage.setItem("user", JSON.stringify(user))
             dispatch({
               type: "CATCH_POKEMON",
               payload: {
-                pokemons: user.pokemons
+                pokemons: newTeam
               }
             })
           }
@@ -193,6 +194,7 @@ export const releasePokemon = (user, pokemon) => dispatch => {
         .then(data => {
           // console.log(data)
           // debugger
+          const newTeam = user.pokemons.filter(pokemon => pokemon.id !== user.pokemons[user.pokemons.findIndex(pokemon => pokemon.id === data.id)].id)
           user.pokemons.splice(
             user.pokemons.findIndex(pokemon => pokemon.id === data.id),
             1
@@ -202,7 +204,7 @@ export const releasePokemon = (user, pokemon) => dispatch => {
           dispatch({
             type: "RELEASE_POKEMON",
             payload: {
-              pokemons: user.pokemons
+              pokemons: newTeam
             }
           })
         })
