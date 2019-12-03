@@ -65,7 +65,7 @@ export default class BattleContainer extends React.Component {
     // checkMessages(this.state.messages)
     return (
       <>
-        <NavLink to="/" className='flex-end quit btn'>Quit Battle</NavLink>
+        <NavLink to="/" className='flex-end quit btn' onClick={this.props.fetchOpponent}>Quit Battle</NavLink>
         <div className="battle-display">
           <UserField
             battleAction={this.battleAction}
@@ -86,15 +86,17 @@ export default class BattleContainer extends React.Component {
             />
           </div>
           {this.state.battleWon ? (
-            <div>
-              <p>You Won!</p>
-              <NavLink to='/' onClick={() => this.props.addWin(this.props.user, this.props.user_pokemon)}>Return to HomePage</NavLink>
+            <div className='battle-end'>
+              <strong>You Won!</strong>
+              <br/>
+              <NavLink className='endgame center btn' to='/' onClick={() => this.props.addWin(this.props.user, this.props.user_pokemon)}>Back</NavLink>
             </div>
           ) : null}
           {this.state.battleLost ? (
-            <div>
-              <p>You Lost!</p>
-              <NavLink to='/' onClick={() => this.props.addLoss(this.props.user)}>Return to HomePage</NavLink>
+            <div className='battle-end'>
+              <strong>You Lost!</strong>
+              <br/>
+              <NavLink className='endgame center btn' to='/' onClick={() => this.props.addLoss(this.props.user)}>Back</NavLink>
             </div>
           ) : null}
         </div>

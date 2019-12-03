@@ -11,7 +11,7 @@ export default class MessagesContainer extends React.Component {
   }
 
   getMessage = message => {
-    return sleep(500).then(v => message)
+    return sleep(150).then(v => message)
   }
 
   messageLoop = async _ => {

@@ -93,6 +93,16 @@ class App extends React.Component {
     this.props.updateUser(evt)
   }
 
+  addWin = (user, pokemon) => {
+    this.props.addWin(user, pokemon)
+    this.props.fetchOpponent()
+  }
+
+  addLoss = (user, pokemon) => {
+    this.props.addLoss(user, pokemon)
+    this.props.fetchOpponent()
+  }
+
   render() {
     // console.log(this.wildPokemon())
     // console.log(this.props)
@@ -128,8 +138,9 @@ class App extends React.Component {
             path="/battle"
             render={props => (
               <BattleContainer
-                addLoss={this.props.addLoss}
-                addWin={this.props.addWin}
+                fetchOpponent={this.props.fetchOpponent}
+                addLoss={this.addLoss}
+                addWin={this.addWin}
                 user={this.props.user}
                 opponent_pokemon={this.props.opponent_pokemon}
                 user_pokemon={
