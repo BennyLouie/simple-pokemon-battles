@@ -16,10 +16,10 @@ export default class UserField extends React.Component {
                   />
                 </div>
                 <div>
-                  <button onClick={() => this.props.battleAction(1)} variant="contained" color="secondary">
+                  <button className='attack btn' onClick={() => this.props.battleAction(1)} variant="contained" color="secondary">
                     Attack
                   </button>
-                  <button onClick={() => this.props.battleAction(2)} variant="contained" color="primary">
+                  <button className='defend btn' onClick={() => this.props.battleAction(2)} variant="contained" color="primary">
                     Defend
                   </button>
                 </div>

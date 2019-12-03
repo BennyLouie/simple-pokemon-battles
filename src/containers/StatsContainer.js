@@ -34,13 +34,13 @@ export default class StatsContainer extends React.Component {
         console.log(this.state)
         return (
             <div className='stats-container'>
-                <p>HP: {this.state.hp} <button onClick={() => this.addToStat('hp')}>+</button><button onClick={() => this.subtractFromStat('hp')}>-</button></p>
-                <p>ATK: {this.state.atk} <button onClick={() => this.addToStat('atk')}>+</button><button onClick={() => this.subtractFromStat('atk')}>-</button></p>
-                <p>DEF: {this.state.def} <button onClick={() => this.addToStat('def')}>+</button><button onClick={() => this.subtractFromStat('def')}>-</button></p>
-                <p>SPD: {this.state.spd} <button onClick={() => this.addToStat('spd')}>+</button><button onClick={() => this.subtractFromStat('spd')}>-</button></p>
-                <p>EXP: {this.props.pokemon.exp} / {this.props.pokemon.exp_max}</p>
-                <p>Available Stat Points: {this.state.stat_pts}</p>
-                <button onClick={() => this.props.updateStats(this.props.pokemon, this.state, this.props.user)}>Update Stats</button>
+                <strong>HP: {this.state.hp} <button onClick={() => this.addToStat('hp')}>+</button><button onClick={() => this.subtractFromStat('hp')}>-</button></strong>
+                <strong>ATK: {this.state.atk} <button onClick={() => this.addToStat('atk')}>+</button><button onClick={() => this.subtractFromStat('atk')}>-</button></strong>
+                <strong>DEF: {this.state.def} <button onClick={() => this.addToStat('def')}>+</button><button onClick={() => this.subtractFromStat('def')}>-</button></strong>
+                <strong>SPD: {this.state.spd} <button onClick={() => this.addToStat('spd')}>+</button><button onClick={() => this.subtractFromStat('spd')}>-</button></strong>
+                <strong>EXP: {this.props.pokemon.exp} / {this.props.pokemon.exp_max}</strong>
+                <strong>Available Stat Points: {this.state.stat_pts}</strong>
+                <button className='patch enter btn' onClick={() => this.props.updateStats(this.props.pokemon, this.state, this.props.user)}>Update</button>
             </div>
         )
     }

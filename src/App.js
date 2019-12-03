@@ -99,7 +99,7 @@ class App extends React.Component {
     return (
       <div className='app-container'>
         {this.props.user ? (
-          <NavLink to="/login" className='logout btn' onClick={this.logout}>
+          <NavLink to="/login" className='flex-end logout btn' onClick={this.logout}>
             Logout
           </NavLink>
         ) : null}

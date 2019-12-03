@@ -65,7 +65,7 @@ export default class BattleContainer extends React.Component {
     // checkMessages(this.state.messages)
     return (
       <>
-        <NavLink to="/">Quit Battle</NavLink>
+        <NavLink to="/" className='flex-end quit btn'>Quit Battle</NavLink>
         <div className="battle-display">
           <UserField
             battleAction={this.battleAction}

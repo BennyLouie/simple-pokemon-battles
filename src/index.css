@@ -39,17 +39,16 @@ code {
   display: flex;
   margin: 0;
   height: 100%;
-  padding: 0;
+  padding: 0px;
   justify-content: space-around;
 }
 
 .user-battle-screen {
-  margin-top: 500px;
+  margin-top: 325px;
   margin-left: 150px;
 }
 
 .simple-ai-rendering {
-  margin-top: 150px;
   margin-right: 100px;
   display: flex;
   flex-direction: column;
@@ -61,6 +60,7 @@ code {
   height: 350px;
   width: 400px;
   overflow: auto;
+  background-color: white;
 }
 
 .btn {
@@ -103,11 +103,32 @@ code {
   text-align: center; */
   /* font: 400 11px system-ui; */
   margin: 8px;
+}
+
+.flex-end {
   align-self: flex-end;
 }
 
 .logout {
   background-color: #1976d2;
+}
+
+.form-toggle {
+  color: black;
+  align-self: center;
+}
+
+.form-render {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+}
+
+.patch {
+  background-color: cornflowerblue;
+  align-self: center;
 }
 
 .catch-pokemon {
@@ -169,7 +190,8 @@ code {
 }
 
 .card {
-  width: 100%;
+  width: 200px;
+  align-self: center;
 }
 
 .links {
@@ -182,4 +204,84 @@ code {
 
 .label {
   margin-left: 8px;
+  text-align: center;
+}
+
+.center {
+  margin: auto;
+}
+
+.catch {
+  background-color: maroon;
+}
+
+.back {
+  background-color: rgb(0, 98, 255);
+}
+
+.quit {
+  background-color: rgb(116, 11, 32);
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 500px;
+  align-self: center;
+}
+
+.wild-pokemon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wild-pokemon-container {
+  justify-content: center;
+  align-self: center;
+  width: 1216px;
+  display: flex;
+  background-color: lightsteelblue;
+  flex-wrap: wrap;
+  padding: 24px;
+}
+
+.battle-pokemon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgb(224, 224, 221);
+  width: 200px;
+}
+
+.health-bar {
+  align-self: center;
+}
+
+.health {
+  text-align: center;
+}
+
+.opponent {
+  margin-left: auto;
+}
+
+.attack {
+  background-color: darkblue;
+}
+
+.defend {
+  background-color: #dc004e;
+}
+
+.pokemon-status {
+  background-color: darkgrey;
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-between;
 }

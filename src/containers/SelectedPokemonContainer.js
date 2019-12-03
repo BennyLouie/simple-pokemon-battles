@@ -8,9 +8,17 @@ export default class SelectedPokemonContainer extends React.Component {
     // console.log(this.props)
     return (
       <>
-        <NavLink to="/">Back</NavLink>
-        <Pokemon pokemon={this.props.pokemon} />
-        <StatsContainer user={this.props.user} pokemon={this.props.pokemon} updateStats={this.props.updateStats} />
+        <NavLink to="/" className="flex-end back btn">
+          Back
+        </NavLink>
+        <div className='display pokemon-status'>
+          <Pokemon pokemon={this.props.pokemon} />
+          <StatsContainer
+            user={this.props.user}
+            pokemon={this.props.pokemon}
+            updateStats={this.props.updateStats}
+          />
+        </div>
       </>
     )
   }
