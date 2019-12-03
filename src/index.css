@@ -63,9 +63,8 @@ code {
   overflow: auto;
 }
 
-.logout-btn {
+.btn {
   color: #fff;
-  background-color: #1976d2;
   width: 90px;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 1px 5px 0 rgba(0, 0, 0, 0.12);
@@ -107,6 +106,40 @@ code {
   align-self: flex-end;
 }
 
+.logout {
+  background-color: #1976d2;
+}
+
+.catch-pokemon {
+  background-color: rgb(172, 16, 48);
+}
+
+.user-info {
+  background-color: grey;
+}
+
+.pokemon-status {
+  background-color: rgb(21, 53, 146);
+  text-align: center;
+}
+
+.pokemon-img {
+  display: flex;
+  justify-content: center;
+}
+
+.pokemon-pic {
+  background-color: white;
+}
+
+.battle {
+  background-color: rgb(179, 7, 7);
+}
+
+.release {
+  background-color: black;
+}
+
 .message {
   margin-left: 25px;
 }
@@ -117,7 +150,7 @@ code {
   border-width: thick;
   background: white;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .pc-substitute {
@@ -131,7 +164,12 @@ code {
 .pc-pokemon {
   display: flex;
   flex-direction: column;
+  width: 200px;
+  background-color: rgb(145, 152, 160);
+}
 
+.card {
+  width: 100%;
 }
 
 .links {
@@ -139,4 +177,9 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* background-color: rgb(50, 87, 253); */
+}
+
+.label {
+  margin-left: 8px;
 }

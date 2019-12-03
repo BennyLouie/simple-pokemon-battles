@@ -14,10 +14,10 @@ export default class HomePage extends React.Component {
           user={this.props.user}
         />
         <div className="links">
-          <NavLink to="/catch">
+          <NavLink to="/catch" className='catch-pokemon btn'>
             Catch New Pokemon!
           </NavLink>
-          <NavLink to="/user-information">User Info</NavLink>
+          <NavLink to="/user-information" className='user-info btn'>User Info</NavLink>
         </div>
       </div>
     )
