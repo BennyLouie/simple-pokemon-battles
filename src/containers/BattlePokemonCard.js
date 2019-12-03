@@ -1,5 +1,4 @@
 import React from "react"
-// import Box from "@material-ui/core/Box"
 import Pokemon from '../components/Pokemon'
 
 export default class BattlePokemonCard extends React.Component {

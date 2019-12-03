@@ -1,8 +1,5 @@
 import React from "react"
-// import Box from "@material-ui/core/Box"
 import BattlePokemonCard from './BattlePokemonCard'
-// import MessagesContainer from './MessagesContainer'
-import Button from "@material-ui/core/Button"
 
 export default class UserField extends React.Component {
 
@@ -19,16 +16,15 @@ export default class UserField extends React.Component {
                   />
                 </div>
                 <div>
-                  <Button onClick={() => this.props.battleAction(1)} variant="contained" color="secondary">
+                  <button onClick={() => this.props.battleAction(1)} variant="contained" color="secondary">
                     Attack
-                  </Button>
-                  <Button onClick={() => this.props.battleAction(2)} variant="contained" color="primary">
+                  </button>
+                  <button onClick={() => this.props.battleAction(2)} variant="contained" color="primary">
                     Defend
-                  </Button>
+                  </button>
                 </div>
               </div>
             </div>
-            {/* <MessagesContainer /> */}
           </div>
         )
     }

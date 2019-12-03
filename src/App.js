@@ -1,17 +1,29 @@
 import React from "react"
 import "./App.css"
-import Box from "@material-ui/core/Box"
 import { Route, Switch, Redirect, NavLink, withRouter } from "react-router-dom"
 import { connect } from "react-redux"
-import { loadUser, getUser, logout, selectPokemon, fetchOpponent, wildPokemonFetch, catchPokemon, releasePokemon, addWin, addLoss, updateStats, updateUser } from "./thunks"
+import {
+  loadUser,
+  getUser,
+  logout,
+  selectPokemon,
+  fetchOpponent,
+  wildPokemonFetch,
+  catchPokemon,
+  releasePokemon,
+  addWin,
+  addLoss,
+  updateStats,
+  updateUser
+} from "./thunks"
 import BattleContainer from "./containers/BattleContainer"
 import Login from "./components/Login"
 import Signup from "./components/Signup"
 import HomePage from "./containers/HomePage"
-import WildPokemonContainer from './containers/WildPokemonContainer'
-import { createUser } from './fetches/posts'
-import SelectedPokemonContainer from './containers/SelectedPokemonContainer'
-import UserInfo from './containers/UserInfo'
+import WildPokemonContainer from "./containers/WildPokemonContainer"
+import { createUser } from "./fetches/posts"
+import SelectedPokemonContainer from "./containers/SelectedPokemonContainer"
+import UserInfo from "./containers/UserInfo"
 // import { releasePokemon } from './fetches/deletes'
 
 const mapStateToProps = state => {
@@ -36,35 +48,33 @@ const mapDispatchToProps = {
 }
 
 class App extends React.Component {
-
   componentDidMount() {
     this.props.loadUser()
     this.props.wildPokemonFetch()
     this.props.fetchOpponent()
   }
 
-  getUser = (evt) => {
+  getUser = evt => {
     this.props.getUser(evt)
     this.props.wildPokemonFetch()
     this.props.fetchOpponent()
   }
 
-  fetchUser = (evt) => {
+  fetchUser = evt => {
     evt.preventDefault()
     this.getUser(evt)
   }
 
-  createUser = (evt) => {
+  createUser = evt => {
     evt.preventDefault()
-    createUser(evt)
-    .then(this.getUser(evt))
+    createUser(evt).then(this.getUser(evt))
   }
 
   logout = () => {
     this.props.logout()
   }
 
-  selectPokemon = (pokemon) => {
+  selectPokemon = pokemon => {
     this.props.selectPokemon(pokemon)
   }
 
@@ -78,7 +88,7 @@ class App extends React.Component {
     // debugger
   }
 
-  updateUser = (evt) => {
+  updateUser = evt => {
     // evt.preventDefault()
     this.props.updateUser(evt)
   }
@@ -87,19 +97,76 @@ class App extends React.Component {
     // console.log(this.wildPokemon())
     // console.log(this.props)
     return (
-      <Box className="app-browser">
-        {this.props.user ? <NavLink to='/login' onClick={this.logout}>Logout</NavLink> : null}
+      <div>
+        {this.props.user ? (
+          <NavLink to="/login" onClick={this.logout}>
+            Logout
+          </NavLink>
+        ) : null}
         <Switch>
-          <Route exact path="/" render={props => <HomePage user={this.props.user} pokemons={this.props.pokemons} selectPokemon={this.selectPokemon} releasePokemon={this.releasePokemon} />} />
-          <Route path="/login" render={props => <Login fetchUser={this.fetchUser}/>} />
-          <Route path="/signup" render={props => <Signup createUser={this.createUser}/>} />
-          <Route path="/battle" render={props => <BattleContainer addLoss={this.props.addLoss} addWin={this.props.addWin} user={this.props.user} opponent_pokemon={this.props.opponent_pokemon} user_pokemon={this.props.user ? this.props.selected_pokemon : {}} />} />
-          <Route path="/catch" render={props => <WildPokemonContainer user={this.props.user} catchPokemon={this.catch} wildPokemon={this.props.wildPokemon} />} />
-          <Route path="/update-pokemon" render={props => <SelectedPokemonContainer user={this.props.user} updateStats={this.props.updateStats} pokemon={this.props.user ? this.props.selected_pokemon : {}} />} />
-          <Route path="/user-information" render={props => <UserInfo user={this.props.user} updateUser={this.updateUser} /> } />
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <HomePage
+                user={this.props.user}
+                pokemons={this.props.pokemons}
+                selectPokemon={this.selectPokemon}
+                releasePokemon={this.releasePokemon}
+              />
+            )}
+          />
+          <Route
+            path="/login"
+            render={props => <Login fetchUser={this.fetchUser} />}
+          />
+          <Route
+            path="/signup"
+            render={props => <Signup createUser={this.createUser} />}
+          />
+          <Route
+            path="/battle"
+            render={props => (
+              <BattleContainer
+                addLoss={this.props.addLoss}
+                addWin={this.props.addWin}
+                user={this.props.user}
+                opponent_pokemon={this.props.opponent_pokemon}
+                user_pokemon={
+                  this.props.user ? this.props.selected_pokemon : {}
+                }
+              />
+            )}
+          />
+          <Route
+            path="/catch"
+            render={props => (
+              <WildPokemonContainer
+                user={this.props.user}
+                catchPokemon={this.catch}
+                wildPokemon={this.props.wildPokemon}
+              />
+            )}
+          />
+          <Route
+            path="/update-pokemon"
+            render={props => (
+              <SelectedPokemonContainer
+                user={this.props.user}
+                updateStats={this.props.updateStats}
+                pokemon={this.props.user ? this.props.selected_pokemon : {}}
+              />
+            )}
+          />
+          <Route
+            path="/user-information"
+            render={props => (
+              <UserInfo user={this.props.user} updateUser={this.updateUser} />
+            )}
+          />
         </Switch>
         {this.props.user ? <Redirect to="" /> : <Redirect to="login" />}
-      </Box>
+      </div>
     )
   }
 }
