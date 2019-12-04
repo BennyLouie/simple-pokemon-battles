@@ -199,7 +199,6 @@ code {
   display: flex;
   justify-content: space-evenly;
   background-image: url("https://cdn.bulbagarden.net/upload/3/37/Box_Pok%C3%A9Center_IV.png");
-  /* background-size: 100% ; */
   background-repeat: fixed;
 }
 
@@ -302,7 +301,7 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: rgb(168, 168, 165);
+  background: rgb(121, 121, 120);
   width: 200px;
   height: 250px;
   border-style: solid;
@@ -317,6 +316,7 @@ code {
 
 .health {
   text-align: center;
+  color: white;
 }
 
 .opponent {
@@ -349,7 +349,6 @@ code {
 
 .div-form {
   height: 50%;
-  /* width: 50%; */
   display: flex;
   justify-content: center;
 }
@@ -365,10 +364,30 @@ code {
   display: flex;
   flex-direction: column;
   align-content: space-between;
+  z-index: 99999 !important;
+  width: 750px;
+  height: 660px;
+  background-color: white;
+  position: absolute;
+  margin-top: 100px;
+  justify-content: center;
+  background-image: url("https://i.ytimg.com/vi/wrCUQuJsDYI/maxresdefault.jpg");
+  background-size: contain;
 }
 
 .endgame {
   background-color: rgb(146, 54, 54);
+  width: 100px;
+  margin: 35px;
+  align-self: center;
+}
+
+.middle {
+  margin: 100px;
+  margin-bottom: 0px;
+  text-align: center;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .team {

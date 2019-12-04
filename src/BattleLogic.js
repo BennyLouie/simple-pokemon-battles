@@ -10,7 +10,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
     if (first === userPokemon) {
         // console.log('User is First')
         //If both user and opponent attack
-        if (user_action === 1 && opponent_action === 1) {
+        if (user_action === 1 && (opponent_action === 1 || opponent_action === 3)) {
             messages.push(`${first.name} attacks ${second.name}.`)
             if (user_roll > opponent_roll) {
                 //User advantage! User's attacks hit while opponent's will miss!
@@ -30,7 +30,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                         return messages
                     }
                     else {
-                        //Opponent's health hits zero. Uses wins!
+                        //Opponent's health hits zero. User wins!
                         messages.push(`${second.name} has 0 health left.`)
                         messages.push(`${first.name} wins!`)
                         // console.log(messages)
@@ -146,7 +146,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                             else {
                                 //If user has zero health, user loses!
                                 messages.push(`${first.name} has 0 health left.`)
-                                messages.push(`${first.name} loses!`)
+                                messages.push(`${first.name} lost!`)
                                 // console.log(messages)
                                 return messages
                             }
@@ -288,11 +288,11 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                 // console.log(messages)
                 messages.push(`${first.name} misses!`)
                 messages.push("Turn Ends!")
-                console.log(messages)
+                // console.log(messages)
                 return messages
             }
         }
-        else if (user_action === 2 && opponent_action === 1) {
+        else if (user_action === 2 && (opponent_action === 1 || opponent_action === 3)) {
             //User defends while opponent attacks
             messages.push(`${second.name} attacks ${first.name}.`)
             if (user_roll > opponent_roll) {
@@ -387,7 +387,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
     }
     else {
             //User goes second
-        if (user_action === 1 && opponent_action === 1) {
+        if (user_action === 1 && (opponent_action === 1 || opponent_action === 3)) {
             //User and opponent both attack
             messages.push(`${first.name} attacks ${second.name}.`)
             if (user_roll > opponent_roll) {
@@ -645,7 +645,7 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                 return messages
             }
         }
-        else if (user_action === 2 && opponent_action === 1) {
+        else if (user_action === 2 && (opponent_action === 1 || opponent_action === 3)) {
             //User defends while opponent attacks
             messages.push(`${first.name} attacks ${second.name}.`)
             if (user_roll > opponent_roll) {

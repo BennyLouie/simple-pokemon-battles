@@ -8,7 +8,6 @@ import { NavLink } from "react-router-dom"
 const opponent_decision = Math.floor(Math.random() * 2) + 1
 
 export default class BattleContainer extends React.Component {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -32,7 +31,7 @@ export default class BattleContainer extends React.Component {
   }
 
   battleAction = user_action => {
-    let opponent_action = Math.floor(Math.random() * 2) + 1
+    let opponent_action = Math.floor(Math.random() * 3) + 1
     let userPokemon = this.props.user_pokemon
     const first = this.decideFirst(this.props.opponent_pokemon)
     const second =
@@ -59,10 +58,16 @@ export default class BattleContainer extends React.Component {
   }
 
   render() {
-    // console.log(this.props)
+    console.log(this.state)
     return (
       <>
-        <NavLink to="/" className='flex-end quit btn' onClick={this.props.stopAudio} ><strong>Quit Battle</strong></NavLink>
+        <NavLink
+          to="/"
+          className="flex-end quit btn"
+          onClick={this.props.stopAudio}
+        >
+          <strong>Quit Battle</strong>
+        </NavLink>
         <div className="battle-display">
           <UserField
             battleAction={this.battleAction}
@@ -82,21 +87,35 @@ export default class BattleContainer extends React.Component {
               messages={this.state.messages}
             />
           </div>
-          {this.state.battleWon ? (
-            <div className='battle-end'>
-              <strong>You Won!</strong>
-              <br/>
-              <NavLink className='endgame center btn' to='/' onClick={() => this.props.addWin(this.props.user, this.props.user_pokemon)}><strong>Back</strong></NavLink>
-            </div>
-          ) : null}
-          {this.state.battleLost ? (
-            <div className='battle-end'>
-              <strong>You Lost!</strong>
-              <br/>
-              <NavLink className='endgame center btn' to='/' onClick={() => this.props.addLoss(this.props.user)}><strong>Back</strong></NavLink>
-            </div>
-          ) : null}
         </div>
+        {this.state.battleWon ? (
+          <div className="battle-end">
+            <h1 className='center middle'><strong>You Won!</strong></h1>
+            <br />
+            <NavLink
+              className="endgame center btn"
+              to="/"
+              onClick={() =>
+                this.props.addWin(this.props.user, this.props.user_pokemon)
+              }
+            >
+              <strong>Back</strong>
+            </NavLink>
+          </div>
+        ) : null}
+        {this.state.battleLost ? (
+          <div className="battle-end">
+            <h1 className='center middle'><strong>You Lost!</strong></h1>
+            <br />
+            <NavLink
+              className="endgame center btn"
+              to="/"
+              onClick={() => this.props.addLoss(this.props.user)}
+            >
+              <strong>Back</strong>
+            </NavLink>
+          </div>
+        ) : null}
       </>
     )
   }
