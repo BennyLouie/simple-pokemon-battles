@@ -46,12 +46,14 @@ const reducer = (state = initialState, action) => {
     case "SELECT_POKEMON":
       return {
         ...state,
-        selected_pokemon: action.payload.pokemon
+        selected_pokemon: action.payload.pokemon,
+        errors: null
       }
     case "FETCH_OPPONENT":
       return {
         ...state,
-        opponent_pokemon: action.payload.opponent_pokemon
+        opponent_pokemon: action.payload.opponent_pokemon,
+        errors: null
       }
     case "WILD_POKEMON":
       return {
@@ -59,40 +61,40 @@ const reducer = (state = initialState, action) => {
         wildPokemon: action.payload.wildPokemon
       }
     case "CATCH_POKEMON":
-      console.log(state.pokemons)
-      console.log(action.payload.pokemons)
-      console.log(state)
       return {
         ...state,
-        pokemons: action.payload.pokemons
+        pokemons: action.payload.pokemons,
+        errors: null
       }
     case "RELEASE_POKEMON":
-      console.log(state.pokemons)
-      console.log(action.payload.pokemons)
-      console.log(state)
       return {
         ...state,
-        pokemons: action.payload.pokemons
+        pokemons: action.payload.pokemons,
+        errors: null
       }
     case "ADD_WIN":
       return {
         ...state,
-        user: action.payload.user
+        user: action.payload.user,
+        errors: null
       }
     case "ADD_LOSS":
       return {
         ...state,
-        user: action.payload.user
+        user: action.payload.user,
+        errors: null
       }
     case "UPDATE_POKEMON":
       return {
         ...state,
-        pokemons: action.payload.pokemons
+        pokemons: action.payload.pokemons,
+        errors: null
       }
     case "UPDATE_USER":
       return {
         ...state,
-        user: action.payload.user
+        user: action.payload.user,
+        errors: null
       }
     default:
       return {

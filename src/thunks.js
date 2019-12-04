@@ -43,8 +43,7 @@ export const getUser = evt => dispatch => {
           type: "GET_TOKEN",
           payload: {
             token: data.token,
-            user_id: data.user_id,
-            errors: false
+            user_id: data.user_id
           }
         })
         return fetch(`http://localhost:3000/users/${data.user_id}`)
@@ -166,7 +165,7 @@ export const catchPokemon = (user, pokemon) => dispatch => {
             dispatch({
               type: "ERRORS",
               payload: {
-                errors: true
+                errors: data.errors
               }
             })
           } else {

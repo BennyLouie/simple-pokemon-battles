@@ -24,7 +24,7 @@ import WildPokemonContainer from "./containers/WildPokemonContainer"
 import { createUser } from "./fetches/posts"
 import SelectedPokemonContainer from "./containers/SelectedPokemonContainer"
 import UserInfo from "./containers/UserInfo"
-import battle_music from './sounds/battle_music.mp3'
+import battle_music from "./sounds/battle_music.mp3"
 
 const mapStateToProps = state => {
   return {
@@ -100,7 +100,7 @@ class App extends React.Component {
     this.audio.pause()
     this.audio.currentTime = 0
   }
-  
+
   addLoss = (user, pokemon) => {
     this.props.addLoss(user, pokemon)
     this.audio.pause()
@@ -108,21 +108,28 @@ class App extends React.Component {
   }
 
   audio = new Audio(battle_music)
-  
+
   render() {
     // console.log(this.wildPokemon())
     console.log(this.props)
     return (
-      <div className='app-container'>
-      {this.props.errors ?
-        <div className='alert alert-dark'>
-          <h1>{this.props.errors}</h1>
-        </div>
-        : null}
+      <div className="app-container">
+        {this.props.errors ? (
+          <div className="alert alert-dark">
+            <h1>{this.props.errors}</h1>
+          </div>
+        ) : null}
         {this.props.user ? (
-          <NavLink to="/login" className='flex-end logout btn' onClick={this.logout}>
-            <strong>Logout</strong>
-          </NavLink>
+          <div className='header-container'>
+            <h1 className='flex-start title'>Simple Pokemon Battles</h1>
+            <NavLink
+              to="/login"
+              className="flex-end logout btn"
+              onClick={this.logout}
+            >
+              <strong>Logout</strong>
+            </NavLink>
+          </div>
         ) : null}
         <Switch>
           <Route
