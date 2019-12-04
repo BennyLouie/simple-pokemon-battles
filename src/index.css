@@ -177,6 +177,9 @@ code {
   background: rgb(130, 129, 138);
   display: flex;
   justify-content: space-evenly;
+  background-image: url("https://cdn.bulbagarden.net/upload/3/37/Box_Pok%C3%A9Center_IV.png");
+  /* background-size: 100% ; */
+  background-repeat: fixed;
 }
 
 .pc-substitute {
@@ -191,20 +194,25 @@ code {
   display: flex;
   flex-direction: column;
   width: 200px;
+  height: 300px;
   background-color: rgb(145, 152, 160);
+  margin-top: auto;
+  margin-bottom: auto;
+  border-style: solid;
+  border-width: thick;
 }
 
-.card {
+/* .card {
   width: 200px;
   height: 500px !important;
-}
+} */
 
 .links {
   align-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: rgb(50, 87, 253); */
+  height: 100px;
 }
 
 .label {
@@ -321,4 +329,14 @@ code {
 
 .endgame {
   background-color: rgb(146, 54, 54);
+}
+
+.team {
+  /* background-color: darkblue; */
+  z-index: 3;
+  margin: 2px;
+}
+
+.status {
+  margin-top: 31px;
 }
