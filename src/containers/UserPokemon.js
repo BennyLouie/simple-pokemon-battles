@@ -10,9 +10,9 @@ export default class UserPokemon extends React.Component {
             <div id={`${this.props.pokemon.name}-card`} className='pc-pokemon'>
                 <Pokemon pokemon={this.props.pokemon} />
                 <div className='team links'>
-                    <NavLink to='/update-pokemon' className='pokemon-status team status btn' onClick={() => this.props.selectPokemon(this.props.pokemon)}>Status</NavLink>
-                    <button className='release team btn' onClick={() => this.props.releasePokemon(this.props.user, this.props.pokemon)} >Release</button>
-                    <NavLink to='/battle' className='battle team btn' onClick={() => this.props.selectPokemon(this.props.pokemon)}>Battle</NavLink>
+                    <NavLink to='/update-pokemon' className='pokemon-status team status btn' onClick={() => this.props.selectPokemon(this.props.pokemon)}><strong>Status</strong></NavLink>
+                    <button className='release team btn' onClick={() => this.props.releasePokemon(this.props.user, this.props.pokemon)} ><strong>Release</strong></button>
+                    <NavLink to='/battle' className='battle team btn' onClick={() => this.props.selectPokemon(this.props.pokemon)}><strong>Battle</strong></NavLink>
                 </div>
             </div>
         )

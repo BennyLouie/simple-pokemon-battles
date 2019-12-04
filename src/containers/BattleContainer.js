@@ -73,7 +73,7 @@ export default class BattleContainer extends React.Component {
     this.audio.play()
     return (
       <>
-        <NavLink to="/" className='flex-end quit btn' onClick={() => this.stopAudio()} >Quit Battle</NavLink>
+        <NavLink to="/" className='flex-end quit btn' onClick={() => this.stopAudio()} ><strong>Quit Battle</strong></NavLink>
         <div className="battle-display">
           <UserField
             battleAction={this.battleAction}

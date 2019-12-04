@@ -121,7 +121,7 @@ class App extends React.Component {
         : null}
         {this.props.user ? (
           <NavLink to="/login" className='flex-end logout btn' onClick={this.logout}>
-            Logout
+            <strong>Logout</strong>
           </NavLink>
         ) : null}
         <Switch>

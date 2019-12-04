@@ -27,7 +27,7 @@ export default class UserInfo extends React.Component {
         {this.props.user ? (
           <>
             <NavLink to="/" className="flex-end back btn">
-              Back
+              <strong>Back</strong>
             </NavLink>
             <div className='display user-info'>
               <h1 className='center'>{this.props.user.full_name}</h1>
