@@ -329,3 +329,18 @@ code {
 .status {
   margin-top: 31px;
 }
+
+.alert-dark {
+  color: #1b1e21;
+  background-color: #d6d8d9;
+  border-color: #c6c8ca;
+}
+
+.alert {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-top: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  text-align: center;
+}

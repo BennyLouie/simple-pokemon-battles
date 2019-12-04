@@ -33,7 +33,7 @@ export const getUser = evt => dispatch => {
         dispatch({
           type: "ERRORS",
           payload: {
-            errors: true
+            errors: data.errors
           }
         })
       } else {

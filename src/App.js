@@ -24,7 +24,6 @@ import WildPokemonContainer from "./containers/WildPokemonContainer"
 import { createUser } from "./fetches/posts"
 import SelectedPokemonContainer from "./containers/SelectedPokemonContainer"
 import UserInfo from "./containers/UserInfo"
-// import { releasePokemon } from './fetches/deletes'
 
 const mapStateToProps = state => {
   return {
@@ -99,17 +98,22 @@ class App extends React.Component {
     this.props.addWin(user, pokemon)
     // this.props.fetchOpponent()
   }
-
+  
   addLoss = (user, pokemon) => {
     this.props.addLoss(user, pokemon)
     // this.props.fetchOpponent()
   }
-
+  
   render() {
     // console.log(this.wildPokemon())
-    // console.log(this.props)
+    console.log(this.props)
     return (
       <div className='app-container'>
+      {this.props.errors ?
+        <div className='alert alert-dark'>
+          <h1>{this.props.errors}</h1>
+        </div>
+        : null}
         {this.props.user ? (
           <NavLink to="/login" className='flex-end logout btn' onClick={this.logout}>
             Logout

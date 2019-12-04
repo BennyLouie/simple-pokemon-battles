@@ -6,7 +6,7 @@ const initialState = {
   wildPokemon: [],
   selected_pokemon: {},
   opponent_pokemon: {},
-  errors: false
+  errors: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -18,7 +18,8 @@ const reducer = (state = initialState, action) => {
         token: action.payload.token,
         user_id: action.payload.user_id,
         user: action.payload.user,
-        pokemons: action.payload.pokemons
+        pokemons: action.payload.pokemons,
+        errors: null
       }
     case "ERRORS":
       return {
@@ -35,7 +36,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload.user,
-        pokemons: action.payload.pokemons
+        pokemons: action.payload.pokemons,
+        errors: null
       }
     case "LOGOUT":
       return {
