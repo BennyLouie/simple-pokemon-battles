@@ -99,13 +99,6 @@ code {
   text-decoration: none;
   -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
-  /* -webkit-writing-mode: horizontal-tb !important; */
-  /* text-rendering: auto;
-  word-spacing: normal;
-  text-indent: 0px;
-  text-shadow: none;
-  text-align: center; */
-  /* font: 400 11px system-ui; */
   margin: 8px;
 }
 
@@ -153,10 +146,6 @@ code {
   justify-content: center;
 }
 
-/* .pokemon-pic {
-  background-color: white;
-} */
-
 .battle {
   background-color: rgb(179, 7, 7);
 }
@@ -202,11 +191,6 @@ code {
   border-width: thick;
 }
 
-/* .card {
-  width: 200px;
-  height: 500px !important;
-} */
-
 .links {
   align-self: center;
   display: flex;
@@ -226,6 +210,7 @@ code {
 
 .catch {
   background-color: maroon;
+  margin-bottom: 10px;
 }
 
 .back {
@@ -268,9 +253,11 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: rgb(224, 224, 221);
+  background: rgb(168, 168, 165);
   width: 200px;
   height: 250px;
+  border-style: solid;
+  border-width: thick;
 }
 
 .health-bar {
