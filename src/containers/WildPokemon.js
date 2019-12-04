@@ -7,7 +7,7 @@ export default class WildPokemon extends React.Component {
     return (
       <div className='wild-pokemon'>
         <Pokemon pokemon={this.props.pokemon} />
-        <NavLink to="/" className='catch center btn' onClick={() => this.props.catchPokemon(this.props.user, this.props.pokemon)}>Catch!</NavLink>
+        <NavLink to="/" className='catch center btn' onClick={() => this.props.catchPokemon(this.props.user, this.props.pokemon)}><strong>Catch!</strong></NavLink>
       </div>
     )
   }
