@@ -25,6 +25,10 @@ import { createUser } from "./fetches/posts"
 import SelectedPokemonContainer from "./containers/SelectedPokemonContainer"
 import UserInfo from "./containers/UserInfo"
 import battle_music from "./sounds/battle_music.mp3"
+import background_music from "./sounds/background_music.mp3"
+import wild_pokemon_music from "./sounds/wild_pokemon_music.mp3"
+import pc_music from "./sounds/pc_music.mp3"
+import poke_status_music from "./sounds/poke_status_music.mp3"
 
 const mapStateToProps = state => {
   return {
@@ -48,11 +52,62 @@ const mapDispatchToProps = {
 }
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.audio = new Audio(battle_music)
+    this.audio.addEventListener(
+      "ended",
+      function() {
+        this.currentTime = 0
+        this.play()
+      },
+      false
+    )
+
+    this.backgroundAudio = new Audio(background_music)
+    this.backgroundAudio.addEventListener(
+      "ended",
+      function() {
+        this.currentTime = 0
+        this.play()
+      },
+      false
+    )
+
+    this.safariAudio = new Audio(wild_pokemon_music)
+    this.safariAudio.addEventListener(
+      "ended",
+      function() {
+        this.currentTime = 0
+        this.play()
+      },
+      false
+    )
+
+    this.pcAudio = new Audio(pc_music)
+    this.pcAudio.addEventListener(
+      "ended",
+      function() {
+        this.currentTime = 0
+        this.play()
+      },
+      false
+    )
+
+    this.statusAudio = new Audio(poke_status_music)
+    this.statusAudio.addEventListener(
+      "ended",
+      function() {
+        this.currentTime = 0
+        this.play()
+      },
+      false
+    )
+  }
+
   componentDidMount() {
     this.props.loadUser()
     this.props.wildPokemonFetch()
-    // debugger
-    // this.props.fetchOpponent()
   }
 
   getUser = evt => {
@@ -73,9 +128,12 @@ class App extends React.Component {
 
   logout = () => {
     this.props.logout()
+    this.stopAudio()
   }
 
   selectPokemon = pokemon => {
+    this.stopAudio()
+    this.audio.play()
     this.props.selectPokemon(pokemon)
     this.props.fetchOpponent(pokemon)
   }
@@ -86,32 +144,52 @@ class App extends React.Component {
 
   releasePokemon = (user, pokemon) => {
     this.props.releasePokemon(user, pokemon)
-    // console.log(this.props.pokemons)
-    // debugger
   }
 
   updateUser = evt => {
-    // evt.preventDefault()
     this.props.updateUser(evt)
   }
 
   addWin = (user, pokemon) => {
     this.props.addWin(user, pokemon)
-    this.audio.pause()
-    this.audio.currentTime = 0
+    this.stopAudio()
   }
 
   addLoss = (user, pokemon) => {
     this.props.addLoss(user, pokemon)
-    this.audio.pause()
-    this.audio.currentTime = 0
+    this.stopAudio()
   }
 
-  audio = new Audio(battle_music)
+  stopAudio = () => {
+    this.audio.pause()
+    this.audio.currentTime = 0
+    this.backgroundAudio.pause()
+    this.backgroundAudio.currentTime = 0
+    this.safariAudio.pause()
+    this.safariAudio.currentTime = 0
+    this.pcAudio.pause()
+    this.pcAudio.currentTime = 0
+    this.statusAudio.pause()
+    this.statusAudio.currentTime = 0
+  }
+
+  playSafariAudio = () => {
+    this.stopAudio()
+    this.safariAudio.play()
+  }
+
+  playPCAudio = () => {
+    this.stopAudio()
+    this.pcAudio.play()
+  }
+
+  playStatsAudio = () => {
+    this.stopAudio()
+    this.statusAudio.play()
+  }
 
   render() {
-    // console.log(this.wildPokemon())
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div className="app-container">
         {this.props.errors ? (
@@ -120,8 +198,8 @@ class App extends React.Component {
           </div>
         ) : null}
         {this.props.user ? (
-          <div className='header-container'>
-            <h1 className='flex-start title'>Simple Pokemon Battles</h1>
+          <div className="header-container">
+            <h1 className="flex-start title">Simple Pokemon Battles</h1>
             <NavLink
               to="/login"
               className="flex-end logout btn"
@@ -137,6 +215,9 @@ class App extends React.Component {
             path="/"
             render={props => (
               <HomePage
+                pcAudio={this.playPCAudio}
+                safariAudio={this.playSafariAudio}
+                backgroundAudio={this.backgroundAudio}
                 user={this.props.user}
                 pokemons={this.props.pokemons}
                 selectPokemon={this.selectPokemon}
@@ -157,6 +238,7 @@ class App extends React.Component {
             render={props => (
               <BattleContainer
                 audio={this.audio}
+                stopAudio={this.stopAudio}
                 fetchOpponent={this.props.fetchOpponent}
                 addLoss={this.addLoss}
                 addWin={this.addWin}
@@ -172,6 +254,7 @@ class App extends React.Component {
             path="/catch"
             render={props => (
               <WildPokemonContainer
+                stopAudio={this.stopAudio}
                 user={this.props.user}
                 catchPokemon={this.catch}
                 wildPokemon={this.props.wildPokemon}
@@ -182,6 +265,8 @@ class App extends React.Component {
             path="/update-pokemon"
             render={props => (
               <SelectedPokemonContainer
+                playStatsAudio={this.playStatsAudio}
+                stopAudio={this.stopAudio}
                 user={this.props.user}
                 updateStats={this.props.updateStats}
                 pokemon={this.props.user ? this.props.selected_pokemon : {}}
@@ -191,7 +276,7 @@ class App extends React.Component {
           <Route
             path="/user-information"
             render={props => (
-              <UserInfo user={this.props.user} updateUser={this.updateUser} />
+              <UserInfo stopAudio={this.stopAudio} user={this.props.user} updateUser={this.updateUser} />
             )}
           />
         </Switch>

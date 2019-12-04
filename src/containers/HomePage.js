@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom"
 export default class HomePage extends React.Component {
   render() {
     console.log(this.props)
+    this.props.backgroundAudio.play()
     return (
       <div className="pc-substitute">
         <TeamContainer
@@ -14,10 +15,10 @@ export default class HomePage extends React.Component {
           user={this.props.user}
         />
         <div className="links">
-          <NavLink to="/catch" className='catch-pokemon btn'>
+          <NavLink to="/catch" onClick={this.props.safariAudio} className='catch-pokemon btn'>
             <strong>Safari</strong>
           </NavLink>
-          <NavLink to="/user-information" className='info btn'><strong>User Info</strong></NavLink>
+          <NavLink to="/user-information" onClick={this.props.pcAudio} className='info btn'><strong>User Info</strong></NavLink>
         </div>
       </div>
     )

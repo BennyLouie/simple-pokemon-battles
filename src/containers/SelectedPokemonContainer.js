@@ -5,11 +5,11 @@ import StatsContainer from "./StatsContainer"
 
 export default class SelectedPokemonContainer extends React.Component {
   render() {
-    // console.log(this.props)
+    this.props.playStatsAudio()
     return (
       <>
-        <NavLink to="/" className="flex-end back btn">
-          Back
+        <NavLink to="/" onClick={this.props.stopAudio} className="flex-end back btn">
+          <strong>Back</strong>
         </NavLink>
         <div className='display pokemon-status'>
           <Pokemon pokemon={this.props.pokemon} />

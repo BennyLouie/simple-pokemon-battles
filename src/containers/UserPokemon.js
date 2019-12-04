@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom'
 export default class UserPokemon extends React.Component {
 
     render() {
-        // console.log(this.props)
         return (
             <div id={`${this.props.pokemon.name}-card`} className='pc-pokemon'>
                 <Pokemon pokemon={this.props.pokemon} />

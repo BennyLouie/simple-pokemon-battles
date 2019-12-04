@@ -26,7 +26,7 @@ export default class UserInfo extends React.Component {
       <>
         {this.props.user ? (
           <>
-            <NavLink to="/" className="flex-end back btn">
+            <NavLink to="/" onClick={this.props.stopAudio} className="flex-end back btn">
               <strong>Back</strong>
             </NavLink>
             <div className="info-container">

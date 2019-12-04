@@ -17,11 +17,6 @@ export default class BattleContainer extends React.Component {
       battleWon: false,
       battleLost: false
     }
-    this.audio = this.props.audio
-    this.audio.addEventListener('ended', function () {
-      this.currentTime = 0
-      this.play()
-    }, false)
   }
 
   decideFirst = data => {
@@ -63,17 +58,11 @@ export default class BattleContainer extends React.Component {
     })
   }
 
-  stopAudio = () => {
-    this.audio.pause()
-    this.audio.currentTime = 0
-  }
-
   render() {
     console.log(this.props)
-    this.audio.play()
     return (
       <>
-        <NavLink to="/" className='flex-end quit btn' onClick={() => this.stopAudio()} ><strong>Quit Battle</strong></NavLink>
+        <NavLink to="/" className='flex-end quit btn' onClick={this.props.stopAudio} ><strong>Quit Battle</strong></NavLink>
         <div className="battle-display">
           <UserField
             battleAction={this.battleAction}

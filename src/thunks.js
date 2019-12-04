@@ -85,16 +85,20 @@ export const selectPokemon = pokemon => dispatch => {
 export const fetchOpponent = pokemon => dispatch => {
   console.log(pokemon)
   let opponent_pokemon_roll
-  if (pokemon.lv < 5) {
-    opponent_pokemon_roll = Math.floor(Math.random() * 151) + 1
-  }
-  else if (pokemon.lv >= 5 && pokemon.lv < 10) {
-    opponent_pokemon_roll = Math.floor(Math.random() * 151) + 303
+  if (pokemon) {
+    if (pokemon.lv < 5) {
+      opponent_pokemon_roll = Math.floor(Math.random() * 151) + 1
+    }
+    else if (pokemon.lv >= 5 && pokemon.lv < 10) {
+      opponent_pokemon_roll = Math.floor(Math.random() * 151) + 303
+    }
+    else {
+      opponent_pokemon_roll = Math.floor(Math.random() * 151) + 454
+    }
   }
   else {
-    opponent_pokemon_roll = Math.floor(Math.random() * 151) + 454
+    opponent_pokemon_roll = Math.floor(Math.random() * 151) + 1
   }
-  
   fetch(`http://localhost:3000/pokemons/${opponent_pokemon_roll}`)
     .then(res => res.json())
     .then(data => {
