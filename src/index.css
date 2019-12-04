@@ -13,7 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #2f4fa5;
+  /* background: #2f4fa5; */
 }
 
 code {
@@ -33,6 +33,10 @@ code {
   padding: 0;
   display: flex;
   flex-direction: column;
+  background-image: url("https://www.models-resource.com/resources/big_icons/22/21700.png");
+  background-size: 100% ;
+  background-repeat: fixed;
+  overflow-x: scroll;
 }
 
 .battle-display {
@@ -237,7 +241,7 @@ code {
   flex-direction: column;
   justify-content: center;
   border-style: solid;
-  border-color: cornflowerblue;
+  border-color: grey;
   height: 250px;
   width: 175px;
 }
