@@ -8,22 +8,22 @@ export default class Signup extends React.Component {
         <form className='display-near-top form-render' onSubmit={this.props.createUser}>
           <h1>SIGN UP</h1>
           <label>
-            First Name:
+            <strong>First Name:</strong>
             <input type="text" name="first_name" />
           </label>
           <label>
-            Last Name:
+            <strong>Last Name:</strong>
             <input type="text" name="last_name" />
           </label>
           <label>
-            Username:
+            <strong>Username:</strong>
             <input type="text" name="username" />
           </label>
           <label>
-            Password:
+            <strong>Password:</strong>
             <input type="password" name="password" />
           </label>
-          <input type="submit" value="Sign Up" className="post center btn" />
+          <input type="submit" value="Sign Up" className="post bold center btn" />
           <NavLink to="/login" className="patch btn">
             <strong>Log In</strong>
           </NavLink>

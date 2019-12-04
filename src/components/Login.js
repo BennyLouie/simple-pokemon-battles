@@ -14,7 +14,7 @@ export default class Login extends React.Component {
             </>
           ) : null}
           <label>
-            Username:
+            <strong>Username:</strong>
             <input
             //   onChange={this.props.loginAttempt}
               type="text"
@@ -22,15 +22,14 @@ export default class Login extends React.Component {
             />
           </label>
           <label>
-            Password:
+            <strong>Password:</strong>
             <input
             //   onChange={this.props.loginAttempt}
               type="password"
               name="password"
             />
           </label>
-          <br />
-          <input type="submit" value="Log In" className="post center btn" />
+          <input type="submit" value="Log In" className="post bold center btn" />
           <NavLink to="/signup" className="patch btn">
             <strong>Sign Up</strong>
           </NavLink>

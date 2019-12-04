@@ -68,12 +68,15 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-image: url("https://i.pinimg.com/originals/46/26/64/462664523220dc79474b709a6c07af5b.jpg");
 }
 
 .message-object {
   /* border-style: dotted; */
   margin-left: 1.5px;
-  background-color: rgb(160, 151, 151);
+  background-color: rgb(160, 151, 151, 0.5);
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .btn {
@@ -139,12 +142,15 @@ code {
 .header-container {
   display: flex;
   flex-direction: column;
-  /* opacity: 0.5; */
-}
+  background-color: rgb(255, 255, 255, 0.5);}
 
 .patch {
   background-color: cornflowerblue;
   align-self: center;
+  font-weight: bold;
+}
+
+.bold {
   font-weight: bold;
 }
 
@@ -165,11 +171,6 @@ code {
   margin-left: 10px;
   color: white;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-
-.pokemon-status {
-  background-color: rgb(21, 53, 146);
-  text-align: center;
 }
 
 .pokemon-img {
@@ -228,6 +229,7 @@ code {
   flex-direction: column;
   align-items: center;
   height: 100px;
+  z-index: 100;
 }
 
 .label {
@@ -258,6 +260,22 @@ code {
   justify-content: center;
   width: 500px;
   align-self: center;
+}
+
+.pokemon-status {
+  background-color: rgb(21, 53, 146, 0.5);
+  text-align: center;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 500px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.selected-pokemon {
+  width: 200px;
+  margin: auto;
 }
 
 .wild-pokemon {
@@ -313,15 +331,12 @@ code {
   background-color: #dc004e;
 }
 
-.pokemon-status {
-  background-color: rgb(41, 57, 197);
-}
-
 .stats-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: space-between;
+  color: white;
 }
 
 .post {
@@ -354,12 +369,13 @@ code {
 
 .team {
   /* background-color: darkblue; */
-  z-index: 3;
+  z-index: 100;
   margin: 2px;
 }
 
 .status {
   margin-top: 31px;
+  background-color: rgb(21, 53, 146)
 }
 
 .alert-dark {

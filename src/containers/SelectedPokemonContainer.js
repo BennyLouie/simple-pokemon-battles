@@ -11,8 +11,10 @@ export default class SelectedPokemonContainer extends React.Component {
         <NavLink to="/" onClick={this.props.stopAudio} className="flex-end back btn">
           <strong>Back</strong>
         </NavLink>
-        <div className='display pokemon-status'>
-          <Pokemon pokemon={this.props.pokemon} />
+        <div className='pokemon-status'>
+          <div className='selected-pokemon'>
+            <Pokemon pokemon={this.props.pokemon} />
+          </div>
           <StatsContainer
             user={this.props.user}
             pokemon={this.props.pokemon}
