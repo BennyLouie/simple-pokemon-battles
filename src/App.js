@@ -24,6 +24,7 @@ import WildPokemonContainer from "./containers/WildPokemonContainer"
 import { createUser } from "./fetches/posts"
 import SelectedPokemonContainer from "./containers/SelectedPokemonContainer"
 import UserInfo from "./containers/UserInfo"
+import battle_music from './sounds/battle_music.mp3'
 
 const mapStateToProps = state => {
   return {
@@ -96,13 +97,17 @@ class App extends React.Component {
 
   addWin = (user, pokemon) => {
     this.props.addWin(user, pokemon)
-    // this.props.fetchOpponent()
+    this.audio.pause()
+    this.audio.currentTime = 0
   }
   
   addLoss = (user, pokemon) => {
     this.props.addLoss(user, pokemon)
-    // this.props.fetchOpponent()
+    this.audio.pause()
+    this.audio.currentTime = 0
   }
+
+  audio = new Audio(battle_music)
   
   render() {
     // console.log(this.wildPokemon())
@@ -144,6 +149,7 @@ class App extends React.Component {
             path="/battle"
             render={props => (
               <BattleContainer
+                audio={this.audio}
                 fetchOpponent={this.props.fetchOpponent}
                 addLoss={this.addLoss}
                 addWin={this.addWin}

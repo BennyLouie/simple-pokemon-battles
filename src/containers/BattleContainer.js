@@ -1,7 +1,6 @@
 import React from "react"
 import UserField from "./UserField"
 import OpponentField from "./OpponentField"
-// import Box from "@material-ui/core/Box"
 import battleLogic from "../BattleLogic"
 import MessagesContainer from "./MessagesContainer"
 import { NavLink } from "react-router-dom"
@@ -9,11 +8,20 @@ import { NavLink } from "react-router-dom"
 const opponent_decision = Math.floor(Math.random() * 2) + 1
 
 export default class BattleContainer extends React.Component {
-  state = {
-    opponent_action: opponent_decision,
-    messages: [],
-    battleWon: false,
-    battleLost: false
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      opponent_action: opponent_decision,
+      messages: [],
+      battleWon: false,
+      battleLost: false
+    }
+    this.audio = this.props.audio
+    this.audio.addEventListener('ended', function () {
+      this.currentTime = 0
+      this.play()
+    }, false)
   }
 
   decideFirst = data => {
@@ -55,11 +63,17 @@ export default class BattleContainer extends React.Component {
     })
   }
 
+  stopAudio = () => {
+    this.audio.pause()
+    this.audio.currentTime = 0
+  }
+
   render() {
     console.log(this.props)
+    this.audio.play()
     return (
       <>
-        <NavLink to="/" className='flex-end quit btn' >Quit Battle</NavLink>
+        <NavLink to="/" className='flex-end quit btn' onClick={() => this.stopAudio()} >Quit Battle</NavLink>
         <div className="battle-display">
           <UserField
             battleAction={this.battleAction}
