@@ -17,7 +17,7 @@ export default class HomePage extends React.Component {
           <NavLink to="/catch" className='catch-pokemon btn'>
             <strong>Safari</strong>
           </NavLink>
-          <NavLink to="/user-information" className='user-info btn'><strong>User Info</strong></NavLink>
+          <NavLink to="/user-information" className='info btn'><strong>User Info</strong></NavLink>
         </div>
       </div>
     )

@@ -25,8 +25,7 @@ export default class Signup extends React.Component {
           </label>
           <input type="submit" value="Sign Up" className="post center btn" />
           <NavLink to="/login" className="patch btn">
-            {" "}
-            Log In{" "}
+            <strong>Log In</strong>
           </NavLink>
         </form>
         <br />

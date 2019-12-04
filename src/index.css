@@ -135,6 +135,7 @@ code {
 .patch {
   background-color: cornflowerblue;
   align-self: center;
+  font-weight: bold;
 }
 
 .catch-pokemon {
@@ -142,6 +143,11 @@ code {
 }
 
 .user-info {
+  background-color: rgb(238, 236, 143);
+  border-style: ridge;
+}
+
+.info {
   background-color: grey;
 }
 
@@ -307,7 +313,8 @@ code {
 }
 
 .div-form {
-  height: 100%;
+  height: 50%;
+  /* width: 50%; */
   display: flex;
   justify-content: center;
 }
@@ -352,4 +359,17 @@ code {
   border: 1px solid transparent;
   border-radius: .25rem;
   text-align: center;
+}
+
+.form-render {
+  background-color: rgb(128, 185, 128);
+  width: 500px;
+  height: 300px;
+  border-style: ridge;
+}
+
+.info-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
