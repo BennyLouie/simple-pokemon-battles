@@ -14,7 +14,9 @@ const createUser = evt => {
       first_name,
       last_name,
       username,
-      password
+      password,
+      wins: 0,
+      losses: 0
     })
   })
     .then(res => res.json())
