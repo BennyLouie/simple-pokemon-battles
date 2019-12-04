@@ -51,13 +51,14 @@ class App extends React.Component {
   componentDidMount() {
     this.props.loadUser()
     this.props.wildPokemonFetch()
-    this.props.fetchOpponent()
+    // debugger
+    // this.props.fetchOpponent()
   }
 
   getUser = evt => {
     this.props.getUser(evt)
     this.props.wildPokemonFetch()
-    this.props.fetchOpponent()
+    this.props.fetchOpponent(this.props.selected_pokemon)
   }
 
   fetchUser = evt => {
@@ -76,6 +77,7 @@ class App extends React.Component {
 
   selectPokemon = pokemon => {
     this.props.selectPokemon(pokemon)
+    this.props.fetchOpponent(pokemon)
   }
 
   catch = (user, pokemon) => {
@@ -95,12 +97,12 @@ class App extends React.Component {
 
   addWin = (user, pokemon) => {
     this.props.addWin(user, pokemon)
-    this.props.fetchOpponent()
+    // this.props.fetchOpponent()
   }
 
   addLoss = (user, pokemon) => {
     this.props.addLoss(user, pokemon)
-    this.props.fetchOpponent()
+    // this.props.fetchOpponent()
   }
 
   render() {

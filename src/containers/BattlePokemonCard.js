@@ -11,12 +11,12 @@ export default class BattlePokemonCard extends React.Component {
           user={this.props.user ? this.props.user : false}
           pokemon={this.props.pokemon}
         />
+        <div className="health-bar">
         <progress
           id={`${this.props.pokemon.name}-health`}
           value={this.props.pokemon.hp}
           max={this.props.pokemon.hp}
-          className="health-bar"
-        />
+          />
         <span className='health'>
           <strong>
             {document.getElementById(`${this.props.pokemon.name}-health`)
@@ -28,7 +28,8 @@ export default class BattlePokemonCard extends React.Component {
               ? document.getElementById(`${this.props.pokemon.name}-health`).max
               : this.props.pokemon.hp}
           </strong>
-        </span>
+          </span>
+        </div>
       </div>
     )
   }
