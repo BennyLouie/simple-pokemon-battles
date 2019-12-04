@@ -64,7 +64,16 @@ code {
   height: 350px;
   width: 400px;
   overflow: auto;
-  background-color: white;
+  background-color: rgb(240, 235, 235);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.message-object {
+  /* border-style: dotted; */
+  margin-left: 1.5px;
+  background-color: rgb(160, 151, 151);
 }
 
 .btn {

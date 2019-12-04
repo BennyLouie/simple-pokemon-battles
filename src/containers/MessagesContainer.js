@@ -20,8 +20,8 @@ export default class MessagesContainer extends React.Component {
         const message = this.props.messages[i]
         const renderMessage = await this.getMessage(message)
         const messageContainer = document.querySelector(".messages-container")
-        const htmlMessage = document.createElement("h4")
-        htmlMessage.className = "message"
+        const htmlMessage = document.createElement("h3")
+        htmlMessage.className = "message-object"
         htmlMessage.innerText = renderMessage
         messageContainer.append(htmlMessage)
         this.scrollRefContainer.current.scrollTop = 99999999999999999999
