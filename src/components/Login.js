@@ -29,6 +29,7 @@ export default class Login extends React.Component {
               name="password"
             />
           </label>
+          <br/>
           <input type="submit" value="Log In" className="post bold center btn" />
           <NavLink to="/signup" className="patch btn">
             <strong>Sign Up</strong>

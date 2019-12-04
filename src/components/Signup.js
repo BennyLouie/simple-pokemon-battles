@@ -23,6 +23,7 @@ export default class Signup extends React.Component {
             <strong>Password:</strong>
             <input type="password" name="password" />
           </label>
+          <br/>
           <input type="submit" value="Sign Up" className="post bold center btn" />
           <NavLink to="/login" className="patch btn">
             <strong>Log In</strong>

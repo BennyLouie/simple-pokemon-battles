@@ -341,6 +341,10 @@ code {
 
 .post {
   background-color: darkred;
+  margin-bottom: 0px;
+  height: 25px;
+  margin: 0%;
+  align-self: center;
 }
 
 .div-form {
