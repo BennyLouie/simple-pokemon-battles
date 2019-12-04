@@ -149,9 +149,9 @@ code {
   justify-content: center;
 }
 
-.pokemon-pic {
+/* .pokemon-pic {
   background-color: white;
-}
+} */
 
 .battle {
   background-color: rgb(179, 7, 7);
@@ -192,7 +192,7 @@ code {
 
 .card {
   width: 200px;
-  align-self: center;
+  height: 500px !important;
 }
 
 .links {
@@ -236,6 +236,10 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-style: solid;
+  border-color: cornflowerblue;
+  height: 250px;
+  width: 175px;
 }
 
 .wild-pokemon-container {
@@ -243,7 +247,7 @@ code {
   align-self: center;
   width: 1216px;
   display: flex;
-  background-color: lightsteelblue;
+  background-color: black;
   flex-wrap: wrap;
   padding: 24px;
 }
@@ -254,6 +258,7 @@ code {
   justify-content: center;
   background: rgb(224, 224, 221);
   width: 200px;
+  height: 250px;
 }
 
 .health-bar {
