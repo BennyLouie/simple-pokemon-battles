@@ -36,8 +36,8 @@ export default class MessagesContainer extends React.Component {
   }
 
   render() {
-    console.log('Won: ', this.props.battleWon)
-    console.log('Lost: ', this.props.battleLost)
+    // console.log('Won: ', this.props.battleWon)
+    // console.log('Lost: ', this.props.battleLost)
     this.messageLoop()
     return (
       <div className="messages-container" ref={this.scrollRefContainer}></div>

@@ -59,7 +59,7 @@ export default class BattleContainer extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <>
         <NavLink to="/" className='flex-end quit btn' onClick={this.props.stopAudio} ><strong>Quit Battle</strong></NavLink>

@@ -28,7 +28,7 @@ export const getUser = evt => dispatch => {
   })
     .then(res => res.json())
     .then(data => {
-      console.log(data)
+      // console.log(data)
       if (data.errors) {
         dispatch({
           type: "ERRORS",
@@ -49,7 +49,7 @@ export const getUser = evt => dispatch => {
         return fetch(`http://localhost:3000/users/${data.user_id}`)
           .then(res => res.json())
           .then(user => {
-            console.log(user)
+            // console.log(user)
             localStorage.setItem("user", JSON.stringify(user))
             dispatch({
               type: "GET_USER",
@@ -83,7 +83,7 @@ export const selectPokemon = pokemon => dispatch => {
 }
 
 export const fetchOpponent = pokemon => dispatch => {
-  console.log(pokemon)
+  // console.log(pokemon)
   let opponent_pokemon_roll
   if (pokemon) {
     if (pokemon.lv < 5) {
@@ -192,7 +192,7 @@ export const releasePokemon = (user, pokemon) => dispatch => {
     .then(res => res.json())
     .then(captures => {
       //   console.log(pokemon)
-      console.log(captures)
+      // console.log(captures)
       // debugger
       const captured = captures.find(
         capture => capture.pokemon.id === pokemon.id
@@ -332,8 +332,8 @@ export const addLoss = user => dispatch => {
 }
 
 export const updateStats = (pokemon, state, user) => dispatch => {
-  console.log(pokemon)
-  console.log(state)
+  // console.log(pokemon)
+  // console.log(state)
   const hp = state.hp
   const atk = state.atk
   const def = state.def
