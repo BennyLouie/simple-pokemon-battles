@@ -129,6 +129,8 @@ code {
 
 .logout {
   background-color: #000203;
+  height: 25px;
+  margin-top: 0px;
 }
 
 .form-toggle {
@@ -142,6 +144,11 @@ code {
   justify-content: center;
   margin: auto;
   text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
 }
 
 .header-container {

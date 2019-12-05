@@ -252,13 +252,18 @@ class App extends React.Component {
         {this.props.user ? (
           <div className="header-container">
             <h1 className="flex-start title">Simple Pokemon Battles</h1>
-            <NavLink
-              to="/login"
-              className="flex-end logout btn"
-              onClick={this.logout}
-            >
-              <strong>Logout</strong>
-            </NavLink>
+            <div className='flex-end container'>
+              <h2>
+                <strong>Welcome {this.props.user.first_name}!</strong>
+              </h2>
+              <NavLink
+                to="/login"
+                className="logout btn"
+                onClick={this.logout}
+              >
+                <strong>Logout</strong>
+              </NavLink>
+            </div>
           </div>
         ) : null}
         <Switch>
@@ -330,7 +335,12 @@ class App extends React.Component {
           <Route
             path="/user-information"
             render={props => (
-              <UserInfo stopAudio={this.stopAudio} deleteAccount={this.deleteAccount} user={this.props.user} updateUser={this.updateUser} />
+              <UserInfo
+                stopAudio={this.stopAudio}
+                deleteAccount={this.deleteAccount}
+                user={this.props.user}
+                updateUser={this.updateUser}
+              />
             )}
           />
         </Switch>
