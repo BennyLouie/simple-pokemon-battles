@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import {
   loadUser,
   getUser,
+  createUser,
   logout,
   selectPokemon,
   fetchOpponent,
@@ -14,14 +15,14 @@ import {
   addWin,
   addLoss,
   updateStats,
-  updateUser
+  updateUser,
+  deleteAccount
 } from "./thunks"
 import BattleContainer from "./containers/BattleContainer"
 import Login from "./components/Login"
 import Signup from "./components/Signup"
 import HomePage from "./containers/HomePage"
 import WildPokemonContainer from "./containers/WildPokemonContainer"
-import { createUser } from "./fetches/posts"
 import SelectedPokemonContainer from "./containers/SelectedPokemonContainer"
 import UserInfo from "./containers/UserInfo"
 import battle_music from "./sounds/battle_music.mp3"
@@ -41,6 +42,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   loadUser: loadUser,
   getUser: getUser,
+  createUser: createUser,
   logout: logout,
   selectPokemon: selectPokemon,
   fetchOpponent: fetchOpponent,
@@ -50,7 +52,8 @@ const mapDispatchToProps = {
   addWin: addWin,
   addLoss: addLoss,
   updateStats: updateStats,
-  updateUser: updateUser
+  updateUser: updateUser,
+  deleteAccount: deleteAccount
 }
 
 class App extends React.Component {
@@ -140,6 +143,7 @@ class App extends React.Component {
   }
 
   getUser = evt => {
+    evt.preventDefault()
     this.props.getUser(evt)
     this.props.wildPokemonFetch()
     this.props.fetchOpponent(this.props.selected_pokemon)
@@ -152,7 +156,7 @@ class App extends React.Component {
 
   createUser = evt => {
     evt.preventDefault()
-    createUser(evt).then(this.getUser(evt))
+    this.props.createUser(evt)
   }
 
   logout = () => {
@@ -188,6 +192,11 @@ class App extends React.Component {
   addLoss = (user, pokemon) => {
     this.props.addLoss(user, pokemon)
     this.stopAudio()
+  }
+
+  deleteAccount = user => {
+    this.stopAudio()
+    this.props.deleteAccount(user)
   }
 
   stopAudio = () => {
@@ -233,6 +242,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="app-container">
         {this.props.errors ? (
@@ -321,7 +331,7 @@ class App extends React.Component {
           <Route
             path="/user-information"
             render={props => (
-              <UserInfo stopAudio={this.stopAudio} user={this.props.user} updateUser={this.updateUser} />
+              <UserInfo stopAudio={this.stopAudio} deleteAccount={this.deleteAccount} user={this.props.user} updateUser={this.updateUser} />
             )}
           />
         </Switch>

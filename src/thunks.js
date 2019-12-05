@@ -14,6 +14,7 @@ export const loadUser = () => dispatch => {
 }
 
 export const getUser = evt => dispatch => {
+  evt.preventDefault()
   return fetch("http://localhost:3000/login", {
     method: "POST",
     headers: {
@@ -57,6 +58,40 @@ export const getUser = evt => dispatch => {
             })
           })
       }
+    })
+}
+
+export const createUser = evt => dispatch => {
+  let username = evt.target.username.value
+  let password = evt.target.password.value
+  let first_name = evt.target.first_name.value
+  let last_name = evt.target.last_name.value
+
+  return fetch("http://localhost:3000/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      first_name,
+      last_name,
+      username,
+      password,
+      wins: 0,
+      losses: 0
+    })
+  })
+    .then(res => res.json())
+    .then(user => {
+      localStorage.setItem("user", JSON.stringify(user))
+      dispatch({
+        type: "GET_USER",
+        payload: {
+          user,
+          pokemons: user.pokemons
+        }
+        })
     })
 }
 
@@ -377,5 +412,22 @@ export const updateUser = evt => dispatch => {
           user: data
         }
       })
+  })
+}
+
+export const deleteAccount = user => dispatch => {
+  fetch(`http://localhost:3000/users/${user.id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  })
+    .then(res => res.json)
+    .then(data => {
+      localStorage.clear()
+      dispatch({
+      type: "DELETE_USER"
+    })
   })
 }

@@ -114,6 +114,11 @@ code {
   margin: 8px;
 }
 
+.delete {
+  color: white;
+  background-color: black;
+}
+
 .flex-end {
   align-self: flex-end;
 }

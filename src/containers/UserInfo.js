@@ -39,6 +39,7 @@ export default class UserInfo extends React.Component {
                   </strong>
                 </div>
                 <br />
+                <button className="center delete btn" onClick={() => this.props.deleteAccount(this.props.user)}><strong>Delete Account</strong></button>
                 <button className="form-toggle btn" onClick={this.toggleForm}>
                   <strong>Change Username</strong>
                 </button>
