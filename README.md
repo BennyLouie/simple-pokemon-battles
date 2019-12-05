@@ -1,68 +1,39 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Before Starting up this project
 
-In the project directory, you can run:
+Fork and clone from the following repository for the dependant backend 
+(follow README for instructions):
+https://github.com/BennyLouie/Simple-Pokemon-Battles-backend
+
+### Then `npm i`
+
+Installs all the dependant modules required to run this React App.
 
 ### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Starts up this project. This app has been defaulted to run on PORT 3001.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### A Brief Summary
 
-### `npm test`
+This is a very simple game that simulates a Pokemon Battle. There are no attributes or special attack moves.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+User may login or signup.
 
-### `npm run build`
+User can only choose to attack or defend.
+Damage dealt is dependent on the attributes of the Pokemon which is not visible to the user.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+After completing a battle, either a win or loss will be added to the user's battle history.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+With each win, the selected Pokemon will gain 5 experience points.
+Once the experience points reach the cap, the Pokemon levels up!
+Upon leveling up, the Pokemon will receive 3 stat points the user may apply to anny of the current stats.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Once used up, the user will still be able to change his/her decisions provided he does not refresh or move to another page. Otherwise, the changes remain permanent.
 
-### `npm run eject`
+User may enter the Safari to select a Pokemon from the first Generation to add to his/her team. (Upon initial signup the user has no Pokemon)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The team caps at 6.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+User may also release a Pokemon from his/her team.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
