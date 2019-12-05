@@ -14,14 +14,12 @@ export default class UserInfo extends React.Component {
 
   changeUsername = evt => {
     evt.preventDefault()
-    console.log(evt.target.value)
-    // this.setState({
-    //     username: input
-    // })
+    this.setState({
+        username: evt.target.value
+    })
   }
 
   render() {
-    // console.log(this.props.user)
     return (
       <>
         {this.props.user ? (

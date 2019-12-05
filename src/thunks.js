@@ -14,7 +14,6 @@ export const loadUser = () => dispatch => {
 }
 
 export const getUser = evt => dispatch => {
-  // debugger
   return fetch("http://localhost:3000/login", {
     method: "POST",
     headers: {
@@ -28,7 +27,6 @@ export const getUser = evt => dispatch => {
   })
     .then(res => res.json())
     .then(data => {
-      // console.log(data)
       if (data.errors) {
         dispatch({
           type: "ERRORS",
@@ -49,7 +47,6 @@ export const getUser = evt => dispatch => {
         return fetch(`http://localhost:3000/users/${data.user_id}`)
           .then(res => res.json())
           .then(user => {
-            // console.log(user)
             localStorage.setItem("user", JSON.stringify(user))
             dispatch({
               type: "GET_USER",
@@ -83,7 +80,6 @@ export const selectPokemon = pokemon => dispatch => {
 }
 
 export const fetchOpponent = pokemon => dispatch => {
-  // console.log(pokemon)
   let opponent_pokemon_roll
   if (pokemon) {
     if (pokemon.lv < 5) {
@@ -149,7 +145,6 @@ export const catchPokemon = (user, pokemon) => dispatch => {
   })
     .then(res => res.json())
     .then(data => {
-      // console.log(data)
       const pokemon_id = data.id
       const newPokemon = data
       return fetch("http://localhost:3000/captures", {
@@ -191,9 +186,6 @@ export const releasePokemon = (user, pokemon) => dispatch => {
   return fetch(`http://localhost:3000/captures`)
     .then(res => res.json())
     .then(captures => {
-      //   console.log(pokemon)
-      // console.log(captures)
-      // debugger
       const captured = captures.find(
         capture => capture.pokemon.id === pokemon.id
       )
@@ -206,15 +198,12 @@ export const releasePokemon = (user, pokemon) => dispatch => {
       })
         .then(resp => resp.json())
         .then(data => {
-          // console.log(data)
-          // debugger
           const newTeam = user.pokemons.filter(pokemon => pokemon.id !== user.pokemons[user.pokemons.findIndex(pokemon => pokemon.id === data.id)].id)
           user.pokemons.splice(
             user.pokemons.findIndex(pokemon => pokemon.id === data.id),
             1
           )
           localStorage.setItem("user", JSON.stringify(user))
-          // console.log(user)
           dispatch({
             type: "RELEASE_POKEMON",
             payload: {
@@ -231,7 +220,6 @@ export const addWin = (user, pokemon) => dispatch => {
   const exp_max = pokemon.exp_max + pokemon.exp_max
   const stat_pts = pokemon.stat_pts + 3
   const lv = pokemon.lv + 1
-  // debugger
   if (exp === pokemon.exp_max) {
     fetch(`http://localhost:3000/pokemons/${pokemon.id}`, {
       method: "PATCH",
@@ -332,8 +320,6 @@ export const addLoss = user => dispatch => {
 }
 
 export const updateStats = (pokemon, state, user) => dispatch => {
-  // console.log(pokemon)
-  // console.log(state)
   const hp = state.hp
   const atk = state.atk
   const def = state.def
@@ -371,6 +357,7 @@ export const updateStats = (pokemon, state, user) => dispatch => {
 export const updateUser = evt => dispatch => {
   const username = evt.target.password.value
   const id = evt.target.user_id.value
+  evt.preventDefault()
   fetch(`http://localhost:3000/users/${id}`, {
     method: 'PATCH',
     headers: {

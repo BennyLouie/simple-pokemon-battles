@@ -29,9 +29,6 @@ export default class StatsContainer extends React.Component {
     }
 
     render() {
-        // debugger
-        // console.log(this.props.pokemon)
-        // console.log(this.state)
         return (
             <div className='stats-container'>
                 <strong>HP: {this.state.hp} <button onClick={() => this.addToStat('hp')}>+</button><button onClick={() => this.subtractFromStat('hp')}>-</button></strong>

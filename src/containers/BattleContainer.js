@@ -36,7 +36,6 @@ export default class BattleContainer extends React.Component {
     const first = this.decideFirst(this.props.opponent_pokemon)
     const second =
       first === userPokemon ? this.props.opponent_pokemon : userPokemon
-    // console.log("Battle Round!")
     this.setState({
       opponent_action,
       messages: [
@@ -58,7 +57,6 @@ export default class BattleContainer extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <>
         <NavLink
