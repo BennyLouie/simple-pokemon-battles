@@ -416,6 +416,15 @@ export const updateUser = evt => dispatch => {
 }
 
 export const deleteAccount = user => dispatch => {
+  user.pokemons.forEach(pokemon => {
+    fetch(`http://localhost:3000/pokemons/${pokemon.id}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+  })
   fetch(`http://localhost:3000/users/${user.id}`, {
     method: 'DELETE',
     headers: {
