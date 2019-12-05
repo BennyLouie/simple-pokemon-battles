@@ -22,6 +22,8 @@ This is a very simple game that simulates a Pokemon Battle. There are no attribu
 
 User may login or signup.
 
+User may also delete his/her account.
+
 User can only choose to attack or defend.
 Damage dealt is dependent on the attributes of the Pokemon which is not visible to the user.
 
