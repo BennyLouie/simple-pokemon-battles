@@ -90,6 +90,7 @@ export default class BattleContainer extends React.Component {
         </div>
         {this.state.battleWon ? (
           <div className="battle-end">
+            {this.props.victoryAudio()}
             <h1 className='center middle'><strong>You Won!</strong></h1>
             <br />
             <NavLink
@@ -105,6 +106,7 @@ export default class BattleContainer extends React.Component {
         ) : null}
         {this.state.battleLost ? (
           <div className="battle-end">
+            {this.props.effortAudio()}
             <h1 className='center middle'><strong>You Lost!</strong></h1>
             <br />
             <NavLink

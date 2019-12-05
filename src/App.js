@@ -29,6 +29,8 @@ import background_music from "./sounds/background_music.mp3"
 import wild_pokemon_music from "./sounds/wild_pokemon_music.mp3"
 import pc_music from "./sounds/pc_music.mp3"
 import poke_status_music from "./sounds/poke_status_music.mp3"
+import victory_music from "./sounds/victory_music.mp3"
+import losing_music from "./sounds/losing_music.mp3"
 
 const mapStateToProps = state => {
   return {
@@ -108,6 +110,28 @@ class App extends React.Component {
       },
       false
     )
+
+    this.victoryAudio = new Audio(victory_music)
+    this.victoryAudio.volume = 0.5
+    this.victoryAudio.addEventListener(
+      "ended",
+      function() {
+        this.currentTime = 0
+        this.play()
+      },
+      false
+    )
+
+    this.effortAudio = new Audio(losing_music)
+    this.effortAudio.volume = 0.5
+    this.effortAudio.addEventListener(
+      "ended",
+      function() {
+        this.currentTime = 0
+        this.play()
+      },
+      false
+    )
   }
 
   componentDidMount() {
@@ -176,6 +200,10 @@ class App extends React.Component {
     this.pcAudio.currentTime = 0
     this.statusAudio.pause()
     this.statusAudio.currentTime = 0
+    this.victoryAudio.pause()
+    this.victoryAudio.currentTime = 0
+    this.effortAudio.pause()
+    this.effortAudio.currentTime = 0
   }
 
   playSafariAudio = () => {
@@ -191,6 +219,16 @@ class App extends React.Component {
   playStatsAudio = () => {
     this.stopAudio()
     this.statusAudio.play()
+  }
+
+  playVictoryAudio = () => {
+    this.stopAudio()
+    this.victoryAudio.play()
+  }
+
+  playEffortAudio = () => {
+    this.stopAudio()
+    this.effortAudio.play()
   }
 
   render() {
@@ -242,6 +280,8 @@ class App extends React.Component {
             path="/battle"
             render={props => (
               <BattleContainer
+                victoryAudio={this.playVictoryAudio}
+                effortAudio={this.playEffortAudio}
                 audio={this.audio}
                 stopAudio={this.stopAudio}
                 fetchOpponent={this.props.fetchOpponent}
