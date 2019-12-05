@@ -12,7 +12,6 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOAD_USER":
-      // console.log(action.payload)
       return {
         ...state,
         token: action.payload.token,

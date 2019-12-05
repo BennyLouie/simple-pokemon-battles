@@ -4,7 +4,6 @@ import WildPokemon from "./WildPokemon"
 
 export default class WildPokemonContainer extends React.Component {
   render() {
-    // console.log(this.props)
     return (
       <>
         <NavLink to="/" onClick={this.props.stopAudio} className='flex-end back btn'><strong>Back</strong></NavLink>
