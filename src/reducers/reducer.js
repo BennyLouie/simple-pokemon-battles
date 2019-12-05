@@ -50,8 +50,7 @@ const reducer = (state = initialState, action) => {
     case "FETCH_OPPONENT":
       return {
         ...state,
-        opponent_pokemon: action.payload.opponent_pokemon,
-        errors: null
+        opponent_pokemon: action.payload.opponent_pokemon
       }
     case "WILD_POKEMON":
       return {

@@ -371,6 +371,10 @@ code {
   width: 450px;
 }
 
+.error {
+  color: black;
+}
+
 .battle-end {
   align-self: center;
   display: flex;

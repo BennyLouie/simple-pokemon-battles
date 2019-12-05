@@ -244,11 +244,12 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.props.errors)
     return (
       <div className="app-container">
         {this.props.errors ? (
           <div className="alert alert-dark">
-            <h1>{this.props.errors}</h1>
+            {this.props.errors.map(error => <h2 className='error'>· {error}</h2>)}
           </div>
         ) : null}
         {this.props.user ? (

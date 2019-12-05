@@ -84,14 +84,24 @@ export const createUser = evt => dispatch => {
   })
     .then(res => res.json())
     .then(user => {
-      localStorage.setItem("user", JSON.stringify(user))
-      dispatch({
-        type: "GET_USER",
-        payload: {
-          user,
-          pokemons: user.pokemons
-        }
+      if (user.errors) {
+        console.log(user.errors)
+        dispatch({
+          type: "ERRORS",
+          payload: {
+            errors: user.errors
+          }
         })
+      } else {
+        localStorage.setItem("user", JSON.stringify(user))
+        dispatch({
+          type: "GET_USER",
+          payload: {
+            user,
+            pokemons: user.pokemons
+          }
+          })
+      }
     })
 }
 
