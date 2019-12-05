@@ -168,6 +168,7 @@ class App extends React.Component {
   }
 
   catch = (user, pokemon) => {
+    this.stopAudio()
     this.props.catchPokemon(user, pokemon)
   }
 
