@@ -6,6 +6,8 @@ Fork and clone from the following repository for the dependant backend
 (follow README for instructions):
 https://github.com/BennyLouie/Simple-Pokemon-Battles-backend
 
+Fork and clone from this repository.
+
 ### Then `npm i`
 
 Installs all the dependant modules required to run this React App.
