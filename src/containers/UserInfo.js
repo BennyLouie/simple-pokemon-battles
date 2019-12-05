@@ -20,6 +20,7 @@ export default class UserInfo extends React.Component {
   }
 
   render() {
+    this.props.removeErrors()
     return (
       <>
         {this.props.user ? (

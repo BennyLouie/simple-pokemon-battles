@@ -57,6 +57,7 @@ export default class BattleContainer extends React.Component {
   }
 
   render() {
+    this.props.removeErrors()
     return (
       <>
         <NavLink

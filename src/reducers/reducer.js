@@ -50,7 +50,8 @@ const reducer = (state = initialState, action) => {
     case "FETCH_OPPONENT":
       return {
         ...state,
-        opponent_pokemon: action.payload.opponent_pokemon
+        opponent_pokemon: action.payload.opponent_pokemon,
+        errors: null
       }
     case "WILD_POKEMON":
       return {
@@ -65,7 +66,8 @@ const reducer = (state = initialState, action) => {
     case "RELEASE_POKEMON":
       return {
         ...state,
-        pokemons: action.payload.pokemons
+        pokemons: action.payload.pokemons,
+        errors: null
       }
     case "ADD_WIN":
       return {
@@ -92,6 +94,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         ...initialState
+      }
+    case "REMOVE_ERRORS":
+      return {
+        ...state,
+        errors: null
       }
     default:
       return {

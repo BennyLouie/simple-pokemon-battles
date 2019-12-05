@@ -440,3 +440,9 @@ export const deleteAccount = user => dispatch => {
     })
   })
 }
+
+export const removeErrors = () => dispatch => {
+  dispatch({
+    type: "REMOVE_ERRORS",
+  })
+}

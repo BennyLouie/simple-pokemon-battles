@@ -5,6 +5,7 @@ import StatsContainer from "./StatsContainer"
 
 export default class SelectedPokemonContainer extends React.Component {
   render() {
+    this.props.removeErrors()
     this.props.playStatsAudio()
     return (
       <>

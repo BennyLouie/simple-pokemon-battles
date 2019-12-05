@@ -16,7 +16,8 @@ import {
   addLoss,
   updateStats,
   updateUser,
-  deleteAccount
+  deleteAccount,
+  removeErrors
 } from "./thunks"
 import BattleContainer from "./containers/BattleContainer"
 import Login from "./components/Login"
@@ -53,7 +54,8 @@ const mapDispatchToProps = {
   addLoss: addLoss,
   updateStats: updateStats,
   updateUser: updateUser,
-  deleteAccount: deleteAccount
+  deleteAccount: deleteAccount,
+  removeErrors: removeErrors
 }
 
 class App extends React.Component {
@@ -294,6 +296,7 @@ class App extends React.Component {
             path="/battle"
             render={props => (
               <BattleContainer
+                removeErrors={this.props.removeErrors}
                 victoryAudio={this.playVictoryAudio}
                 effortAudio={this.playEffortAudio}
                 audio={this.audio}
@@ -313,6 +316,7 @@ class App extends React.Component {
             path="/catch"
             render={props => (
               <WildPokemonContainer
+                removeErrors={this.props.removeErrors}
                 stopAudio={this.stopAudio}
                 user={this.props.user}
                 catchPokemon={this.catch}
@@ -324,6 +328,7 @@ class App extends React.Component {
             path="/update-pokemon"
             render={props => (
               <SelectedPokemonContainer
+                removeErrors={this.props.removeErrors}
                 playStatsAudio={this.playStatsAudio}
                 stopAudio={this.stopAudio}
                 user={this.props.user}
@@ -336,6 +341,7 @@ class App extends React.Component {
             path="/user-information"
             render={props => (
               <UserInfo
+                removeErrors={this.props.removeErrors}
                 stopAudio={this.stopAudio}
                 deleteAccount={this.deleteAccount}
                 user={this.props.user}
