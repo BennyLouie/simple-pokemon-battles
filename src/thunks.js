@@ -100,7 +100,7 @@ export const createUser = evt => dispatch => {
             user,
             pokemons: user.pokemons
           }
-          })
+        })
       }
     })
 }

@@ -159,6 +159,7 @@ class App extends React.Component {
   createUser = evt => {
     evt.preventDefault()
     this.props.createUser(evt)
+    this.props.wildPokemonFetch()
   }
 
   logout = () => {
@@ -244,7 +245,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.props.errors)
+    console.log(this.props)
     return (
       <div className="app-container">
         {this.props.errors ? (
