@@ -55,6 +55,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.audio = new Audio(battle_music)
+    this.audio.volume = 0.5
     this.audio.addEventListener(
       "ended",
       function() {
@@ -65,6 +66,7 @@ class App extends React.Component {
     )
 
     this.backgroundAudio = new Audio(background_music)
+    this.backgroundAudio.volume = 0.5
     this.backgroundAudio.addEventListener(
       "ended",
       function() {
@@ -75,6 +77,7 @@ class App extends React.Component {
     )
 
     this.safariAudio = new Audio(wild_pokemon_music)
+    this.safariAudio.volume = 0.5
     this.safariAudio.addEventListener(
       "ended",
       function() {
@@ -85,6 +88,7 @@ class App extends React.Component {
     )
 
     this.pcAudio = new Audio(pc_music)
+    this.pcAudio.volume = 0.5
     this.pcAudio.addEventListener(
       "ended",
       function() {
@@ -95,6 +99,7 @@ class App extends React.Component {
     )
 
     this.statusAudio = new Audio(poke_status_music)
+    this.statusAudio.volume = 0.5
     this.statusAudio.addEventListener(
       "ended",
       function() {
