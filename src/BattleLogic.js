@@ -10,19 +10,16 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
     const opponent_roll = Math.floor(Math.random() * 3) + 1
     let firstHealth = document.getElementById(`${first.name}-health`) ? document.getElementById(`${first.name}-health`) : 1
     let secondHealth = document.getElementById(`${second.name}-health`) ? document.getElementById(`${second.name}-health`) : 1
-    // console.log(first)
     let messages = []
     //User goes first
     if (first === userPokemon) {
-        // console.log('User is First')
         //If both user and opponent attack
         if (user_action === 1 && (opponent_action === 1 || opponent_action === 3)) {
             messages.push(`${first.name} attacks ${second.name}.`)
+            //User advantage! User's attacks hit while opponent's will miss!
             if (user_roll > opponent_roll) {
-                //User advantage! User's attacks hit while opponent's will miss!
                 console.log('User Advantage!')
                 attack.play()
-                // console.log(messages)
                 if (first.atk > second.def) {
                     //User attacks opponent! Opponent loses 2 health
                     secondHealth.value -= 2
@@ -34,7 +31,6 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                         miss.play()
                         messages.push(`${second.name}'s attack misses!`)
                         messages.push("Turn Ends!")
-                        // console.log(messages)
                         return messages
                     }
                     else {
@@ -68,10 +64,9 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     }
                 }
             }
+            //Opponent advantage! Opponent's attacks hit while user misses!
             else if (user_roll < opponent_roll) {
-                //Opponent advantage! Opponent's attacks hit while user misses!
                 console.log('Opponent Advantage!')
-                // console.log(messages)
                 miss.play()
                 messages.push(`${first.name}'s attack misses!`)
                 messages.push(`${second.name} attacks ${first.name}.`)
@@ -83,13 +78,11 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     if (firstHealth.value > 0) {
                         messages.push(`${first.name} has ${firstHealth.value} health left.`)
                         messages.push("Turn Ends.")
-                        // console.log(messages)
                         return messages
                     }
                     else {
                         messages.push(`${first.name} has 0 health left.`)
                         messages.push(`${first.name} lost!`)
-                        // console.log(messages)
                         return messages
                     }
                 }
@@ -101,14 +94,12 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                         //If user has health left, turn ends
                         messages.push(`${first.name} has ${firstHealth.value} health left.`)
                         messages.push("Turn Ends!")
-                        // console.log(messages)
                         return messages
                     }
                     else {
                         //If user has zero health left, user loses!
                         messages.push(`${first.name} has 0 health left.`)
                         messages.push(`${first.name} lost!`)
-                        // console.log(messages)
                         return messages
                     }
                 }
@@ -133,14 +124,12 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                                 //If user still has health, turn ends
                                 messages.push(`${first.name} has ${firstHealth.value} health left.`)
                                 messages.push("Turn Ends!")
-                                // console.log(messages)
                                 return messages
                             }
                             else {
                                 //If user has zero health left, user loses!
                                 messages.push(`${first.name} has 0 health left.`)
                                 messages.push(`${first.name} lost!`)
-                                // console.log(messages)
                                 return messages
                             }
                         }
@@ -152,14 +141,12 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                                 //If user still has health, turn ends
                                 messages.push(`${first.name} has ${firstHealth.value} health left.`)
                                 messages.push("Turn Ends!")
-                                // console.log(messages)
                                 return messages
                             }
                             else {
                                 //If user has zero health, user loses!
                                 messages.push(`${first.name} has 0 health left.`)
                                 messages.push(`${first.name} lost!`)
-                                // console.log(messages)
                                 return messages
                             }
                         }
@@ -168,7 +155,6 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                         //Opponent has no health left, cannot retaliate, user wins
                         messages.push(`${second.name} has 0 health left.`)
                         messages.push(`${first.name} wins!`)
-                        // console.log(messages)
                         return messages
                     }
                 }
@@ -223,7 +209,6 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             if (user_roll > opponent_roll) {
                 //User advantage! Opponent can still receive damage despite defending
                 console.log('User Advantage!')
-                // console.log(messages)
                 if (first.atk > second.def) {
                     messages.push(`${second.name} defends, but still takes some damage...`)
                     secondHealth.value -= 1
@@ -231,20 +216,17 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     if (secondHealth.value > 0) {
                         messages.push(`${second.name} has ${secondHealth.value} health left.`)
                         messages.push("Turn Ends!")
-                        // console.log(messages)
                         return messages
                     }
                     else {
                         messages.push(`${second.name} has 0 health left.`)
                         messages.push(`${first.name} wins!`)
-                        // console.log(messages)
                         return messages
                     }
                 }
                 else {
                     messages.push(`${second.name} defends! No damage taken.`)
                     messages.push("Turn Ends!")
-                    // console.log(messages)
                     return messages
                 }
             }
@@ -255,7 +237,6 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                 if (first.atk > second.def) {
                     messages.push(`${second.name} defends! No damage taken.`)
                     messages.push("Turn Ends!")
-                    // console.log(messages)
                     return messages
                 }
                 else if (first.atk < second.def) {
@@ -266,13 +247,11 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     if (firstHealth.value > 0) {
                         messages.push(`${first.name} has ${firstHealth.value} health left.`)
                         messages.push("Turn Ends!")
-                        // console.log(messages)
                         return messages
                     }
                     else {
                         messages.push(`${first.name} has 0 health left.`)
                         messages.push(`${first.name} lost!`)
-                        // console.log(messages)
                         return messages
                     }
                 }
@@ -285,13 +264,11 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     if (firstHealth.value > 0) {
                         messages.push(`${first.name} has ${firstHealth.value} health left!`)
                         messages.push("Turn Ends!")
-                        console.log(messages)
                         return messages
                     }
                     else {
                         messages.push(`${first.name} has 0 health left.`)
                         messages.push(`${first.name} lost!`)
-                        console.log(messages)
                         return messages
                     }
                 }
@@ -299,11 +276,9 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             else {
                 //No advantages but user misses
                 console.log('No Advantages!')
-                // console.log(messages)
                 miss.play()
                 messages.push(`${first.name} misses!`)
                 messages.push("Turn Ends!")
-                // console.log(messages)
                 return messages
             }
         }
@@ -321,13 +296,11 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     if (secondHealth.value > 0) {
                         messages.push(`${second.name} has ${secondHealth.value} health left.`)
                         messages.push("Turn Ends!")
-                        // console.log(messages)
                         return messages
                     }
                     else {
                         messages.push(`${second.name} has 0 health left.`)
                         messages.push(`${first.name} wins!`)
-                        // console.log(messages)
                         return messages
                     }
                 }
@@ -338,20 +311,17 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     if (secondHealth.value > 0) {
                         messages.push(`${second.name} has ${secondHealth.value} health left.`)
                         messages.push("Turn End!")
-                        // console.log(messages)
                         return messages
                     }
                     else {
                         messages.push(`${second.name} has 0 health left.`)
                         messages.push(`${first.name} wins!`)
-                        // console.log(messages)
                         return messages
                     }
                 }
                 else {
                     messages.push(`${first.name} defends! No damage taken.`)
                     messages.push("Turn Ends!")
-                    // console.log(messages)
                     return messages
                 }
             }
@@ -366,30 +336,26 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     if (firstHealth.value > 0) {
                         messages.push(`${first.name} has ${firstHealth.value} health left`)
                         messages.push("Turn Ends!")
-                        console.log(messages)
                         return messages
                     }
                     else {
                         messages.push(`${first.name} has 0 health left.`)
                         messages.push(`${first.name} lost!`)
-                        console.log(messages)
                         return messages
                     }
                 }
                 else {
                     messages.push(`${first.name} defends! No damage taken.`)
                     messages.push("Turn Ends")
-                    console.log(messages)
                     return messages
                 } 
             }
             else {
-                    //No advantage! Opponent misses!
+                //No advantage! Opponent misses!
                     console.log('No Advantages!')
                     miss.play()
                     messages.push(`${second.name} misses!`)
                     messages.push("Turn Ends!")
-                    console.log(messages)
                     return messages
             }
         }
@@ -397,7 +363,6 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                 messages.push("The two Pokemon eye each other cautiously...")
                 messages.push("Waiting for the other to make a move...")
                 messages.push("Turn Ends!")
-                // console.log(messages)
                 return messages
             }
     }
@@ -407,8 +372,8 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             //User and opponent both attack
             attack.play()
             messages.push(`${first.name} attacks ${second.name}.`)
+            //User advantage! Opponent attacks will miss!
             if (user_roll > opponent_roll) {
-                //User advantage! Opponent attacks will miss!
                 console.log('User Advantage!')
                 miss.play()
                 messages.push(`${first.name} misses!`)
@@ -419,13 +384,11 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     if (firstHealth.value > 0) {
                         messages.push(`${first.name} has ${firstHealth.value} health left.`)
                         messages.push("Turn Ends!")
-                        // console.log(messages)
                         return messages
                     }
                     else {
                         messages.push(`${first.name} has 0 health left.`)
                         messages.push(`${second.name} wins!`)
-                        // console.log(messages)
                         return messages
                     }
                 }
@@ -435,13 +398,11 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     if (firstHealth.value > 0) {
                         messages.push(`${first.name} has ${firstHealth.value} health left.`)
                         messages.push('Turn Ends!')
-                        // console.log(messages)
                         return messages
                     }
                     else {
                         messages.push(`${first.name} has 0 health left.`)
                         messages.push(`${second.name} wins!`)
-                        // console.log(messages)
                         return messages
                     }
                 }
@@ -459,13 +420,11 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                         miss.play()
                         messages.push("The attack misses!")
                         messages.push("Turn Ends!")
-                        console.log(messages)
                         return messages
                     }
                     else {
                         messages.push(`${second.name} has 0 health left.`)
                         messages.push(`${second.name} lost!`)
-                        console.log(messages)
                         return messages
                     }
                 }
@@ -478,12 +437,10 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                         miss.play()
                         messages.push("The attack misses!")
                         messages.push("Turn Ends!")
-                        console.log(messages)
                         return messages
                     } else {
                         messages.push(`${second.name} has 0 health left.`)
                         messages.push(`${second.name} lost!`)
-                        console.log(messages)
                         return messages
                     }
                 }
@@ -589,7 +546,6 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                 if (first.def > second.atk) {
                     messages.push(`${first.name} defends! No damage taken.`)
                     messages.push("Turn Ends!")
-                    // console.log(messages)
                     return messages
                 }
                 else {
@@ -599,13 +555,11 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     if (firstHealth.value > 0) {
                         messages.push(`${first.name} has ${firstHealth.value} health left.`)
                         messages.push("Turn Ends!")
-                        // console.log(messages)
                         return messages
                     }
                     else {
                         messages.push(`${first.name} has 0 health left.`)
                         messages.push(`${second.name} wins!`)
-                        // console.log(messages)
                         return messages
                     }
                 }
@@ -621,20 +575,17 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     if (secondHealth.value > 0) {
                         messages.push(`${second.name} has ${secondHealth.value} health left`)
                         messages.push("Turn Ends!")
-                        // console.log(messages)
                         return messages
                     }
                     else {
                         messages.push(`${second.name} has 0 health left`)
                         messages.push(`${second.name} lost!`)
-                        // console.log(messages)
                         return messages
                     }
                 }
                 else if (first.def < second.atk) {
                     messages.push(`${first.name} defends! No damage taken.`)
                     messages.push("Turn Ends!")
-                    // console.log(messages)
                     return messages
                 }
                 else {
@@ -645,13 +596,11 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     if (secondHealth.value > 0) {
                         messages.push(`${second.name} has ${secondHealth.value} health left.`)
                         messages.push("Turn Ends!")
-                        // console.log(messages)
                         return messages
                     }
                     else {
                         messages.push(`${second.name} has 0 health left.`)
                         messages.push(`${second.name} lost!`)
-                        // console.log(messages)
                         return messages
                     }
                 }
@@ -662,7 +611,6 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                 miss.play()
                 messages.push(`${second.name} misses!`)
                 messages.push("Turn Ends!")
-                console.log(messages)
                 return messages
             }
         }
@@ -680,20 +628,17 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     if (firstHealth.value > 0) {
                         messages.push(`${first.name} has ${firstHealth.value} health left!`)
                         messages.push("Turn Ends!")
-                        // console.log(messages)
                         return messages
                     }
                     else {
                         messages.push(`${first.name} has 0 health left!`)
                         messages.push(`${second.name} wins!`)
-                        // console.log(messages)
                         return messages
                     }
                 }
                 else if (second.def < first.atk) {
                     messages.push(`${second.name} defends! No damage taken.`)
                     messages.push("Turn Ends!")
-                    // console.log(messages)
                     return messages
                 }
                 else {
@@ -703,13 +648,11 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     if (firstHealth.value > 0) {
                         messages.push(`${first.name} has ${firstHealth.value} health left.`)
                         messages.push("Turn Ends!")
-                        // console.log(messages)
                         return messages
                     }
                     else {
                         messages.push(`${first.name} has 0 health left.`)
                         messages.push(`${second.name} wins!`)
-                        // console.log(messages)
                         return messages
                     }
                 }
@@ -721,7 +664,6 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                 if (second.def > first.atk) {
                     messages.push(`${second.name} defends! No damage taken.`)
                     messages.push("Turn Ends!")
-                    // console.log(messages)
                     return messages
                 }
                 else {
@@ -731,13 +673,11 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                     if (secondHealth.value > 0) {
                         messages.push(`${second.name} has ${secondHealth.value} health left.`)
                         messages.push("Turn Ends!")
-                        // console.log(messages)
                         return messages
                     }
                     else {
                         messages.push(`${second.name} has 0 health left.`)
                         messages.push(`${second.name} lost!`)
-                        // console.log(messages)
                         return messages
                     }
                 }
@@ -748,7 +688,6 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
                 miss.play()
                 messages.push(`${first.name} misses!`)
                 messages.push("Turn Ends!")
-                // console.log(messages)
                 return messages
             }
         }
@@ -758,7 +697,6 @@ const battleLogic = (user_action, opponent_action, userPokemon, first, second) =
             messages.push("The two Pokemon eye each other cautiously...")
             messages.push("Waiting for the other to make a move...")
             messages.push("Turn Ends!")
-            // console.log(messages)
             return messages
         }
     } 
