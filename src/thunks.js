@@ -15,11 +15,11 @@ export const loadUser = () => dispatch => {
 
 export const getUser = evt => dispatch => {
   evt.preventDefault()
-  return fetch("http://localhost:3000/login", {
+  return fetch("https://simple-pokemon-battles-api.herokuapp.com/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json"
+      "Accept": "application/json"
     },
     body: JSON.stringify({
       username: evt.target.username.value,
@@ -45,7 +45,7 @@ export const getUser = evt => dispatch => {
             user_id: data.user_id
           }
         })
-        return fetch(`http://localhost:3000/users/${data.user_id}`)
+        return fetch(`https://simple-pokemon-battles-api.herokuapp.com/users/${data.user_id}`)
           .then(res => res.json())
           .then(user => {
             localStorage.setItem("user", JSON.stringify(user))
@@ -67,7 +67,7 @@ export const createUser = evt => dispatch => {
   let first_name = evt.target.first_name.value
   let last_name = evt.target.last_name.value
 
-  return fetch("http://localhost:3000/users", {
+  return fetch("https://simple-pokemon-battles-api.herokuapp.com/users", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -140,7 +140,7 @@ export const fetchOpponent = pokemon => dispatch => {
   else {
     opponent_pokemon_roll = Math.floor(Math.random() * 151) + 1
   }
-  fetch(`http://localhost:3000/pokemons/${opponent_pokemon_roll}`)
+  fetch(`https://simple-pokemon-battles-api.herokuapp.com/pokemons/${opponent_pokemon_roll}`)
     .then(res => res.json())
     .then(data => {
       dispatch({
@@ -153,7 +153,7 @@ export const fetchOpponent = pokemon => dispatch => {
 }
 
 export const wildPokemonFetch = () => dispatch => {
-  fetch("http://localhost:3000/pokemons")
+  fetch("https://simple-pokemon-battles-api.herokuapp.com/pokemons")
     .then(res => res.json())
     .then(pokemon => {
       const wildPokemon = pokemon.filter(pokemon => pokemon.id <= 151)
@@ -168,11 +168,11 @@ export const wildPokemonFetch = () => dispatch => {
 
 export const catchPokemon = (user, pokemon) => dispatch => {
   const user_id = user.id
-  return fetch("http://localhost:3000/pokemons", {
+  return fetch("https://simple-pokemon-battles-api.herokuapp.com/pokemons", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json"
+      "Accept": "application/json"
     },
     body: JSON.stringify({
       name: pokemon.name,
@@ -192,11 +192,11 @@ export const catchPokemon = (user, pokemon) => dispatch => {
     .then(data => {
       const pokemon_id = data.id
       const newPokemon = data
-      return fetch("http://localhost:3000/captures", {
+      return fetch("https://simple-pokemon-battles-api.herokuapp.com/captures", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json"
+          "Accept": "application/json"
         },
         body: JSON.stringify({
           user_id,
@@ -228,17 +228,17 @@ export const catchPokemon = (user, pokemon) => dispatch => {
 }
 
 export const releasePokemon = (user, pokemon) => dispatch => {
-  return fetch(`http://localhost:3000/captures`)
+  return fetch(`https://simple-pokemon-battles-api.herokuapp.com/captures`)
     .then(res => res.json())
     .then(captures => {
       const captured = captures.find(
         capture => capture.pokemon.id === pokemon.id
       )
-      return fetch(`http://localhost:3000/captures/${captured.id}`, {
+      return fetch(`https://simple-pokemon-battles-api.herokuapp.com/captures/${captured.id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json"
+          "Accept": "application/json"
         }
       })
         .then(resp => resp.json())
@@ -266,11 +266,11 @@ export const addWin = (user, pokemon) => dispatch => {
   const stat_pts = pokemon.stat_pts + 3
   const lv = pokemon.lv + 1
   if (exp === pokemon.exp_max) {
-    fetch(`http://localhost:3000/pokemons/${pokemon.id}`, {
+    fetch(`https://simple-pokemon-battles-api.herokuapp.com/pokemons/${pokemon.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        "Accept": "application/json"
       },
       body: JSON.stringify({
         lv,
@@ -293,11 +293,11 @@ export const addWin = (user, pokemon) => dispatch => {
         })
       })
   } else {
-    fetch(`http://localhost:3000/pokemons/${pokemon.id}`, {
+    fetch(`https://simple-pokemon-battles-api.herokuapp.com/pokemons/${pokemon.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        "Accept": "application/json"
       },
       body: JSON.stringify({
         exp
@@ -317,11 +317,11 @@ export const addWin = (user, pokemon) => dispatch => {
         })
       })
   }
-  fetch(`http://localhost:3000/users/${user.id}`, {
+  fetch(`https://simple-pokemon-battles-api.herokuapp.com/users/${user.id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json"
+      "Accept": "application/json"
     },
     body: JSON.stringify({
       wins
@@ -342,11 +342,11 @@ export const addWin = (user, pokemon) => dispatch => {
 export const addLoss = user => dispatch => {
   const defaultLosses = user.losses
   const losses = defaultLosses + 1
-  fetch(`http://localhost:3000/users/${user.id}`, {
+  fetch(`https://simple-pokemon-battles-api.herokuapp.com/users/${user.id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json"
+      "Accept": "application/json"
     },
     body: JSON.stringify({
       losses
@@ -370,11 +370,11 @@ export const updateStats = (pokemon, state, user) => dispatch => {
   const def = state.def
   const spd = state.spd
   const stat_pts = state.stat_pts
-  fetch(`http://localhost:3000/pokemons/${pokemon.id}`, {
+  fetch(`https://simple-pokemon-battles-api.herokuapp.com/pokemons/${pokemon.id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json"
+      "Accept": "application/json"
     },
     body: JSON.stringify({
       hp,
@@ -403,7 +403,7 @@ export const updateUser = evt => dispatch => {
   const username = evt.target.password.value
   const id = evt.target.user_id.value
   evt.preventDefault()
-  fetch(`http://localhost:3000/users/${id}`, {
+  fetch(`https://simple-pokemon-battles-api.herokuapp.com/users/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -427,7 +427,7 @@ export const updateUser = evt => dispatch => {
 
 export const deleteAccount = user => dispatch => {
   user.pokemons.forEach(pokemon => {
-    fetch(`http://localhost:3000/pokemons/${pokemon.id}`, {
+    fetch(`https://simple-pokemon-battles-api.herokuapp.com/pokemons/${pokemon.id}`, {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json',
@@ -435,7 +435,7 @@ export const deleteAccount = user => dispatch => {
       }
     })
   })
-  fetch(`http://localhost:3000/users/${user.id}`, {
+  fetch(`https://simple-pokemon-battles-api.herokuapp.com/users/${user.id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
