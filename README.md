@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-##This project has been deployed to heroku: https://simple-pokemon-battles.herokuapp.com/
+## This project has been deployed to heroku: https://simple-pokemon-battles.herokuapp.com/
 
 ## Before Starting up this project
 
