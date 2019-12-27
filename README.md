@@ -2,8 +2,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## This project has been deployed to heroku: https://simple-pokemon-battles.herokuapp.com/
 
-This app is built using Rails [6.0] as a backend to store and retrieve data using a PostgreSQL database.
-The frontend uses vanilla JavaScript and bootstrap for CSS customization.
+This app is built using Rails [6.0] as a backend to store and retrieve data using a PostgreSQL database. Bcrypt and JWT Auths were utilized to manage secure passwords and user logins.
+
+## Tools used
+The frontend uses React JS to build user interfaces and Redux to manage user states. React Routers have also been utilized to control app navigation. React Semantic UI has been used to customize CSS.
 
 ## Before Starting up this project
 
