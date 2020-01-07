@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## This project has been deployed to heroku: https://simple-pokemon-battles.herokuapp.com/
 
+## Blog: https://medium.com/@bennylouie/mod-3-project-pokeinstagram-8864895c091c
+
 ## Demo: https://youtu.be/ldxZVUrsa7Q
 
 ## Tools used
