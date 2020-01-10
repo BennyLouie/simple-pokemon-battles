@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## This project has been deployed to heroku: https://simple-pokemon-battles.herokuapp.com/
 
+## Blog: https://medium.com/@bennylouie/mod-5-project-simple-pokemon-battles-355840b2a3cd
+
 ## Demo: https://youtu.be/ldxZVUrsa7Q
 
 ## Tools used
