@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Blog: https://medium.com/@bennylouie/mod-5-project-simple-pokemon-battles-355840b2a3cd
 
-## Demo: https://youtu.be/ldxZVUrsa7Q
+## Demo: https://youtu.be/D3-kOKQTeYc
 
 ## Tools used
 
