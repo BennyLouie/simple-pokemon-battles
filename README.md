@@ -55,4 +55,5 @@ The team caps at 6.
 
 User may also release a Pokemon from his/her team.
 
+------------------------------------------------------------------------------------------------------------------------------
 Note: This is my first solo project as a developer.
