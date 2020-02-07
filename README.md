@@ -28,8 +28,6 @@ Installs all the dependant modules required to run this React App.
 
 Starts up this project. This app has been defaulted to run on PORT 3001.
 
-### PLEASE take your time when battling. Do not press the two battle options too quickly. Wait for the message container to finish loading first!
-
 ### A Brief Summary
 
 This is a very simple game that simulates a Pokemon Battle. There are no attributes or special attack moves.
