@@ -54,6 +54,3 @@ The team caps at 6.
 User may also release a Pokemon from his/her team.
 
 Error messages will display when a user attempts to add too many Pokemon to his/her team, as well when attempting to log in using incorrect information.
-
-------------------------------------------------------------------------------------------------------------------------------
-Note: This is my first solo project as a developer.
